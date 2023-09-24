@@ -12,7 +12,7 @@ public class Godrick extends Boss{
     public Godrick(Piano piano) {
         super("Godrick", 100, 100, new FightingBehaviour() {
             @Override
-            public void fight(Character enemy) {
+            public void fight(int piano) {
 
             }
         });

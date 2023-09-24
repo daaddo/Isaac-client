@@ -18,7 +18,5 @@ public abstract class Boss extends Character {
 
 
     protected abstract void prepare(Piano piano);
-    public final void fight(Character character){
-        this.fightingBehaviour.fight(character);
-    }
+
 }

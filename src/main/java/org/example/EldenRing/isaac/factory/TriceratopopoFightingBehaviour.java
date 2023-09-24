@@ -5,7 +5,7 @@ import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 
 public class TriceratopopoFightingBehaviour implements FightingBehaviour {
    @Override
-    public void fight(Character enemy) {
+    public void fight(int piano) {
         System.out.println("attacco del triceratopo");
     }
 }

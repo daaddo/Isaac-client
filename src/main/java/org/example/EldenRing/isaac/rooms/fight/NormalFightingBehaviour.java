@@ -6,7 +6,7 @@ public class NormalFightingBehaviour implements FightingBehaviour {
 
 
     @Override
-    public void fight(Character enemy) {
-
+    public void fight(int piano) {
+        System.out.println("ci sono nemici");
     }
 }

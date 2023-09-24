@@ -29,7 +29,7 @@ public abstract class Room implements BuyBehaviour, FightingBehaviour {
     }
 
     @Override
-    public void fight(Character enemy){
+    public void fight(int piano){
 
     }
 }

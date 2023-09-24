@@ -6,7 +6,7 @@ public class SkeletonMinion extends Soldato {
     public SkeletonMinion(String name, int maxHealth, int currentHealth) {
         super(name, maxHealth, currentHealth, new FightingBehaviour() {
             @Override
-            public void fight(Character enemy) {
+            public void fight(int piano) {
                 System.out.println("ahah sono uno scheletro e t attacco");
             }
         });

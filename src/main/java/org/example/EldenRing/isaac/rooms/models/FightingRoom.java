@@ -13,7 +13,7 @@ public class FightingRoom extends Room implements FightingBehaviour{
 
 
     public FightingRoom(RoomCoordinates coords, FightingBehaviour fightingBehaviour) {
-        super(coords);
+        super(coords, fightingBehaviour);
         this.fightingBehaviour = fightingBehaviour;
     }
 
@@ -23,7 +23,7 @@ public class FightingRoom extends Room implements FightingBehaviour{
     }
 
     @Override
-    public void fight(Character enemy) {
+    public void fight(int piano) {
 
     }
 

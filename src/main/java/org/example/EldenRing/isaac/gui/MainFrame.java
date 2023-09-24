@@ -19,6 +19,11 @@ import java.awt.*;
  * @author trapa
  */
 public class MainFrame extends javax.swing.JFrame implements GameEventListner {
+    private static int piano =Piano.getNumero();
+
+    public static int getPiano() {
+        return piano;
+    }
 
     /**
      * Creates new form MainFrame

@@ -16,7 +16,7 @@ public class BossRoom extends Room{
     private org.example.EldenRing.isaac.models.bosses.Boss Boss;
 
     public BossRoom(RoomCoordinates coords) {
-        super(coords);
+        super(coords, new NormalFightingBehaviour());
         this.Boss = PersonManager.getInstance().getRandomBoss();
         this.FightingBehaviour = new NormalFightingBehaviour();
         this.noBuyBehaviour = new NoBuyBehaviour();

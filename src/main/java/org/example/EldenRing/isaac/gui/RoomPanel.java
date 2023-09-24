@@ -12,6 +12,7 @@ import org.example.EldenRing.isaac.RoomNotValidExc;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.piano.Piano;
+import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 import org.example.EldenRing.isaac.rooms.models.Room;
 import org.example.EldenRing.other.RoomCoordinates;
 
@@ -156,7 +157,8 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
 
     @Override
     public void enteredRoom() {
-        this.roomtype.get
+        FightingBehaviour fightingBehaviour = this.roomtype.getFightingBehaviour();
+        fightingBehaviour.fight(MainFrame.getPiano());
     }
     // End of variables declaration//GEN-END:variables
 }
