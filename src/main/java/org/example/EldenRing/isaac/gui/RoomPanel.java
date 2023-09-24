@@ -12,6 +12,7 @@ import org.example.EldenRing.isaac.RoomNotValidExc;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.piano.Piano;
+import org.example.EldenRing.isaac.rooms.models.Room;
 import org.example.EldenRing.other.RoomCoordinates;
 
 /**
@@ -21,6 +22,8 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     private Color originalcolor;
     private boolean starterRoom = false;
     private RoomCoordinates roomCoordinates;
+    private Room roomtype;
+    private Boolean visited;
 
     /**
      * Creates new form RoomPanel
@@ -29,9 +32,10 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         initComponents();
     }
 
-    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom) {
+    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype) {
         initComponents();
         this.roomCoordinates = roomCoordinates;
+        this.roomtype=roomtype;
         this.starterRoom = starterRoom;
         if (this.starterRoom) {
             this.setBackground(Color.yellow);
@@ -132,6 +136,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
             this.setBackground(Color.RED);
             this.originalcolor = Color.red;
             this.jLabel1.setText("X");
+            this.enteredRoom();
         } else {
             if (this.isStarterRoom() && roomCoordinates == this.roomCoordinates) {
                 this.jLabel1.setText("X");
@@ -151,7 +156,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
 
     @Override
     public void enteredRoom() {
-
+        this.roomtype.get
     }
     // End of variables declaration//GEN-END:variables
 }

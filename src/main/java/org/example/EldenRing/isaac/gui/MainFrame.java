@@ -5,10 +5,12 @@
 package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.GameEventListner;
+import org.example.EldenRing.isaac.factory.FightingRoomFactory;
 import org.example.EldenRing.isaac.factory.NormalPrizeRoomFactory;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.Factory.StarterRoomFactory;
+import org.example.EldenRing.isaac.rooms.models.NormalPrizeRoom;
 import org.example.EldenRing.other.RoomCoordinates;
 
 import java.awt.*;
@@ -103,9 +105,16 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 if (roomMap[i][j] == 2) {
-                    this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), true));
+                    this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), true,new StarterRoomFactory().createRoom(new RoomCoordinates(i,j))));
                 } else if (roomMap[i][j] == 1) {
-                    this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), false));
+                    double random = Math.random();
+                    if (random <0.35) {
+                        this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), false,new NormalPrizeRoomFactory().createRoom(new RoomCoordinates(i,j))));
+                    }
+                    else {
+                        this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), false,new FightingRoomFactory().createRoom(new RoomCoordinates(i,j))));
+
+                    }
 
 
                 } else {
