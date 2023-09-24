@@ -20,7 +20,7 @@ import java.awt.*;
  */
 public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     private static int piano =Piano.getNumero();
-
+    private Character character;
     public static int getPiano() {
         return piano;
     }

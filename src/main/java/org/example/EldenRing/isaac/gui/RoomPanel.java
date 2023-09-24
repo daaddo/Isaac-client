@@ -7,6 +7,7 @@ package org.example.EldenRing.isaac.gui;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Scanner;
 
 import org.example.EldenRing.isaac.RoomNotValidExc;
 import org.example.EldenRing.isaac.events.GameEventListner;
@@ -24,7 +25,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     private boolean starterRoom = false;
     private RoomCoordinates roomCoordinates;
     private Room roomtype;
-    private Boolean visited;
+    private Boolean visited = false;
 
     /**
      * Creates new form RoomPanel
@@ -41,8 +42,9 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         if (this.starterRoom) {
             this.setBackground(Color.yellow);
             this.jLabel1.setText("X");
+            this.visited = true;
         } else {
-            this.setBackground(Color.GRAY);
+            this.setBackground(Color.darkGray);
             this.jLabel1.setText(roomCoordinates.row() + ", " + roomCoordinates.column());
         }
         GameManager.getInstance().subscribe4Rooms(this);
@@ -62,7 +64,11 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
                 if (originalcolor.equals(Color.yellow)||originalcolor.equals(Color.RED)) {
                     return;
                 }
-                RoomPanel.this.setBackground(Color.gray);
+                if (visited) {
+                    RoomPanel.this.setBackground(Color.gray);
+                }else {
+                    RoomPanel.this.setBackground(Color.darkGray);
+                }
             }
 
             @Override
@@ -81,7 +87,12 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
 
     private void reset() {
         this.jLabel1.setText("");
-        this.setBackground(Color.GRAY);
+        if (visited) {
+            this.setBackground(Color.GRAY);
+        }
+        else {
+            this.setBackground(Color.darkGray);
+        }
     }
 
     public boolean isStarterRoom() {
@@ -158,7 +169,12 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     @Override
     public void enteredRoom() {
         FightingBehaviour fightingBehaviour = this.roomtype.getFightingBehaviour();
-        fightingBehaviour.fight(MainFrame.getPiano());
+        if (RoomPanel.this.visited == false) {
+            fightingBehaviour.fight(MainFrame.getPiano());
+            Scanner scanner = new Scanner(System.in);
+
+        }
+        RoomPanel.this.visited = true;
     }
     // End of variables declaration//GEN-END:variables
 }
