@@ -47,21 +47,42 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelContainer = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 102));
 
-        jPanel1.setLayout(new java.awt.GridLayout(15, 15, 1, 1));
+        jPanelContainer.setBackground(new java.awt.Color(255, 255, 0));
+        jPanelContainer.setLayout(new java.awt.GridLayout(15, 15, 1, 1));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,7 +123,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JPanel jPanel1;
 
     @Override
@@ -111,20 +132,20 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 if (roomMap[i][j] == 2) {
-                    this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), true,new StarterRoomFactory().createRoom(new RoomCoordinates(i,j))));
+                    this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), true,new StarterRoomFactory().createRoom(new RoomCoordinates(i,j))));
                 } else if (roomMap[i][j] == 1) {
                     double random = Math.random();
                     if (random <0.35) {
-                        this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), false,new NormalPrizeRoomFactory().createRoom(new RoomCoordinates(i,j))));
+                        this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), false,new NormalPrizeRoomFactory().createRoom(new RoomCoordinates(i,j))));
                     }
                     else {
-                        this.jPanel1.add(new RoomPanel(new RoomCoordinates(i, j), false,new FightingRoomFactory().createRoom(new RoomCoordinates(i,j))));
+                        this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), false,new FightingRoomFactory().createRoom(new RoomCoordinates(i,j))));
 
                     }
 
 
                 } else {
-                    this.jPanel1.add(new NoRoomPanel());
+                    this.jPanelContainer.add(new NoRoomPanel());
                 }
             }
         }
@@ -139,5 +160,9 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     public void enteredRoom() {
 
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelContainer;
     // End of variables declaration//GEN-END:variables
 }
