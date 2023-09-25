@@ -161,6 +161,11 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
 
     }
 
+    @Override
+    public void selectCharacter(Character character) {
+        this.character = character;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelContainer;

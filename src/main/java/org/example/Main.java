@@ -39,7 +39,9 @@ public class Main {
             public void run() {
                 new LandingPage().setVisible(true);
             }
+
         });
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);

@@ -29,6 +29,11 @@ public class GameManager {
         }
         return instance;
     }
+    public void insertCharacter(Character character){
+        for (GameEventListner gameEventListner : gameEventListners) {
+            gameEventListner.selectCharacter(character);
+        }
+    }
     public synchronized void startGame(){
         this.gioco = new Game(new MainCharacterPeppe("Peppe"));
         System.out.println(gioco.getPiano().getStarterRoom().getCoords());

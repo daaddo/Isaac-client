@@ -176,5 +176,10 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         }
         RoomPanel.this.visited = true;
     }
+
+    @Override
+    public void selectCharacter(Character character) {
+
+    }
     // End of variables declaration//GEN-END:variables
 }

@@ -4,11 +4,16 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.events.GameEventListner;
+import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.piano.Piano;
+import org.example.EldenRing.other.RoomCoordinates;
+
 /**
  *
  * @author trapa
  */
-public class LandingPage extends javax.swing.JFrame {
+public class LandingPage extends javax.swing.JFrame implements GameEventListner {
 
     /**
      * Creates new form LandingPage
@@ -106,8 +111,8 @@ public class LandingPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +126,7 @@ public class LandingPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,6 +142,8 @@ public class LandingPage extends javax.swing.JFrame {
 
     private void jButtonGiocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGiocaActionPerformed
         // TODO add your handling code here:
+        String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
+        System.out.println(actionCommand);
     }//GEN-LAST:event_jButtonGiocaActionPerformed
 
     /**
@@ -181,5 +188,25 @@ public class LandingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+
+    @Override
+    public void newGame(Piano piano) {
+
+    }
+
+    @Override
+    public void move(RoomCoordinates roomCoordinates) {
+
+    }
+
+    @Override
+    public void enteredRoom() {
+
+    }
+
+    @Override
+    public void selectCharacter(Character character) {
+        GameManager.getInstance().insertCharacter(null);
+    }
     // End of variables declaration//GEN-END:variables
 }

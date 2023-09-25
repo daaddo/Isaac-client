@@ -10,4 +10,5 @@ public interface GameEventListner {
 
     void move(RoomCoordinates roomCoordinates);
     void enteredRoom();
+    void selectCharacter(Character character);
 }
