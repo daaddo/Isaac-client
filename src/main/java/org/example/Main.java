@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.EldenRing.isaac.Game;
+import org.example.EldenRing.isaac.gui.LandingPage;
 import org.example.EldenRing.isaac.gui.MainFrame;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.MainCharacterPeppe;
@@ -34,6 +35,11 @@ public class Main {
         //</editor-fold>
 
         /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LandingPage().setVisible(true);
+            }
+        });
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);

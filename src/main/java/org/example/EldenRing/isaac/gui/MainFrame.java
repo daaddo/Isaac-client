@@ -4,13 +4,14 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+
+
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.factory.FightingRoomFactory;
 import org.example.EldenRing.isaac.factory.NormalPrizeRoomFactory;
+import org.example.EldenRing.isaac.factory.StarterRoomFactory;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.piano.Piano;
-import org.example.EldenRing.isaac.rooms.Factory.StarterRoomFactory;
-import org.example.EldenRing.isaac.rooms.models.NormalPrizeRoom;
 import org.example.EldenRing.other.RoomCoordinates;
 
 import java.awt.*;
@@ -19,7 +20,7 @@ import java.awt.*;
  * @author trapa
  */
 public class MainFrame extends javax.swing.JFrame implements GameEventListner {
-    private static int piano =Piano.getNumero();
+    private static int piano = Piano.getNumero();
     private Character character;
     public static int getPiano() {
         return piano;
