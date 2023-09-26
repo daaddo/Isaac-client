@@ -12,6 +12,7 @@ import java.util.Scanner;
 import org.example.EldenRing.isaac.RoomNotValidExc;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 import org.example.EldenRing.isaac.rooms.models.Room;
@@ -26,6 +27,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     private RoomCoordinates roomCoordinates;
     private Room roomtype;
     private Boolean visited = false;
+    private Character character;
 
     /**
      * Creates new form RoomPanel
@@ -34,12 +36,13 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         initComponents();
     }
 
-    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype) {
+    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,Character character) {
         initComponents();
         this.roomCoordinates = roomCoordinates;
         this.roomtype=roomtype;
         this.starterRoom = starterRoom;
         if (this.starterRoom) {
+            this.character = character;
             this.setBackground(Color.yellow);
             this.jLabel1.setText("X");
             this.visited = true;
@@ -148,16 +151,20 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
             this.setBackground(Color.RED);
             this.originalcolor = Color.red;
             this.jLabel1.setText("X");
+            this.character = GameManager.getInstance().getCharacter();
             this.enteredRoom();
+            System.out.println(this.character.getMaxHealth());
         } else {
             if (this.isStarterRoom() && roomCoordinates == this.roomCoordinates) {
                 this.jLabel1.setText("X");
+                this.character = GameManager.getInstance().getCharacter();
                 return;
             }
             if (!this.isStarterRoom()) {
                 reset();
             } else {
                 this.jLabel1.setText("");
+                this.character = null;
             }
 
             this.invalidate();
@@ -171,8 +178,6 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         FightingBehaviour fightingBehaviour = this.roomtype.getFightingBehaviour();
         if (RoomPanel.this.visited == false) {
             fightingBehaviour.fight(MainFrame.getPiano());
-            Scanner scanner = new Scanner(System.in);
-
         }
         RoomPanel.this.visited = true;
     }
@@ -181,5 +186,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     public void selectCharacter(Character character) {
 
     }
+
+
     // End of variables declaration//GEN-END:variables
 }

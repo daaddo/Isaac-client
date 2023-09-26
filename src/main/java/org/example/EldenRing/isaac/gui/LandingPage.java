@@ -6,8 +6,12 @@ package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.MainCharacterPeppe;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.other.RoomCoordinates;
+
+import javax.swing.*;
 
 /**
  *
@@ -20,6 +24,8 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
      */
     public LandingPage() {
         initComponents();
+        GameManager.getInstance().subscribeGameListner(this);
+
     }
 
     /**
@@ -144,6 +150,32 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         // TODO add your handling code here:
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
+        if (actionCommand.equals("Test1")) {
+            GameManager.getInstance().setCharacter(new MainCharacterPeppe("deborah"));
+        }
+        else if (actionCommand.equals("Test2")) {
+            GameManager.getInstance().setCharacter(new MainCharacterPeppe("Pio"));
+        }
+        else if (actionCommand.equals("Test3")) {
+            GameManager.getInstance().setCharacter(new MainCharacterPeppe("amedeo"));
+        }
+        else if (actionCommand.equals("Test4")) {
+            GameManager.getInstance().setCharacter(new MainCharacterPeppe("Felipe"));
+        } else {
+            JOptionPane.showMessageDialog(null,"codice non valido","ERRORE",JOptionPane.ERROR_MESSAGE);
+        }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainFrame().setVisible(true);
+                GameManager.getInstance().startGame();
+
+            }
+        });
+
+
+        this.setVisible(false);
+
+        this.dispose();
     }//GEN-LAST:event_jButtonGiocaActionPerformed
 
     /**
@@ -204,9 +236,11 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
 
     }
 
+
+
     @Override
     public void selectCharacter(Character character) {
-        GameManager.getInstance().insertCharacter(null);
+
     }
     // End of variables declaration//GEN-END:variables
 }

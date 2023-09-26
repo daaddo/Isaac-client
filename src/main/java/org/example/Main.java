@@ -6,6 +6,8 @@ import org.example.EldenRing.isaac.gui.MainFrame;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.MainCharacterPeppe;
 
+import java.util.Scanner;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -39,15 +41,16 @@ public class Main {
             public void run() {
                 new LandingPage().setVisible(true);
             }
-
         });
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
-                GameManager.getInstance().startGame();
 
+                GameManager.getInstance().startGame();
             }
-        });
+        });*/
+
+
     }
 }

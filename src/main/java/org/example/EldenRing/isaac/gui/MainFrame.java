@@ -11,6 +11,7 @@ import org.example.EldenRing.isaac.factory.FightingRoomFactory;
 import org.example.EldenRing.isaac.factory.NormalPrizeRoomFactory;
 import org.example.EldenRing.isaac.factory.StarterRoomFactory;
 import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.other.RoomCoordinates;
 
@@ -26,15 +27,20 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         return piano;
     }
 
+    public Character getCharacter() {
+        return character;
+    }
+
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
+        this.character=GameManager.getInstance().getCharacter();
         initComponents();
         GameManager.getInstance().subscribeGameListner(this);
-
         this.setMinimumSize(new Dimension(900, 900));
         setLocationRelativeTo(null);
+
     }
 
 
@@ -49,6 +55,10 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
 
         jPanelContainer = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jToolBar1 = new javax.swing.JToolBar();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        jLabelCharacterName = new javax.swing.JLabel();
+        jLabelHealth = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 102));
@@ -56,15 +66,27 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         jPanelContainer.setBackground(new java.awt.Color(255, 255, 0));
         jPanelContainer.setLayout(new java.awt.GridLayout(15, 15, 1, 1));
 
+        jToolBar1.setBackground(new java.awt.Color(255, 102, 102));
+        jToolBar1.setRollover(true);
+        jToolBar1.add(filler1);
+
+        jLabelCharacterName.setText("jLabel1");
+        jToolBar1.add(jLabelCharacterName);
+
+        jLabelHealth.setText("jLabel1");
+        jToolBar1.add(jLabelHealth);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,7 +104,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,20 +148,24 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     // Variables declaration - do not modify
     private javax.swing.JPanel jPanel1;
 
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+
     @Override
     public void newGame(Piano piano) {
         int[][] roomMap = piano.getRoomMap();
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 if (roomMap[i][j] == 2) {
-                    this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), true,new StarterRoomFactory().createRoom(new RoomCoordinates(i,j))));
+                    this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), true,new StarterRoomFactory().createRoom(new RoomCoordinates(i,j)),this.character));
                 } else if (roomMap[i][j] == 1) {
                     double random = Math.random();
                     if (random <0.35) {
-                        this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), false,new NormalPrizeRoomFactory().createRoom(new RoomCoordinates(i,j))));
+                        this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), false,new NormalPrizeRoomFactory().createRoom(new RoomCoordinates(i,j)),null));
                     }
                     else {
-                        this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), false,new FightingRoomFactory().createRoom(new RoomCoordinates(i,j))));
+                        this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), false,new FightingRoomFactory().createRoom(new RoomCoordinates(i,j)),null));
 
                     }
 
@@ -166,8 +192,13 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         this.character = character;
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JLabel jLabelCharacterName;
+    private javax.swing.JLabel jLabelHealth;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelContainer;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,8 +4,10 @@ import org.example.EldenRing.isaac.RoomNotValidExc;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.Directions;
 import org.example.EldenRing.isaac.Game;
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.MainCharacterPeppe;
 import org.example.EldenRing.isaac.rooms.models.Room;
+import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.other.RoomCoordinates;
 
 import java.security.KeyException;
@@ -13,11 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
+    private Character character;
     private RoomCoordinates pointerRoom;
     private Game gioco;
 
     private static GameManager instance = null;
     private GameManager() {
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
     }
 
     private List<GameEventListner> gameEventListners = new ArrayList<>();
@@ -29,13 +40,14 @@ public class GameManager {
         }
         return instance;
     }
+
     public void insertCharacter(Character character){
         for (GameEventListner gameEventListner : gameEventListners) {
             gameEventListner.selectCharacter(character);
         }
     }
     public synchronized void startGame(){
-        this.gioco = new Game(new MainCharacterPeppe("Peppe"));
+        this.gioco = new Game(this.character);
         System.out.println(gioco.getPiano().getStarterRoom().getCoords());
         this.pointerRoom = gioco.getPiano().getStarterRoom().getCoords();
         PianoManager.getInstance().loadPiano(gioco.getPiano());
@@ -46,7 +58,6 @@ public class GameManager {
 
     public void teleport(RoomCoordinates coordinates){
         for (GameEventListner gameEventListner : roomGameListners) {
-
                 gameEventListner.move(coordinates);
                 this.pointerRoom=coordinates;
         }
