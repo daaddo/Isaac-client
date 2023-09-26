@@ -40,7 +40,8 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         GameManager.getInstance().subscribeGameListner(this);
         this.setMinimumSize(new Dimension(900, 900));
         setLocationRelativeTo(null);
-
+        this.jLabelCharacterName.setText(this.character.getName());
+        this.jLabelHealth.setText(String.valueOf(this.character.getCurrentHealth())+" / "+String.valueOf(this.character.getMaxHealth()));
     }
 
 
@@ -58,21 +59,27 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         jToolBar1 = new javax.swing.JToolBar();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jLabelCharacterName = new javax.swing.JLabel();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(15, 0), new java.awt.Dimension(50, 0));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(1, 0), new java.awt.Dimension(30, 0));
         jLabelHealth = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 102));
 
-        jPanelContainer.setBackground(new java.awt.Color(255, 255, 0));
+        jPanelContainer.setBackground(new java.awt.Color(255, 153, 0));
         jPanelContainer.setLayout(new java.awt.GridLayout(15, 15, 1, 1));
 
-        jToolBar1.setBackground(new java.awt.Color(255, 102, 102));
+        jToolBar1.setBackground(new java.awt.Color(204, 0, 0));
         jToolBar1.setRollover(true);
         jToolBar1.add(filler1);
 
+        jLabelCharacterName.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
         jLabelCharacterName.setText("jLabel1");
         jToolBar1.add(jLabelCharacterName);
+        jToolBar1.add(filler3);
+        jToolBar1.add(filler2);
 
+        jLabelHealth.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
         jLabelHealth.setText("jLabel1");
         jToolBar1.add(jLabelHealth);
 
@@ -85,8 +92,8 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,8 +110,8 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,6 +202,8 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.JLabel jLabelCharacterName;
     private javax.swing.JLabel jLabelHealth;
     private javax.swing.JPanel jPanel3;
