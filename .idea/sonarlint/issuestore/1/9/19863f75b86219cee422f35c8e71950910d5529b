@@ -1,0 +1,11 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÒèÕ¾ıÿÿÿÿ8ÎÍËä­1
+t
+java:S3776
+"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(±¾ñ¸ûÿÿÿÿ8ÓÍËä­1
+K
+java:S2140")Use "java.util.Random.nextInt()" instead.(¯Ş²Íıÿÿÿÿ8ÕÍËä­1
+G	java:S106"+Replace this use of System.out by a logger.(¬ªé°8…ÈÏå­1
+Y
+java:S3972"7Move this "if" to a new line or add the missing "else".(ìÌœ…øÿÿÿÿ8×ÍËä­1
+F	java:S106"+Replace this use of System.out by a logger.(äõ8şŒĞå­1

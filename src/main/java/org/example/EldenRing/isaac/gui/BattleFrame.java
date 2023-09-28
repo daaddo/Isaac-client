@@ -4,8 +4,12 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
+import org.example.EldenRing.isaac.models.characters.NormalEnemy;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 /**
  *
@@ -18,9 +22,12 @@ public class BattleFrame extends javax.swing.JFrame {
      */
     public BattleFrame() {
         initComponents();
-        jPanelContainer.add(new EnemyPanel("C:/images/627218-middle.png"));
-        jPanelContainer.add(new EnemyPanel("C:/images/627218-middle.png"));
-        jPanelContainer.add(new EnemyPanel("C:/images/627218-middle.png"));
+        List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesGenerator();
+        for (int i = 0; i < enemies.size(); i++) {
+            jPanelContainer.add(new EnemyPanel(enemies.get(i)));
+
+        }
+
     }
 
     /**

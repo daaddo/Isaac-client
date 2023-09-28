@@ -1,0 +1,45 @@
+
+>
+java:S16044"(Make this anonymous inner class a lambda(¶‹¯ò
+>
+java:S1604T"(Make this anonymous inner class a lambda(¼á¿
+D
+java:S1604§"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
+D
+java:S1604Ñ"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡
+˜
+java:S1186á"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶û’
+—
+java:S1186æ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¼ËÕ2
+
+java:S1186ë"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ºêÿÚøÿÿÿÿ
+
+java:S1186ò"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(“¶š¼úÿÿÿÿ
+r
+java:S1450Ù"[Remove the "jButtonGioca" field and declare it as a local variable in the relevant methods.(°ƒİ¹
+r
+java:S1450Û"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ
+r
+java:S1450Ü"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ
+r
+java:S1450İ"VRemove the "jPanel2" field and declare it as a local variable in the relevant methods.(õ òçüÿÿÿÿ
+m
+java:S1450Ş"VRemove the "jPanel3" field and declare it as a local variable in the relevant methods.(Œ³èÈ
+A
+java:S1172‘"*Remove this unused method parameter "evt".(ï’¾Ü
+N
+java:S1135’"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ
+F
+java:S1172•"*Remove this unused method parameter "evt".(™œîêúÿÿÿÿ
+N
+java:S1135–"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ
+A	java:S106˜"+Replace this use of System.out by a logger.(¹£»î
+F
+java:S1197¸"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
+\
+java:S2147Ç"ECombine this catch with the one at line 197, which has the same body.(¨¦Š½
+\
+java:S2147É"ECombine this catch with the one at line 199, which has the same body.(ã€ 
+[
+java:S2147Ë"ECombine this catch with the one at line 201, which has the same body.(ñÎ¯%

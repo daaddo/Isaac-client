@@ -11,6 +11,7 @@ public class Piano {
     private  int[][] roomMap;
 
     public Piano(StarterRoom starterRoom, int[][] roomMap) {
+        numero++;
         this.starterRoom = starterRoom;
         this.roomMap = roomMap;
     }

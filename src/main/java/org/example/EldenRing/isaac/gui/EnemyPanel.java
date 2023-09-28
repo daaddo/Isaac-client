@@ -19,13 +19,13 @@ public class EnemyPanel extends javax.swing.JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        ImageIcon imageIcon = new ImageIcon("C:/images/image-removebg-preview.png");
+        ImageIcon imageIcon = new ImageIcon(enemyImgPath);
         Image image = imageIcon.getImage();
         g.drawImage(image, 0, 0, null);
         int panelWidth = getWidth();
         int panelHeight = getHeight();
         Image scaledImage = image.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
-        g.drawImage(scaledImage, 10, 0, null);
+        g.drawImage(scaledImage, getHeight(), 0, null);
 
 
     }
@@ -38,9 +38,10 @@ public class EnemyPanel extends javax.swing.JPanel {
         initComponents();
     }
     public EnemyPanel(Enemy enemy) {
-        this.enemyImgPath = enemyImgPath;
-
+        this.enemyImgPath = enemy.getAvatarPath();
         initComponents();
+        jLabelEnemyHealth.setText(""+enemy.getCurrentHealth()+" / "+enemy.getMaxHealth());
+        jLabelEnemyName.setText(enemy.getName());
         this.invalidate();
         this.validate();
         this.repaint();
@@ -74,8 +75,12 @@ public class EnemyPanel extends javax.swing.JPanel {
             .addGap(0, 208, Short.MAX_VALUE)
         );
 
+        jLabelEnemyHealth.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        jLabelEnemyHealth.setForeground(new java.awt.Color(0, 0, 255));
         jLabelEnemyHealth.setText("jLabel1");
 
+        jLabelEnemyName.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jLabelEnemyName.setForeground(new java.awt.Color(255, 0, 0));
         jLabelEnemyName.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

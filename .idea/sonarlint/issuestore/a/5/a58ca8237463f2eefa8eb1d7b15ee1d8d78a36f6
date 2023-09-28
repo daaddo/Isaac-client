@@ -1,0 +1,30 @@
+
+D
+java:S1604”"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡
+—
+java:S1186¼"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¼ËÕ2
+
+java:S1186Á"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ºêÿÚøÿÿÿÿ
+m
+java:S1450Ì"VRemove the "filler1" field and declare it as a local variable in the relevant methods.(à–†
+r
+java:S1450Í"VRemove the "filler2" field and declare it as a local variable in the relevant methods.(Ä£¤²üÿÿÿÿ
+r
+java:S1450Î"VRemove the "filler3" field and declare it as a local variable in the relevant methods.(Ô„Ã»ùÿÿÿÿ
+m
+java:S1450Ñ"VRemove the "jPanel3" field and declare it as a local variable in the relevant methods.(Œ³èÈ
+o
+java:S1450Ó"XRemove the "jToolBar1" field and declare it as a local variable in the relevant methods.(Æ³š
+F
+java:S1948"+Make "character" transient or serializable.(Şş˜˜ıÿÿÿÿ
+E
+java:S1197{"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
+\
+java:S2147Š"ECombine this catch with the one at line 136, which has the same body.(¨¦Š½
+\
+java:S2147Œ"ECombine this catch with the one at line 138, which has the same body.(ã€ 
+[
+java:S2147"ECombine this catch with the one at line 140, which has the same body.(ñÎ¯%
+G
+java:S1068œ"+Remove this unused "jPanel1" private field.(´œ½ÿÿÿÿÿ

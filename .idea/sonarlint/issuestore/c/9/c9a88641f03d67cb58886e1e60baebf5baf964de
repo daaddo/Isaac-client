@@ -1,0 +1,12 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(▓ЪЗП8Юшичн1
+
+java:S1450q"]Remove the "jPanelEnemyImg" field and declare it as a local variable in the relevant methods.(╟КчР∙    8╜шичн1
+\
+java:S1854"?Remove this useless assignment to local variable "panelHeight".(Я┘╘з8┴шичн1
+`
+java:S1854">Remove this useless assignment to local variable "panelWidth".(╦╕цЮ·    8┴шичн1
+Q
+java:S1481"/Remove this unused "panelWidth" local variable.(╦╕цЮ·    8┼шичн1
+M
+java:S1481"0Remove this unused "panelHeight" local variable.(Я┘╘з8┼шичн1
