@@ -41,7 +41,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         this.setMinimumSize(new Dimension(900, 900));
         setLocationRelativeTo(null);
         this.jLabelCharacterName.setText(this.character.getName());
-        this.jLabelHealth.setText(String.valueOf(this.character.getCurrentHealth())+" / "+String.valueOf(this.character.getMaxHealth()));
+        this.jLabelHealth.setText(this.character.getCurrentHealth()+" / "+ this.character.getMaxHealth());
     }
 
 

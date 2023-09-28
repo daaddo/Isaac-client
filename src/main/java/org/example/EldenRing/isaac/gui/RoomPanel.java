@@ -7,14 +7,15 @@ package org.example.EldenRing.isaac.gui;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Scanner;
+import java.util.List;
 
-import org.example.EldenRing.isaac.RoomNotValidExc;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.Enemy;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
+import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
 import org.example.EldenRing.isaac.rooms.models.Room;
 import org.example.EldenRing.other.RoomCoordinates;
 
@@ -28,6 +29,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     private Room roomtype;
     private Boolean visited = false;
     private Character character;
+    private List<Enemy> enemies;
 
     /**
      * Creates new form RoomPanel
@@ -38,6 +40,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
 
     public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,Character character) {
         initComponents();
+        GameManager.getInstance().setFighting(false);
         this.roomCoordinates = roomCoordinates;
         this.roomtype=roomtype;
         this.starterRoom = starterRoom;
@@ -77,7 +80,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
             @Override
             public void mouseReleased(MouseEvent e) {
                 System.out.println("Mi voglio spostare in : " + roomCoordinates);
-                if (GameManager.getInstance().isMoveValid(roomCoordinates)) {
+                if (GameManager.getInstance().isMoveValid(roomCoordinates) && !GameManager.getInstance().isFighting()) {
                     GameManager.getInstance().teleport(RoomPanel.this.roomCoordinates);
                 }
                 else{
@@ -147,7 +150,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     @Override
     public void move(RoomCoordinates roomCoordinates){
 
-        if (roomCoordinates.row() == this.roomCoordinates.row() && roomCoordinates.column() == this.roomCoordinates.column() && !this.isStarterRoom()  ) {
+        if (roomCoordinates.row() == this.roomCoordinates.row() && roomCoordinates.column() == this.roomCoordinates.column() && !this.isStarterRoom()&&!GameManager.getInstance().isFighting()  ) {
             this.setBackground(Color.RED);
             this.originalcolor = Color.red;
             this.jLabel1.setText("X");
@@ -175,10 +178,19 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
 
     @Override
     public void enteredRoom() {
-        FightingBehaviour fightingBehaviour = this.roomtype.getFightingBehaviour();
-        if (RoomPanel.this.visited == false) {
-            fightingBehaviour.fight(MainFrame.getPiano());
+
+
+        if (!RoomPanel.this.visited && RoomPanel.this.roomtype.getFightingBehaviour() instanceof NormalFightingBehaviour) {
+            System.out.println("STANZA CON NEMICI TEST");
+            GameManager.getInstance().setFighting(true);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new BattleFrame().setVisible(true);
+                }
+            });
+
         }
+
         RoomPanel.this.visited = true;
     }
 

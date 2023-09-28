@@ -20,6 +20,8 @@ public class GameManager {
     private Game gioco;
 
     private static GameManager instance = null;
+    private boolean isFighting = false;
+
     private GameManager() {
     }
 
@@ -94,4 +96,10 @@ public class GameManager {
         this.gameEventListners.remove(gameListner);
     }
 
+    public boolean isFighting() {
+        return isFighting;
+    }
+    public void setFighting(boolean bool){
+        this.isFighting = bool;
+    }
 }

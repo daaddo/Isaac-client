@@ -8,6 +8,7 @@ public abstract class Character implements Droppable {
     private int maxHealth;
     private int currentHealth;
     protected FightingBehaviour fightingBehaviour;
+    protected String avatarPath;
 
     public String getName() {
         return name;
