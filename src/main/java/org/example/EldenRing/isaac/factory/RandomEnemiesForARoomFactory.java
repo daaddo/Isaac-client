@@ -18,7 +18,7 @@ public class RandomEnemiesForARoomFactory {
         }
     }
 
-    private int calculateTotalDifficultyOfList(List<? extends Enemy> listToControl) {
+    public int calculateTotalDifficultyOfList(List<? extends Enemy> listToControl) {
         int totalDifficulty = 0;
         for (Enemy enemy : listToControl) {
             totalDifficulty += enemy.getDifficultyPoint();
@@ -32,6 +32,8 @@ public class RandomEnemiesForARoomFactory {
         while (calculateTotalDifficultyOfList(enemies) < difficultyMultiplyier && enemies.size() < 4) {
             enemies.add(normalEnemyRandomGenerator());
             if (calculateTotalDifficultyOfList(enemies) > difficultyMultiplyier + 2) {
+                //TODO refactor in modo da levare il doppio remove,
+                // possibile sostituendo il +2 di difficultyMultiplyier con funzione o costante della difficoltà massima di un nemico
                 enemies.remove(enemies.size());
                 enemies.remove(enemies.size());
             }

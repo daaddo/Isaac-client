@@ -22,8 +22,7 @@ public class EnemyPanel extends javax.swing.JPanel {
         ImageIcon imageIcon = new ImageIcon(enemyImgPath);
         Image image = imageIcon.getImage();
         g.drawImage(image, 0, 0, null);
-        int panelWidth = getWidth();
-        int panelHeight = getHeight();
+
         Image scaledImage = image.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         g.drawImage(scaledImage, getHeight(), 0, null);
 
