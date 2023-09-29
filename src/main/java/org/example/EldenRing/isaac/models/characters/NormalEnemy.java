@@ -5,20 +5,28 @@ import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 
 public abstract class NormalEnemy extends Enemy {
     private Special enemytipe;
-    private int difficultyPoint;
 
 
-    public NormalEnemy(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour, String imgPath, Special enemytipe, int difficulty) {
+
+    public NormalEnemy(String name,
+                       int maxHealth,
+                       int currentHealth,
+                       FightingBehaviour fightingBehaviour,
+                       String imgPath,
+                       Special enemytipe,
+                       int difficulty
+
+    ) {
         super(name, (int) (maxHealth*enemytipe.getMultiplyier()*(Piano.getNumero()/1.2)),
                 (int) (currentHealth*enemytipe.getMultiplyier()*(Piano.getNumero()/1.2)),
-                fightingBehaviour);
+                fightingBehaviour,
+                (int) (difficulty*enemytipe.getMultiplyier()/1.2)
+        );
         this.avatarPath=imgPath;
         this.enemytipe= enemytipe;
-        this.difficultyPoint= (int) (difficulty*enemytipe.getMultiplyier()/1.2);
+
     }
-    public int getDifficultyPoint() {
-        return difficultyPoint;
-    }
+
 
     @Override
     public String toString() {

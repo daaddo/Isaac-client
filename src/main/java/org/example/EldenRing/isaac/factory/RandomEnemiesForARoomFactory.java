@@ -7,34 +7,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomEnemiesForARoomFactory {
-    public List<NormalEnemy> normalEnemiesGenerator(){
-        int difficultyMultiplyier = (int) ((10*Math.random()+5)* Piano.getNumero());
-        int actualDifficulty= 0;
-        List<NormalEnemy> enemies = new ArrayList<>();
-        while(actualDifficulty < difficultyMultiplyier && enemies.size()<4){
-            double random = Math.random();
-            if (random<0.5) {
-                enemies.add(new GhostMinion(Special.getRandomSpecial()));
-                System.out.println("[DEBUG] ho aggiunto un GHOST");
-            }if (random>0.5) {
-                enemies.add(new SkeletonMinion(Special.getRandomSpecial()));
-                System.out.println("[DEBUG] ho aggiunto uno SKELETON");
-            }
-            actualDifficulty= 0;
-            for (NormalEnemy enemy : enemies) {
-                actualDifficulty+=enemy.getDifficultyPoint();
-                if (actualDifficulty>difficultyMultiplyier-2 && actualDifficulty<difficultyMultiplyier+2) {
-                    break;
-                }
-                if (actualDifficulty>difficultyMultiplyier+2) {
-                    while(actualDifficulty>difficultyMultiplyier+2){
-                        enemies.remove(enemies.size());
-                    }
-                }
-            }
 
+
+    private NormalEnemy normalEnemyRandomGenerator() {
+        double random = Math.random();
+        if (random < 0.5) {
+            return new GhostMinion(Special.getRandomSpecial());
+        } else {
+            return new SkeletonMinion(Special.getRandomSpecial());
         }
-        System.out.println(actualDifficulty+" "+difficultyMultiplyier);
+    }
+
+    private int calculateTotalDifficultyOfList(List<? extends Enemy> listToControl) {
+        int totalDifficulty = 0;
+        for (Enemy enemy : listToControl) {
+            totalDifficulty += enemy.getDifficultyPoint();
+        }
+        return totalDifficulty;
+    }
+
+    public List<NormalEnemy> normalEnemiesRandomGenerator() {
+        int difficultyMultiplyier = (int) ((10 * Math.random() + 5) * Piano.getNumero());
+        List<NormalEnemy> enemies = new ArrayList<>();
+        while (calculateTotalDifficultyOfList(enemies) < difficultyMultiplyier && enemies.size() < 4) {
+            enemies.add(normalEnemyRandomGenerator());
+            if (calculateTotalDifficultyOfList(enemies) > difficultyMultiplyier + 2) {
+                enemies.remove(enemies.size());
+                enemies.remove(enemies.size());
+            }
+        }
         return enemies;
     }
 }

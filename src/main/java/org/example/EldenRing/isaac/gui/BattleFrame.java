@@ -22,7 +22,7 @@ public class BattleFrame extends javax.swing.JFrame {
      */
     public BattleFrame() {
         initComponents();
-        List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesGenerator();
+        List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
         for (int i = 0; i < enemies.size(); i++) {
             jPanelContainer.add(new EnemyPanel(enemies.get(i)));
 
