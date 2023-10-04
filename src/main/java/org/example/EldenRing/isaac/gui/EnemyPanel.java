@@ -60,6 +60,11 @@ public class EnemyPanel extends javax.swing.JPanel {
         jLabelEnemyName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 51));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jPanelEnemyImg.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -104,6 +109,12 @@ public class EnemyPanel extends javax.swing.JPanel {
                 .addComponent(jLabelEnemyHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        //TODO qualcosa tipo getCurrentPlayer() di gameManager e poi da quel player bisogna prendere l abilità selezionata,
+        // ad esempio, clicco su un abilità, si evidenzia, poi se clicco su un nemico la uso
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

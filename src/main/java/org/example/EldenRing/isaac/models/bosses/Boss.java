@@ -12,7 +12,7 @@ public abstract class Boss extends Character {
     protected Weapon weapon;
 
     public Boss(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour) {
-        super(name, maxHealth, currentHealth, fightingBehaviour);
+        super(name, maxHealth, currentHealth, fightingBehaviour, 3);
 
     }
 

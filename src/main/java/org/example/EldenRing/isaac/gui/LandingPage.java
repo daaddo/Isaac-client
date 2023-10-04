@@ -7,11 +7,13 @@ package org.example.EldenRing.isaac.gui;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.MainCharacterPeppe;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.interactions.StroncaturaSkillInteraction;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.other.RoomCoordinates;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  *
@@ -151,16 +153,16 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().setCharacter(new MainCharacterPeppe("deborah"));
+            GameManager.getInstance().setCharacter(new MainCharacter("deborah", List.of(new StroncaturaSkillInteraction()),4));
         }
         else if (actionCommand.equals("Test2")) {
-            GameManager.getInstance().setCharacter(new MainCharacterPeppe("Pio"));
+            GameManager.getInstance().setCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5));
         }
         else if (actionCommand.equals("Test3")) {
-            GameManager.getInstance().setCharacter(new MainCharacterPeppe("amedeo"));
+            GameManager.getInstance().setCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction()),4));
         }
         else if (actionCommand.equals("Test4")) {
-            GameManager.getInstance().setCharacter(new MainCharacterPeppe("Felipe"));
+            GameManager.getInstance().setCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction()),6));
         } else {
             JOptionPane.showMessageDialog(null,"codice non valido","ERRORE",JOptionPane.ERROR_MESSAGE);
         }

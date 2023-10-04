@@ -4,7 +4,9 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.NormalEnemy;
 
 import javax.swing.*;
@@ -15,19 +17,25 @@ import java.util.List;
  *
  * @author trapa
  */
-public class BattleFrame extends javax.swing.JFrame {
+public class BattleFrame extends javax.swing.JFrame implements FightEventListner {
 
     /**
      * Creates new form BattleFrame
      */
-    public BattleFrame() {
+    public BattleFrame(Character character) {
         initComponents();
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
         for (int i = 0; i < enemies.size(); i++) {
             jPanelContainer.add(new EnemyPanel(enemies.get(i)));
-
         }
 
+    }
+    public BattleFrame(){
+        initComponents();
+        List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
+        for (int i = 0; i < enemies.size(); i++) {
+            jPanelContainer.add(new EnemyPanel(enemies.get(i)));
+        }
     }
 
     /**
@@ -41,6 +49,7 @@ public class BattleFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanelContainer = new javax.swing.JPanel();
+        jPanelMainCharacterInteractionsContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,13 +57,26 @@ public class BattleFrame extends javax.swing.JFrame {
 
         jPanelContainer.setLayout(new java.awt.GridLayout(1, 4));
 
+        javax.swing.GroupLayout jPanelMainCharacterInteractionsContainerLayout = new javax.swing.GroupLayout(jPanelMainCharacterInteractionsContainer);
+        jPanelMainCharacterInteractionsContainer.setLayout(jPanelMainCharacterInteractionsContainerLayout);
+        jPanelMainCharacterInteractionsContainerLayout.setHorizontalGroup(
+            jPanelMainCharacterInteractionsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelMainCharacterInteractionsContainerLayout.setVerticalGroup(
+            jPanelMainCharacterInteractionsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelMainCharacterInteractionsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
@@ -62,7 +84,9 @@ public class BattleFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addGap(154, 154, 154))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelMainCharacterInteractionsContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,6 +112,7 @@ public class BattleFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelContainer;
+    private javax.swing.JPanel jPanelMainCharacterInteractionsContainer;
     // End of variables declaration//GEN-END:variables
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -119,5 +144,10 @@ public class BattleFrame extends javax.swing.JFrame {
                 new BattleFrame().setVisible(true);
             }
         });
+    }
+
+    @Override
+    public void startTurn() {
+
     }
 }

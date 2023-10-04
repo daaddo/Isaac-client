@@ -14,13 +14,14 @@ public abstract class NormalEnemy extends Enemy {
                        FightingBehaviour fightingBehaviour,
                        String imgPath,
                        Special enemytipe,
-                       int difficulty
-
+                       int difficulty,
+                       int agilty
     ) {
         super(name, (int) (maxHealth*enemytipe.getMultiplyier()*(Piano.getNumero()/1.2)),
                 (int) (currentHealth*enemytipe.getMultiplyier()*(Piano.getNumero()/1.2)),
                 fightingBehaviour,
-                (int) (difficulty*enemytipe.getMultiplyier()/1.2)
+                (int) (difficulty*enemytipe.getMultiplyier()/1.2),
+                agilty
         );
         this.avatarPath=imgPath;
         this.enemytipe= enemytipe;

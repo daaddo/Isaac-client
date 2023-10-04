@@ -1,16 +1,12 @@
 package org.example.EldenRing.isaac.manager;
 
-import org.example.EldenRing.isaac.RoomNotValidExc;
+import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
-import org.example.EldenRing.isaac.Directions;
 import org.example.EldenRing.isaac.Game;
 import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.MainCharacterPeppe;
-import org.example.EldenRing.isaac.rooms.models.Room;
-import org.example.EldenRing.isaac.models.characters.*;
+import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.other.RoomCoordinates;
 
-import java.security.KeyException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +31,7 @@ public class GameManager {
 
     private List<GameEventListner> gameEventListners = new ArrayList<>();
     private List<GameEventListner> roomGameListners = new ArrayList<>();
+    private List<FightEventListner> fightEventListners = new ArrayList<>();
 
     public static GameManager getInstance() {
         if (instance == null) {
@@ -101,5 +98,11 @@ public class GameManager {
     }
     public void setFighting(boolean bool){
         this.isFighting = bool;
+    }
+
+    public void giveTurn(Fightable fightable, boolean b) {
+        for (FightEventListner fightEventListner : fightEventListners) {
+            
+        }
     }
 }

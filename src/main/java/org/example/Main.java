@@ -1,12 +1,7 @@
 package org.example;
 
-import org.example.EldenRing.isaac.Game;
 import org.example.EldenRing.isaac.gui.LandingPage;
 import org.example.EldenRing.isaac.gui.MainFrame;
-import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.MainCharacterPeppe;
-
-import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.

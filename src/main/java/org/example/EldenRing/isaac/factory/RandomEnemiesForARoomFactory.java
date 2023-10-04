@@ -1,6 +1,9 @@
 package org.example.EldenRing.isaac.factory;
 
 import org.example.EldenRing.isaac.models.characters.*;
+import org.example.EldenRing.isaac.models.characters.enemymodels.DennysMinion;
+import org.example.EldenRing.isaac.models.characters.enemymodels.GhostMinion;
+import org.example.EldenRing.isaac.models.characters.enemymodels.SkeletonMinion;
 import org.example.EldenRing.isaac.piano.Piano;
 
 import java.util.ArrayList;
@@ -11,8 +14,11 @@ public class RandomEnemiesForARoomFactory {
 
     private NormalEnemy normalEnemyRandomGenerator() {
         double random = Math.random();
-        if (random < 0.5) {
+        if (random < 0.3) {
             return new GhostMinion(Special.getRandomSpecial());
+        }
+        if (random <0.6) {
+            return new DennysMinion(Special.getRandomSpecial());
         } else {
             return new SkeletonMinion(Special.getRandomSpecial());
         }

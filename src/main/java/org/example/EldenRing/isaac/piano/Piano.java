@@ -19,9 +19,17 @@ public class Piano {
         //TODO ci devo mettere tutta la logica per capire quale factory restituire
         return new NormalPrizeRoomFactory();
     }
+
+    /**
+     * <b>isRoomExisting at</b> is an <font color = red>important</font> method
+     * <img src="https://essereuomo.it/wp-content/uploads/2021/10/sdsdsd.jpg">
+     * @param coords
+     * @return  <p style="color: blue; font-size: 16px; font-family: Arial; font-weight: 900;"> Asdrubale</p>
+     */
     public boolean isRoomExistingAt(RoomCoordinates coords){
         return roomMap[coords.row()][coords.column()] == 1;
     }
+
     public static int getNumero() {
         return numero;
     }
@@ -33,4 +41,9 @@ public class Piano {
     public StarterRoom getStarterRoom() {
         return starterRoom;
     }
+
+    /**
+     * @throws IllegalArgumentException when a starter room is not surrounded by rooms to all sides
+     */
+
 }

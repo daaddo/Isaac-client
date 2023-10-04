@@ -1,5 +1,7 @@
-package org.example.EldenRing.isaac.models.characters;
+package org.example.EldenRing.isaac.models.characters.enemymodels;
 
+import org.example.EldenRing.isaac.models.characters.NormalEnemy;
+import org.example.EldenRing.isaac.models.characters.Special;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 
 public class GhostMinion extends NormalEnemy {
@@ -9,6 +11,6 @@ public class GhostMinion extends NormalEnemy {
             public void fight(int piano) {
                 System.out.println("[DEBUG]: Ghost ha attaccato");
             }
-        },"C:/images/image-removebg-preview.png",special,2);
+        },"C:/images/image-removebg-preview.png",special,2,4);
     }
 }

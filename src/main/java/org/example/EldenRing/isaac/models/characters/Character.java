@@ -1,7 +1,10 @@
 package org.example.EldenRing.isaac.models.characters;
 
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 import org.example.EldenRing.isaac.rooms.prizeBehaviour.Droppable;
+
+import java.util.List;
 
 public abstract class Character implements Droppable {
     private String name;
@@ -9,6 +12,8 @@ public abstract class Character implements Droppable {
     private int currentHealth;
     protected FightingBehaviour fightingBehaviour;
     protected String avatarPath;
+    protected int agility;
+
 
     public String getName() {
         return name;
@@ -34,10 +39,15 @@ public abstract class Character implements Droppable {
         this.currentHealth = currentHealth;
     }
 
-    public Character(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour) {
+    public Character(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour, int agility) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.currentHealth = currentHealth;
         this.fightingBehaviour = fightingBehaviour;
+        this.agility = agility;
+    }
+
+    public int getAgility() {
+        return agility;
     }
 }
