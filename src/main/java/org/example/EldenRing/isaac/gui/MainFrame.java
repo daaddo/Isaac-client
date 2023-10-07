@@ -16,18 +16,20 @@ import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.other.RoomCoordinates;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 /**
  * @author trapa
  */
 public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     private static int piano = Piano.getNumero();
-    private Character character;
+    private List<Character> character;
     public static int getPiano() {
         return piano;
     }
 
-    public Character getCharacter() {
+    public List<Character> getCharacter() {
         return character;
     }
 
@@ -40,8 +42,8 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         GameManager.getInstance().subscribeGameListner(this);
         this.setMinimumSize(new Dimension(900, 900));
         setLocationRelativeTo(null);
-        this.jLabelCharacterName.setText(this.character.getName());
-        this.jLabelHealth.setText(this.character.getCurrentHealth()+" / "+ this.character.getMaxHealth());
+        this.jLabelCharacterName.setText(this.character.get(0).getName());
+        this.jLabelHealth.setText(this.character.get(0).getCurrentHealth()+" / "+ this.character.get(0).getMaxHealth());
     }
 
 
@@ -155,7 +157,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     // Variables declaration - do not modify
     private javax.swing.JPanel jPanel1;
 
-    public void setCharacter(Character character) {
+    public void setCharacter(List<Character> character) {
         this.character = character;
     }
 
@@ -165,7 +167,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 if (roomMap[i][j] == 2) {
-                    this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), true,new StarterRoomFactory().createRoom(new RoomCoordinates(i,j)),this.character));
+                    this.jPanelContainer.add(new RoomPanel(new RoomCoordinates(i, j), true,new StarterRoomFactory().createRoom(new RoomCoordinates(i,j)),null));
                 } else if (roomMap[i][j] == 1) {
                     double random = Math.random();
                     if (random <0.35) {
@@ -195,7 +197,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     }
 
     @Override
-    public void selectCharacter(Character character) {
+    public void selectCharacter(List<Character> character) {
         this.character = character;
     }
 

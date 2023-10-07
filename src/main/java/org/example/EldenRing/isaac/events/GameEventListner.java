@@ -5,11 +5,14 @@ import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.models.Room;
 import org.example.EldenRing.other.RoomCoordinates;
 import org.example.EldenRing.isaac.models.characters.Character;
+
+import java.util.List;
+
 public interface GameEventListner {
     void newGame(Piano piano) ;
 
     void move(RoomCoordinates roomCoordinates);
     void enteredRoom();
-    void selectCharacter(Character character);
+    void selectCharacter(List<Character> character);
 
 }

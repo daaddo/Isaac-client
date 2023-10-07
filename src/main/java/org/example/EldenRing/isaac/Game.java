@@ -7,19 +7,20 @@ import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.models.characters.interactions.StroncaturaSkillInteraction;
 import org.example.EldenRing.isaac.piano.Piano;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
-    private Character character;
+    private List<Character> character;
     private Piano piano;
 
-    public Game(Character starterCharacter) {
+    public Game(List<Character> starterCharacter) {
         this.character = starterCharacter ;
         //TODO aaggiungere eccezione se non si possiede il character o se è null o per altre cose
         this.piano = new PianoFactory().createPiano();
     }
 
-    public Character getCharacter() {
+    public List<Character> getCharacter() {
         return character;
     }
 
@@ -29,6 +30,8 @@ public class Game {
 
     public void startGame() {
         int agilty = 4;
-        character = new MainCharacter("nome",List.of(new StroncaturaSkillInteraction()),agilty);
+        List<Character> characters = new LinkedList<>();
+        characters.add(new MainCharacter("nome",List.of(new StroncaturaSkillInteraction()),agilty));
+        character = characters;
     }
 }

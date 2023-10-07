@@ -7,10 +7,9 @@ package org.example.EldenRing.isaac.gui;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
 import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.NormalEnemy;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -22,7 +21,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     /**
      * Creates new form BattleFrame
      */
-    public BattleFrame(Character character) {
+    public BattleFrame(List<Character> character) {
         initComponents();
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
         for (int i = 0; i < enemies.size(); i++) {
@@ -147,7 +146,8 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     }
 
     @Override
-    public void startTurn() {
+    public void startTurn(Fightable fightable) {
+        this.jPanelContainer.add(new MainCharacterOptions().addAll(new InteractionPanel(), new InteractionPanel(), new InteractionPanel()));
 
     }
 }

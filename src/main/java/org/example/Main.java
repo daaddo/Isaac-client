@@ -37,15 +37,5 @@ public class Main {
                 new LandingPage().setVisible(true);
             }
         });
-
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-
-                GameManager.getInstance().startGame();
-            }
-        });*/
-
-
     }
 }

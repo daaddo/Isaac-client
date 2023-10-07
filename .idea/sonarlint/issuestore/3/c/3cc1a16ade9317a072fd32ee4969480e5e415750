@@ -1,0 +1,6 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡
+m
+java:S14506"WRemove the "jButton1" field and declare it as a local variable in the relevant methods.(å……¶
+z
+java:S14507"dRemove the "jLabelInteractionName" field and declare it as a local variable in the relevant methods.(Ãã’

@@ -58,6 +58,7 @@ public class FightManager {
             sortedMapByAgility.forEach((key, value) -> System.out.println("" + key.getNome() + "  " + value));
             for (Fightable fightable : sortedMapByAgility.keySet()) {
                 GameManager.getInstance().giveTurn(fightable,true);
+
             }
             //TODO AGGIUNGERE UTILIZZO DELL ABILITà E FAR PARTITRE UIN EVENTO PER CUI VIENE SELEZIONATO ILK GIOCATORE CORRENTE
             agilityOver100AndIsAllyMap.clear();

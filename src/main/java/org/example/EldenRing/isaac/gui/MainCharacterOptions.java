@@ -4,6 +4,8 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import javax.swing.*;
+
 /**
  *
  * @author trapa
@@ -16,7 +18,12 @@ public class MainCharacterOptions extends javax.swing.JPanel {
     public MainCharacterOptions() {
         initComponents();
     }
-
+    public JComponent addAll(JComponent ... components){
+        for (JComponent component : components) {
+            this.add(component);
+        }
+        return this;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

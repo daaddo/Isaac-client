@@ -1,20 +1,9 @@
 
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>
-o
-java:S1450"TRemove the "gioco" field and declare it as a local variable in the relevant methods.(ÿÚÌšüÿÿÿÿ
-@	java:S1065"+Replace this use of System.out by a logger.(‹ñŠ•
-W
-java:S1126O"AReplace this if-then-else statement by a single return statement.(ãâÜç
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8Ç½°Ô°1
+v
+java:S1450"TRemove the "gioco" field and declare it as a local variable in the relevant methods.(ÿÚÌšüÿÿÿÿ8ž¾°Ô°1
+G	java:S1062"+Replace this use of System.out by a logger.(‹ñŠ•8»¾°Ô°1
 ^
-java:S1128"HRemove this unused import 'org.example.EldenRing.isaac.RoomNotValidExc'.(–ùó“
-Y
-java:S1128"CRemove this unused import 'org.example.EldenRing.isaac.Directions'.(Èá¥æ
-s
-java:S1128"]Remove this unused import 'org.example.EldenRing.isaac.models.characters.MainCharacterPeppe'.(ßñ÷£
-e
-java:S1128	"JRemove this unused import 'org.example.EldenRing.isaac.rooms.models.Room'.(ùúîýùÿÿÿÿ
-e
-java:S1128
-"JRemove this unused import 'org.example.EldenRing.isaac.models.characters'.(¼ÓÁÞùÿÿÿÿ
-M
-java:S1128"7Remove this unused import 'java.security.KeyException'.(“ë™¸
+java:S1126L"AReplace this if-then-else statement by a single return statement.(ãâÜç8Ò¾°Ô°1
+J
+java:S1172g"(Remove this unused method parameter "b".(Ÿ‘Èšþÿÿÿÿ8ä¾°Ô°1

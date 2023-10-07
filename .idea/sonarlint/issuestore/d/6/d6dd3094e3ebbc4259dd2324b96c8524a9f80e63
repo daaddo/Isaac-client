@@ -1,0 +1,18 @@
+
+K
+java:S1604"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8¤Â°Ô°1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8¨Â°Ô°1
+x
+java:S1450p"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ8ÖÃ°Ô°1
+“
+java:S1450r"wRemove the "jPanelMainCharacterInteractionsContainer" field and declare it as a local variable in the relevant methods.(ôı»8×Ã°Ô°1
+M
+java:S1172"0Remove this unused method parameter "character".(Ü†âÄ8÷Ã°Ô°1
+L
+java:S1197t"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8ÁÄ°Ô°1
+c
+java:S2147ƒ"ECombine this catch with the one at line 129, which has the same body.(¨¦Š½8ÊÄ°Ô°1
+c
+java:S2147…"ECombine this catch with the one at line 131, which has the same body.(ã€ 8ÌÄ°Ô°1
+b
+java:S2147‡"ECombine this catch with the one at line 133, which has the same body.(ñÎ¯%8ÍÄ°Ô°1

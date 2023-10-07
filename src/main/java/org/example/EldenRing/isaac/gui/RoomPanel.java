@@ -28,7 +28,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     private RoomCoordinates roomCoordinates;
     private Room roomtype;
     private Boolean visited = false;
-    private Character character;
+    private List<Character> character;
     private List<Enemy> enemies;
 
     /**
@@ -38,7 +38,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         initComponents();
     }
 
-    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,Character character) {
+    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,List<Character> character) {
         initComponents();
         GameManager.getInstance().setFighting(false);
         this.roomCoordinates = roomCoordinates;
@@ -156,7 +156,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
             this.jLabel1.setText("X");
             this.character = GameManager.getInstance().getCharacter();
             this.enteredRoom();
-            System.out.println(this.character.getMaxHealth());
+
         } else {
             if (this.isStarterRoom() && roomCoordinates == this.roomCoordinates) {
                 this.jLabel1.setText("X");
@@ -195,7 +195,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     }
 
     @Override
-    public void selectCharacter(Character character) {
+    public void selectCharacter(List<Character> character) {
 
     }
 

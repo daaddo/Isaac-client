@@ -69,3 +69,17 @@ Ssrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/Skill.
 isrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/StroncaturaSkillInteraction.java,2\0\207881f98dfaab41ee8833d24a0fd3e7d44815cc
 s
 Csrc/main/java/org/example/EldenRing/isaac/manager/FightManager.java,2\f\2fa83eb929639858fb665ace1c898620ed5d3573
+ˆ
+Xsrc/main/java/org/example/EldenRing/isaac/models/characters/enemymodels/GhostMinion.java,d\8\d8d77c0af95a87bbac6874b2c345be3df4103e91
+‰
+Ysrc/main/java/org/example/EldenRing/isaac/models/characters/enemymodels/DennysMinion.java,c\2\c291f8a44c20dd129cb0895ef628e2c868554fd5
+v
+Fsrc/main/java/org/example/EldenRing/isaac/manager/DatabaseManager.java,d\a\da7afe070dd08e748854b0cff1b78907670ff451
+v
+Fsrc/main/java/org/example/EldenRing/isaac/events/GameEventListner.java,d\3\d32e4a4af6dc49ac2ad17ff74580669421f190b8
+w
+Gsrc/main/java/org/example/EldenRing/isaac/gui/MainCharacterOptions.java,7\9\790c8c8204c63895aabd30bedf7c97911ebbf72a
+s
+Csrc/main/java/org/example/EldenRing/isaac/gui/InteractionPanel.java,3\c\3cc1a16ade9317a072fd32ee4969480e5e415750
+w
+Gsrc/main/java/org/example/EldenRing/isaac/events/FightEventListner.java,4\a\4a3828a8a3ceb5b6dadca9984952aecbdb33189a

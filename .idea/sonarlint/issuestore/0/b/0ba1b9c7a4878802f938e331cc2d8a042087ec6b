@@ -1,18 +1,9 @@
 
 C
-java:S1604("(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
+java:S1604#"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ
 Z
-java:S2147"DCombine this catch with the one at line 28, which has the same body.(¨¦Š½
+java:S2147"DCombine this catch with the one at line 23, which has the same body.(¨¦Š½
 Z
-java:S2147 "DCombine this catch with the one at line 30, which has the same body.(ã€ 
+java:S2147"DCombine this catch with the one at line 25, which has the same body.(ã€ 
 Y
-java:S2147""DCombine this catch with the one at line 32, which has the same body.(ñÎ¯%
-V	java:S125."<This block of commented-out lines of code should be removed.(¡ôÈÃıÿÿÿÿ
-X
-java:S1128"=Remove this unused import 'org.example.EldenRing.isaac.Game'.(øƒ­Ïúÿÿÿÿ
-g
-java:S1128"LRemove this unused import 'org.example.EldenRing.isaac.manager.GameManager'.(¦ÙÀòúÿÿÿÿ
-s
-java:S1128"]Remove this unused import 'org.example.EldenRing.isaac.models.characters.MainCharacterPeppe'.(ßñ÷£
-I
-java:S1128	".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ
+java:S2147"DCombine this catch with the one at line 27, which has the same body.(ñÎ¯%

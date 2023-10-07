@@ -8,10 +8,11 @@ import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.other.RoomCoordinates;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameManager {
-    private Character character;
+    private List<Character> characters = new LinkedList<>();
     private RoomCoordinates pointerRoom;
     private Game gioco;
 
@@ -21,12 +22,12 @@ public class GameManager {
     private GameManager() {
     }
 
-    public Character getCharacter() {
-        return character;
+    public List<Character> getCharacter() {
+        return this.characters;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setCharacter(List<Character> character) {
+        this.characters = character;
     }
 
     private List<GameEventListner> gameEventListners = new ArrayList<>();
@@ -40,13 +41,13 @@ public class GameManager {
         return instance;
     }
 
-    public void insertCharacter(Character character){
+    public void insertCharacter(List<Character> character){
         for (GameEventListner gameEventListner : gameEventListners) {
             gameEventListner.selectCharacter(character);
         }
     }
     public synchronized void startGame(){
-        this.gioco = new Game(this.character);
+        this.gioco = new Game(this.characters);
         System.out.println(gioco.getPiano().getStarterRoom().getCoords());
         this.pointerRoom = gioco.getPiano().getStarterRoom().getCoords();
         PianoManager.getInstance().loadPiano(gioco.getPiano());
@@ -54,7 +55,9 @@ public class GameManager {
             gameEventListner.newGame(gioco.getPiano());
         }
     }
-
+public void addCharacter(Character character){
+        this.characters.add(character);
+}
     public void teleport(RoomCoordinates coordinates){
         for (GameEventListner gameEventListner : roomGameListners) {
                 gameEventListner.move(coordinates);
@@ -102,7 +105,7 @@ public class GameManager {
 
     public void giveTurn(Fightable fightable, boolean b) {
         for (FightEventListner fightEventListner : fightEventListners) {
-            
+            fightEventListner.startTurn(fightable);
         }
     }
 }

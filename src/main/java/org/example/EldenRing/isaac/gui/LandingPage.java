@@ -153,16 +153,16 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().setCharacter(new MainCharacter("deborah", List.of(new StroncaturaSkillInteraction()),4));
+            GameManager.getInstance().addCharacter(new MainCharacter("deborah", List.of(new StroncaturaSkillInteraction()),4));
         }
         else if (actionCommand.equals("Test2")) {
-            GameManager.getInstance().setCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5));
+            GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5));
         }
         else if (actionCommand.equals("Test3")) {
-            GameManager.getInstance().setCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction()),4));
+            GameManager.getInstance().addCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction()),4));
         }
         else if (actionCommand.equals("Test4")) {
-            GameManager.getInstance().setCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction()),6));
+            GameManager.getInstance().addCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction()),6));
         } else {
             JOptionPane.showMessageDialog(null,"codice non valido","ERRORE",JOptionPane.ERROR_MESSAGE);
         }
@@ -241,7 +241,7 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
 
 
     @Override
-    public void selectCharacter(Character character) {
+    public void selectCharacter(List<Character> character) {
 
     }
     // End of variables declaration//GEN-END:variables
