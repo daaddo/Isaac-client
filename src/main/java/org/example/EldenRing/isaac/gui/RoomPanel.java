@@ -9,26 +9,28 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
+import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Enemy;
+import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.piano.Piano;
-import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
 import org.example.EldenRing.isaac.rooms.models.Room;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 /**
  * @author trapa
  */
-public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
+public class RoomPanel extends javax.swing.JPanel implements GameEventListner, FightEventListner {
     private Color originalcolor;
     private boolean starterRoom = false;
     private RoomCoordinates roomCoordinates;
     private Room roomtype;
     private Boolean visited = false;
-    private List<Character> character;
+    private List<MainCharacter> character;
     private List<Enemy> enemies;
 
     /**
@@ -38,7 +40,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         initComponents();
     }
 
-    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,List<Character> character) {
+    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,List<MainCharacter> character) {
         initComponents();
         GameManager.getInstance().setFighting(false);
         this.roomCoordinates = roomCoordinates;
@@ -185,7 +187,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
             GameManager.getInstance().setFighting(true);
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    new BattleFrame().setVisible(true);
+                    new BattleFrame(character);
                 }
             });
 
@@ -195,8 +197,15 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     }
 
     @Override
-    public void selectCharacter(List<Character> character) {
+    public void selectCharacter(List<MainCharacter> character) {
 
+    }
+
+    @Override
+    public void startTurn(Fightable fightable) {
+        for (MainCharacter mainCharacter : character) {
+
+        }
     }
 
 

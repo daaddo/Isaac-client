@@ -2,7 +2,7 @@ package org.example.EldenRing.isaac.rooms.models;
 
 import org.example.EldenRing.isaac.models.items.Item;
 import org.example.EldenRing.isaac.rooms.fight.NoFightingBehaviour;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.util.List;
 

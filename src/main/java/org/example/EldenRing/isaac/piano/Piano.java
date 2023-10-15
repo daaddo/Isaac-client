@@ -3,7 +3,7 @@ package org.example.EldenRing.isaac.piano;
 import org.example.EldenRing.isaac.factory.NormalPrizeRoomFactory;
 import org.example.EldenRing.isaac.rooms.Factory.RoomFactory;
 import org.example.EldenRing.isaac.rooms.models.StarterRoom;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 public class Piano {
     private StarterRoom starterRoom;

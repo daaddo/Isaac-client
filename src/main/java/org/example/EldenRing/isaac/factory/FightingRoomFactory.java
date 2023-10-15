@@ -4,7 +4,7 @@ import org.example.EldenRing.isaac.rooms.Factory.RoomFactory;
 import org.example.EldenRing.isaac.rooms.models.FightingRoom;
 import org.example.EldenRing.isaac.rooms.models.Room;
 import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 public class FightingRoomFactory implements RoomFactory {
     @Override

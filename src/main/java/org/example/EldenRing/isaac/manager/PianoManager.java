@@ -1,11 +1,11 @@
 package org.example.EldenRing.isaac.manager;
 
-import org.example.EldenRing.exceptions.Nullexp;
+
 import org.example.EldenRing.isaac.factory.RoomsFactory;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.models.Room;
 import org.example.EldenRing.isaac.rooms.prizeBehaviour.ShopRoom;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.security.KeyException;
 import java.util.ArrayList;
@@ -49,13 +49,13 @@ public class PianoManager {
 
     }
 
-    public Room getShopRoom() throws Nullexp {
+    public Room getShopRoom(){
         for (Room allSavedRooms : planimetria) {
             if (allSavedRooms instanceof ShopRoom) {
                 return allSavedRooms;
             }
         }
-        throw new Nullexp();
+        throw new NullPointerException("No shopRoom existing");
     }
     public List<Room> getNextRooms(Room room) {
         throw new UnsupportedOperationException();

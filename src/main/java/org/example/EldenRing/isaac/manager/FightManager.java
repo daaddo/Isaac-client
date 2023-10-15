@@ -1,8 +1,8 @@
 package org.example.EldenRing.isaac.manager;
 
+import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.Fightable;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ public class FightManager {
 
     private FightManager() {
     }
-    private Map<Fightable,Integer> allyAgilityMap = new HashMap();
-    private Map<Fightable,Integer> enemyAgilityMap = new HashMap<>();
+    private Map<MainCharacter,Integer> allyAgilityMap = new HashMap();
+    private Map<Enemy,Integer> enemyAgilityMap = new HashMap<>();
 
     public static FightManager getInstance() {
         if (instance == null) {
@@ -23,20 +23,37 @@ public class FightManager {
         }
         return instance;
     }
-
-    private void init(List<Fightable> ally,List<Fightable> enemy){
-        for (Fightable fightable : ally) {
-            this.allyAgilityMap.put(fightable, fightable.getAgility());
+    public void addEnemy(Enemy enemy){
+        this.enemyAgilityMap.put(enemy,enemy.getAgility());
+    }
+    public boolean isAllDead (Map<? extends Fightable,Integer> map){
+        for (Fightable fightable : map.keySet()) {
+            if(fightable.getCurrentHealth()>0){
+                return false;
+            }
         }
-        for (Fightable fightable : enemy) {
-            this.enemyAgilityMap.put(fightable, fightable.getAgility());
+        return true;
+    }
+    public void init(List<? extends MainCharacter> ally,List<? extends Enemy> enemy){
+        for (MainCharacter fightable : ally) {
+            addAlly(fightable);
+        }
+        for (Enemy fightable : enemy) {
+            addEnemy(fightable);
         }
     }
-    public void combatAllyVSenemies(List<Fightable> ally, List<Fightable> enemy){
-            init(ally, enemy);
-            HashMap<Fightable, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
-        for (int i = 0; i < 50; i++) {
-            while (agilityOver100AndIsAllyMap.size() == 0) {
+
+    public void initializedMaps (){
+        if(allyAgilityMap.isEmpty() || enemyAgilityMap.isEmpty()){
+            throw new NullPointerException("Maps are not initialized");
+        }
+    }
+
+    public void nextTurn(){
+        initializedMaps();
+        HashMap<Fightable, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
+
+            while (agilityOver100AndIsAllyMap.isEmpty()) {
                 allyAgilityMap.forEach((key, value) -> {
                     if (value >= 100) {
                         agilityOver100AndIsAllyMap.put(key, true);
@@ -55,14 +72,11 @@ public class FightManager {
                 });
             }
             HashMap<Fightable, Boolean> sortedMapByAgility = sortMap(agilityOver100AndIsAllyMap);
-            sortedMapByAgility.forEach((key, value) -> System.out.println("" + key.getNome() + "  " + value));
+            sortedMapByAgility.forEach((key, value) -> System.out.println(key.getNome() + "  " + value));
             for (Fightable fightable : sortedMapByAgility.keySet()) {
-                GameManager.getInstance().giveTurn(fightable,true);
-
+                GameManager.getInstance().giveTurn(fightable);
             }
-            //TODO AGGIUNGERE UTILIZZO DELL ABILITà E FAR PARTITRE UIN EVENTO PER CUI VIENE SELEZIONATO ILK GIOCATORE CORRENTE
             agilityOver100AndIsAllyMap.clear();
-        }
     }
     public  HashMap<Fightable,Boolean> sortMap(HashMap<Fightable,Boolean> toSort){
         HashMap<Fightable,Boolean> agilityOver100AndIsAllyMapAfterSort = new HashMap<>();
@@ -72,26 +86,14 @@ public class FightManager {
                 if(fightable1.getAgility()>max){
                     agilityOver100AndIsAllyMapAfterSort.put(fightable1,toSort.get(fightable1));
                 }
-
             }
-
         }
         toSort =  agilityOver100AndIsAllyMapAfterSort;
         return toSort;
     }
 
-    public static void main(String[] args) {
-        List<Fightable> ally = new ArrayList<>();
-        List<Fightable> enemy = new ArrayList<>();
 
-        ally.add(new MainCharacter("asd",null,4));
-        ally.add(new MainCharacter("da",null,6));
-        ally.add(new MainCharacter("asdaad",null,8));
-        ally.add(new MainCharacter("asdssd",null,10));
-        enemy.add(new MainCharacter("susu",null,4));
-        enemy.add(new MainCharacter("susu",null,9));
-        enemy.add(new MainCharacter("susu",null,3));
-        enemy.add(new MainCharacter("susu",null,7));
-        FightManager.getInstance().combatAllyVSenemies(ally,enemy);
+    public void addAlly(MainCharacter ally) {
+        this.allyAgilityMap.put(ally, ally.getAgility());
     }
 }

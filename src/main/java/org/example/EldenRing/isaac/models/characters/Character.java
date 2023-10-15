@@ -39,14 +39,16 @@ public abstract class Character implements Droppable {
         this.currentHealth = currentHealth;
     }
 
-    public Character(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour, int agility) {
+
+    public Character(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour, int agility,String avatarPath) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.currentHealth = currentHealth;
         this.fightingBehaviour = fightingBehaviour;
         this.agility = agility;
+        this.avatarPath = avatarPath;
     }
-
+    public abstract String getAvatarPath();
     public int getAgility() {
         return agility;
     }

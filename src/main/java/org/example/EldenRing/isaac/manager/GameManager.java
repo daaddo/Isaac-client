@@ -3,16 +3,16 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.Game;
-import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Fightable;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class GameManager {
-    private List<Character> characters = new LinkedList<>();
+    private List<MainCharacter> characters = new LinkedList<>();
     private RoomCoordinates pointerRoom;
     private Game gioco;
 
@@ -22,11 +22,11 @@ public class GameManager {
     private GameManager() {
     }
 
-    public List<Character> getCharacter() {
+    public List<MainCharacter> getCharacter() {
         return this.characters;
     }
 
-    public void setCharacter(List<Character> character) {
+    public void setCharacter(List<MainCharacter> character) {
         this.characters = character;
     }
 
@@ -41,7 +41,7 @@ public class GameManager {
         return instance;
     }
 
-    public void insertCharacter(List<Character> character){
+    public void insertCharacter(List<MainCharacter> character){
         for (GameEventListner gameEventListner : gameEventListners) {
             gameEventListner.selectCharacter(character);
         }
@@ -55,7 +55,7 @@ public class GameManager {
             gameEventListner.newGame(gioco.getPiano());
         }
     }
-public void addCharacter(Character character){
+public void addCharacter(MainCharacter character){
         this.characters.add(character);
 }
     public void teleport(RoomCoordinates coordinates){
@@ -103,7 +103,7 @@ public void addCharacter(Character character){
         this.isFighting = bool;
     }
 
-    public void giveTurn(Fightable fightable, boolean b) {
+    public void giveTurn(Fightable fightable) {
         for (FightEventListner fightEventListner : fightEventListners) {
             fightEventListner.startTurn(fightable);
         }

@@ -11,12 +11,11 @@ import org.example.EldenRing.isaac.factory.FightingRoomFactory;
 import org.example.EldenRing.isaac.factory.NormalPrizeRoomFactory;
 import org.example.EldenRing.isaac.factory.StarterRoomFactory;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.piano.Piano;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.awt.*;
-import java.util.*;
 import java.util.List;
 
 /**
@@ -24,26 +23,27 @@ import java.util.List;
  */
 public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     private static int piano = Piano.getNumero();
-    private List<Character> character;
+    private List<MainCharacter> character;
     public static int getPiano() {
         return piano;
     }
 
-    public List<Character> getCharacter() {
+    public List<MainCharacter> getCharacter() {
         return character;
     }
 
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame() {  
+        GameManager.getInstance().subscribeGameListner(this);
         this.character=GameManager.getInstance().getCharacter();
         initComponents();
-        GameManager.getInstance().subscribeGameListner(this);
         this.setMinimumSize(new Dimension(900, 900));
         setLocationRelativeTo(null);
         this.jLabelCharacterName.setText(this.character.get(0).getName());
         this.jLabelHealth.setText(this.character.get(0).getCurrentHealth()+" / "+ this.character.get(0).getMaxHealth());
+        GameManager.getInstance().startGame();
     }
 
 
@@ -150,14 +150,16 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
+
             }
+
         });
     }
 
     // Variables declaration - do not modify
     private javax.swing.JPanel jPanel1;
 
-    public void setCharacter(List<Character> character) {
+    public void setCharacter(List<MainCharacter> character) {
         this.character = character;
     }
 
@@ -197,7 +199,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     }
 
     @Override
-    public void selectCharacter(List<Character> character) {
+    public void selectCharacter(List<MainCharacter> character) {
         this.character = character;
     }
 

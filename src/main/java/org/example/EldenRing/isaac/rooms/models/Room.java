@@ -2,8 +2,7 @@ package org.example.EldenRing.isaac.rooms.models;
 
 import org.example.EldenRing.isaac.rooms.Buy.BuyBehaviour;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
-import org.example.EldenRing.other.RoomCoordinates;
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 //TODO cambiare da behaviour in strategy, aggiungere una caratteristica Found
 public abstract class Room implements BuyBehaviour, FightingBehaviour {

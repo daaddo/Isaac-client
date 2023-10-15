@@ -4,7 +4,9 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Enemy;
+import org.example.EldenRing.isaac.models.characters.Fightable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +15,7 @@ import java.awt.*;
  *
  * @author trapa
  */
-public class EnemyPanel extends javax.swing.JPanel {
+public class CharacterPanel extends javax.swing.JPanel {
     private String enemyImgPath;
 
     @Override
@@ -33,10 +35,10 @@ public class EnemyPanel extends javax.swing.JPanel {
      * Creates new form JPanelEnemy
      */
 
-    public EnemyPanel(){
+    public CharacterPanel(){
         initComponents();
     }
-    public EnemyPanel(Enemy enemy) {
+    public CharacterPanel(Character enemy) {
         this.enemyImgPath = enemy.getAvatarPath();
         initComponents();
         jLabelEnemyHealth.setText(""+enemy.getCurrentHealth()+" / "+enemy.getMaxHealth());

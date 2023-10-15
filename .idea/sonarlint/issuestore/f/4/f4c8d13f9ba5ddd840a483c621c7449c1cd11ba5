@@ -1,7 +1,5 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ŠåÆÛ8œ­Ïä­1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ŠåÆÛ8äìª¡±1
 V
-java:S5993
-"9Change the visibility of this constructor to "protected".(Õ£‚Ñ8 ­Ïä­1
-P
-java:S1068"3Remove this unused "difficultyPoint" private field.(ªð¤ù8¤­Ïä­1
+java:S5993"9Change the visibility of this constructor to "protected".(‘Óú¹8ðìª¡±1
+]	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(‘Óú¹8ñìª¡±1

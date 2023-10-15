@@ -6,11 +6,10 @@ package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.interactions.StroncaturaSkillInteraction;
 import org.example.EldenRing.isaac.piano.Piano;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 import javax.swing.*;
 import java.util.List;
@@ -153,24 +152,22 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("deborah", List.of(new StroncaturaSkillInteraction()),4));
+            GameManager.getInstance().addCharacter(new MainCharacter("deborah", List.of(new StroncaturaSkillInteraction()),4,"C:\\images\\dennys.png"));
         }
         else if (actionCommand.equals("Test2")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5));
+            GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5,"C:\\images\\dennys.png"));
         }
         else if (actionCommand.equals("Test3")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction()),4));
+            GameManager.getInstance().addCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction()),4,"C:\\images\\dennys.png"));
         }
         else if (actionCommand.equals("Test4")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction()),6));
+            GameManager.getInstance().addCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction()),6,"C:\\images\\dennys.png"));
         } else {
             JOptionPane.showMessageDialog(null,"codice non valido","ERRORE",JOptionPane.ERROR_MESSAGE);
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
-                GameManager.getInstance().startGame();
-
             }
         });
 
@@ -241,7 +238,7 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
 
 
     @Override
-    public void selectCharacter(List<Character> character) {
+    public void selectCharacter(List<MainCharacter> character) {
 
     }
     // End of variables declaration//GEN-END:variables

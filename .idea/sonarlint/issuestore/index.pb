@@ -17,8 +17,6 @@ m
 =src/main/java/org/example/EldenRing/isaac/gui/EnemyPanel.form,a\6\a61fcfb093695d8510b024aef3543bb1dad384b3
 Q
 !src/main/java/org/example/counter,2\c\2cd11e82c0174e6fbb8825d8506a53a0c62c3187
-m
-=src/main/java/org/example/EldenRing/isaac/gui/EnemyPanel.java,c\9\c9a88641f03d67cb58886e1e60baebf5baf964de
 z
 Jsrc/main/java/org/example/EldenRing/isaac/models/characters/Character.java,7\1\719081b62672184b598ec3b2612a800ea90eb425
 v
@@ -43,8 +41,6 @@ s
 Csrc/main/java/org/example/EldenRing/isaac/factory/PianoFactory.java,2\0\205ba55ab3497ab66708f81624963b6852c8a977
 v
 Fsrc/main/java/org/example/EldenRing/isaac/factory/BossRoomFactory.java,2\0\208b5ae295b1693610197e1c4c5a9c2ddf5129f5
-q
-Asrc/main/java/org/example/EldenRing/exceptions/DeadException.java,d\a\da1769dff9a5a338df351753d7ed5d7e9fb0c8db
 z
 Jsrc/main/java/org/example/EldenRing/isaac/factory/InteractionsFactory.java,e\0\e0e5e620458b3070f09f2834cc277e4376222621
 ~
@@ -83,3 +79,19 @@ s
 Csrc/main/java/org/example/EldenRing/isaac/gui/InteractionPanel.java,3\c\3cc1a16ade9317a072fd32ee4969480e5e415750
 w
 Gsrc/main/java/org/example/EldenRing/isaac/gui/MainCharacterOptions.java,7\9\790c8c8204c63895aabd30bedf7c97911ebbf72a
+p
+@src/main/java/org/example/EldenRing/isaac/rooms/models/Room.java,6\a\6ad6be718e92eaca2ff5c30849546befeac5347a
+w
+Gsrc/main/java/org/example/EldenRing/isaac/rooms/models/StarterRoom.java,2\b\2b0d6c6aa0596ea6a8f09874fb9d9f505ca11c1b
+q
+Asrc/main/java/org/example/EldenRing/isaac/gui/CharacterPanel.java,e\6\e698a3f07224bc3af714b4d8b2148a85779e52ac
+q
+Asrc/main/java/org/example/EldenRing/isaac/models/bosses/Boss.java,2\d\2d2efd0a626a5e56558fdc95c98e500034a9c2a7
+t
+Dsrc/main/java/org/example/EldenRing/isaac/models/bosses/Godrick.java,6\f\6f8d03d20d115be01b4aa2285904b587fb484979
+z
+Jsrc/main/java/org/example/EldenRing/isaac/models/characters/Fightable.java,1\1\11d74e374c424afa4db19418dc666f2ffe4d3abc
+n
+>src/main/java/org/example/EldenRing/isaac/RoomCoordinates.java,a\2\a2095a6b822c8e9d4ad3fc912db2b96fde6e9989
+s
+Csrc/main/java/org/example/EldenRing/isaac/manager/PianoManager.java,f\3\f354e3db9beaaa87115313ab0012055c5e216a9e

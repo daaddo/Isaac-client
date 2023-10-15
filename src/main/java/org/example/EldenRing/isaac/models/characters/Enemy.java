@@ -4,8 +4,8 @@ import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 
 public class Enemy extends Character implements Fightable {
     private int difficultyPoint;
-    public Enemy(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour, int difficultyPoint, int agilty) {
-        super(name, maxHealth, currentHealth, fightingBehaviour, agilty);
+    public  Enemy(String name, int maxHealth, int currentHealth, FightingBehaviour fightingBehaviour, int difficultyPoint, int agilty, String avatarPath) {
+        super(name, maxHealth, currentHealth, fightingBehaviour, agilty,avatarPath);
         this.difficultyPoint = difficultyPoint;
     }
     public String getAvatarPath(){
@@ -20,7 +20,7 @@ public class Enemy extends Character implements Fightable {
     }
     @Override
     public int getAgility(){
-        return this.getAgility();
+        return this.agility;
     }
 
     @Override

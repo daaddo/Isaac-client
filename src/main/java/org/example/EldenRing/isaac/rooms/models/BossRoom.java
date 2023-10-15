@@ -1,12 +1,11 @@
 package org.example.EldenRing.isaac.rooms.models;
 
-import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.items.Item;
 import org.example.EldenRing.isaac.rooms.Buy.NoBuyBehaviour;
 import org.example.EldenRing.isaac.manager.PersonManager;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.util.List;
 

@@ -1,45 +1,47 @@
 
-E
-java:S16046"(Make this anonymous inner class a lambda(¶‹¯ò8¹ÚşÁ®1
-E
-java:S1604V"(Make this anonymous inner class a lambda(¼á¿8ºÚşÁ®1
-K
-java:S1604©"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8ºÚşÁ®1
-K
-java:S1604Ó"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8ºÚşÁ®1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8½ÚşÁ®1
-Ÿ
-java:S1186ã"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶û’8¨ÛşÁ®1
-
-java:S1186è"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¼ËÕ28©ÛşÁ®1
-¤
-java:S1186í"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ºêÿÚøÿÿÿÿ8©ÛşÁ®1
-¤
-java:S1186ô"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(“¶š¼úÿÿÿÿ8©ÛşÁ®1
-y
-java:S1450Û"[Remove the "jButtonGioca" field and declare it as a local variable in the relevant methods.(°ƒİ¹8«ÛşÁ®1
-y
-java:S1450İ"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ8¬ÛşÁ®1
-y
-java:S1450Ş"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ8¬ÛşÁ®1
-y
-java:S1450ß"VRemove the "jPanel2" field and declare it as a local variable in the relevant methods.(õ òçüÿÿÿÿ8­ÛşÁ®1
 t
-java:S1450à"VRemove the "jPanel3" field and declare it as a local variable in the relevant methods.(Œ³èÈ8­ÛşÁ®1
+java:S1192›"WDefine a constant instead of duplicating this literal "C:\\images\\dennys.png" 4 times.(‚Ïê/8œîª¡±1
+E
+java:S16045"(Make this anonymous inner class a lambda(¶‹¯ò8îª¡±1
+E
+java:S1604U"(Make this anonymous inner class a lambda(¼á¿8Ÿîª¡±1
+K
+java:S1604¨"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8¡îª¡±1
+K
+java:S1604Ğ"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8¡îª¡±1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8§îª¡±1
+Ÿ
+java:S1186à"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶û’8¸ïª¡±1
+
+java:S1186å"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¼ËÕ28¹ïª¡±1
+¤
+java:S1186ê"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ºêÿÚøÿÿÿÿ8ºïª¡±1
+Ÿ
+java:S1186ñ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›ìš›8ºïª¡±1
+y
+java:S1450Ø"[Remove the "jButtonGioca" field and declare it as a local variable in the relevant methods.(°ƒİ¹8¿ïª¡±1
+y
+java:S1450Ú"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ8Àïª¡±1
+y
+java:S1450Û"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ8Âïª¡±1
+y
+java:S1450Ü"VRemove the "jPanel2" field and declare it as a local variable in the relevant methods.(õ òçüÿÿÿÿ8Ãïª¡±1
+t
+java:S1450İ"VRemove the "jPanel3" field and declare it as a local variable in the relevant methods.(Œ³èÈ8Äïª¡±1
 H
-java:S1172“"*Remove this unused method parameter "evt".(ï’¾Ü8îÛşÁ®1
+java:S1172’"*Remove this unused method parameter "evt".(ï’¾Ü8¾ğª¡±1
 U
-java:S1135”"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8îÛşÁ®1
+java:S1135“"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8Àğª¡±1
 M
-java:S1172—"*Remove this unused method parameter "evt".(™œîêúÿÿÿÿ8ğÛşÁ®1
+java:S1172–"*Remove this unused method parameter "evt".(™œîêúÿÿÿÿ8Ãğª¡±1
 U
-java:S1135˜"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8ñÛşÁ®1
-H	java:S106š"+Replace this use of System.out by a logger.(¹£»î8óÛşÁ®1
+java:S1135—"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8Æğª¡±1
+H	java:S106™"+Replace this use of System.out by a logger.(¹£»î8Êğª¡±1
 M
-java:S1197º"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8€ÜşÁ®1
+java:S1197·"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8äğª¡±1
 c
-java:S2147É"ECombine this catch with the one at line 199, which has the same body.(¨¦Š½8ÜşÁ®1
+java:S2147Æ"ECombine this catch with the one at line 196, which has the same body.(¨¦Š½8åğª¡±1
 c
-java:S2147Ë"ECombine this catch with the one at line 201, which has the same body.(ã€ 8ÜşÁ®1
+java:S2147È"ECombine this catch with the one at line 198, which has the same body.(ã€ 8åğª¡±1
 b
-java:S2147Í"ECombine this catch with the one at line 203, which has the same body.(ñÎ¯%8ÜşÁ®1
+java:S2147Ê"ECombine this catch with the one at line 200, which has the same body.(ñÎ¯%8æğª¡±1

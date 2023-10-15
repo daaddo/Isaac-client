@@ -2,7 +2,7 @@ package org.example.EldenRing.isaac.factory;
 
 import org.example.EldenRing.isaac.rooms.models.Room;
 import org.example.EldenRing.isaac.rooms.models.StarterRoom;
-import org.example.EldenRing.other.RoomCoordinates;
+import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,7 @@ package org.example.EldenRing.isaac.models.characters;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 
-public abstract class NormalEnemy extends Enemy {
+public abstract class NormalEnemy extends Enemy{
     private Special enemytipe;
 
 
@@ -21,9 +21,9 @@ public abstract class NormalEnemy extends Enemy {
                 (int) (currentHealth*enemytipe.getMultiplyier()*(Piano.getNumero()/1.2)),
                 fightingBehaviour,
                 (int) (difficulty*enemytipe.getMultiplyier()/1.2),
-                agilty
+                agilty,
+                imgPath
         );
-        this.avatarPath=imgPath;
         this.enemytipe= enemytipe;
 
     }

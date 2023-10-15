@@ -6,10 +6,12 @@ package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.NormalEnemy;
 
+import javax.swing.*;
 import java.util.List;
 
 /**
@@ -21,21 +23,46 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     /**
      * Creates new form BattleFrame
      */
-    public BattleFrame(List<Character> character) {
+    public BattleFrame(List<MainCharacter> character) {
         initComponents();
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
+        addAlly(character);
+        addEnemy(enemies);
+        invalidate();
+        validate();
+        repaint();
+        setVisible(true);
+        FightManager.getInstance().nextTurn();
+}
+
+    private void addAlly(List<MainCharacter> character) {
+        for (int i = 0; i < character.size(); i++) {
+            jPanelContainerPersonalCharacters.add(new CharacterPanel(character.get(i)));
+            FightManager.getInstance().addAlly(character.get(i));
+
+        }
+    }
+
+    private void addEnemy(List<NormalEnemy> enemies) {
         for (int i = 0; i < enemies.size(); i++) {
-            jPanelContainer.add(new EnemyPanel(enemies.get(i)));
+            jPanelContainer.add(new CharacterPanel(enemies.get(i)));
+            FightManager.getInstance().addEnemy(enemies.get(i));
         }
 
     }
+
     public BattleFrame(){
         initComponents();
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
         for (int i = 0; i < enemies.size(); i++) {
-            jPanelContainer.add(new EnemyPanel(enemies.get(i)));
+            jPanelContainer.add(new CharacterPanel(enemies.get(i)));
         }
+
     }
+    public void startFight(){
+        FightManager.getInstance().nextTurn();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,56 +75,58 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
         jPanel1 = new javax.swing.JPanel();
         jPanelContainer = new javax.swing.JPanel();
-        jPanelMainCharacterInteractionsContainer = new javax.swing.JPanel();
+        jPanelContainerPersonalCharacters = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(1, 4, 5, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
 
         jPanelContainer.setLayout(new java.awt.GridLayout(1, 4));
 
-        javax.swing.GroupLayout jPanelMainCharacterInteractionsContainerLayout = new javax.swing.GroupLayout(jPanelMainCharacterInteractionsContainer);
-        jPanelMainCharacterInteractionsContainer.setLayout(jPanelMainCharacterInteractionsContainerLayout);
-        jPanelMainCharacterInteractionsContainerLayout.setHorizontalGroup(
-            jPanelMainCharacterInteractionsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanelContainerPersonalCharacters.setLayout(new java.awt.GridLayout());
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 187, Short.MAX_VALUE)
         );
-        jPanelMainCharacterInteractionsContainerLayout.setVerticalGroup(
-            jPanelMainCharacterInteractionsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelMainCharacterInteractionsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
-                .addGap(36, 36, 36))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                    .addComponent(jPanelContainerPersonalCharacters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelMainCharacterInteractionsContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanelContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelContainerPersonalCharacters, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,8 +139,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelContainer;
-    private javax.swing.JPanel jPanelMainCharacterInteractionsContainer;
+    private javax.swing.JPanel jPanelContainerPersonalCharacters;
     // End of variables declaration//GEN-END:variables
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -147,7 +177,5 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
     @Override
     public void startTurn(Fightable fightable) {
-        this.jPanelContainer.add(new MainCharacterOptions().addAll(new InteractionPanel(), new InteractionPanel(), new InteractionPanel()));
-
     }
 }
