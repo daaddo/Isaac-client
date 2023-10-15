@@ -1,0 +1,16 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8Øêª¡±1
+
+java:S1450}"]Remove the "jPanelEnemyImg" field and declare it as a local variable in the relevant methods.(ÇŠçùÿÿÿÿ8˜ëª¡±1
+W
+java:S1161B":Add the "@Override" annotation above this method signature(†ŒË³8¹ëª¡±1
+G
+java:S1172s"*Remove this unused method parameter "evt".(€›öö8ãëª¡±1
+T
+java:S1135t"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8äëª¡±1
+O
+java:S1135u"2Complete the task associated to this TODO comment.(ù¢Ñ…8äëª¡±1
+m
+java:S1128"PRemove this unused import 'org.example.EldenRing.isaac.models.characters.Enemy'.(¼ü‡†8æëª¡±1
+v
+java:S1128	"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8çëª¡±1
