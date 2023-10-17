@@ -95,3 +95,9 @@ n
 >src/main/java/org/example/EldenRing/isaac/RoomCoordinates.java,a\2\a2095a6b822c8e9d4ad3fc912db2b96fde6e9989
 s
 Csrc/main/java/org/example/EldenRing/isaac/manager/PianoManager.java,f\3\f354e3db9beaaa87115313ab0012055c5e216a9e
+‹
+[src/main/java/org/example/EldenRing/isaac/models/characters/enemymodels/SkeletonMinion.java,a\2\a292134c5dfb1ac87ecadac16f0b8155d8096173
+c
+3src/main/java/org/example/EldenRing/isaac/TODO.java,d\9\d9b838535d1c387344d481e954983a7d41f9ecde
+n
+>src/main/java/org/example/EldenRing/isaac/gui/NoRoomPanel.form,c\f\cfdceebf72be3b688e98bfe5547d3b1b4bbf060a

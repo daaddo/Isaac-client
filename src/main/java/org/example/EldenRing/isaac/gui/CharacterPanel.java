@@ -4,19 +4,28 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.events.FightEventListner;
+import org.example.EldenRing.isaac.manager.FightManager;
+import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Enemy;
 import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
 /**
  *
  * @author trapa
  */
-public class CharacterPanel extends javax.swing.JPanel {
+public class CharacterPanel extends javax.swing.JPanel implements FightEventListner {
+    private Character character;
     private String enemyImgPath;
+
+
+
 
     @Override
     public void paint(Graphics g) {
@@ -39,6 +48,8 @@ public class CharacterPanel extends javax.swing.JPanel {
         initComponents();
     }
     public CharacterPanel(Character enemy) {
+        this.character = enemy;
+        GameManager.getInstance().subscribeFightListner(this);
         this.enemyImgPath = enemy.getAvatarPath();
         initComponents();
         jLabelEnemyHealth.setText(""+enemy.getCurrentHealth()+" / "+enemy.getMaxHealth());
@@ -123,5 +134,23 @@ public class CharacterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelEnemyHealth;
     private javax.swing.JLabel jLabelEnemyName;
     private javax.swing.JPanel jPanelEnemyImg;
+
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+        if (character.equals(this.character)){
+            if (character instanceof MainCharacter) {
+                this.jLabelEnemyHealth.setText(character.getCurrentHealth() + "/" + character.getMaxHealth());
+
+            }
+            this.jPanelEnemyImg.removeAll();
+
+            this.jPanelEnemyImg.revalidate();
+            this.jPanelEnemyImg.repaint();
+
+        }
+
+    }
+
+
     // End of variables declaration//GEN-END:variables
 }

@@ -7,12 +7,16 @@ package org.example.EldenRing.isaac.gui;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
 import org.example.EldenRing.isaac.manager.FightManager;
+import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.NormalEnemy;
 
 import javax.swing.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -23,17 +27,28 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     /**
      * Creates new form BattleFrame
      */
+    private HashMap<? extends Character,Boolean> turnMap = new HashMap<>();
     public BattleFrame(List<MainCharacter> character) {
         initComponents();
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
         addAlly(character);
         addEnemy(enemies);
+
+
+        turnMap = FightManager.getInstance().nextTurn();
+        //return the first elemenent of the map
+        Character character1 = turnMap.keySet().stream().findFirst().get();
+        Boolean b = turnMap.get(character1);
+        GameManager.getInstance().giveTurn(character1,b);
+        this.jPanelCharacterOption.add(new MainCharacterOptions((MainCharacter) character1));
         invalidate();
         validate();
         repaint();
         setVisible(true);
+    }
+    public static void startTurn(){
         FightManager.getInstance().nextTurn();
-}
+    }
 
     private void addAlly(List<MainCharacter> character) {
         for (int i = 0; i < character.size(); i++) {
@@ -76,7 +91,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
         jPanel1 = new javax.swing.JPanel();
         jPanelContainer = new javax.swing.JPanel();
         jPanelContainerPersonalCharacters = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelCharacterOption = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 4, 5, 0));
@@ -85,18 +100,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
         jPanelContainer.setLayout(new java.awt.GridLayout(1, 4));
 
-        jPanelContainerPersonalCharacters.setLayout(new java.awt.GridLayout());
+        jPanelContainerPersonalCharacters.setLayout(new java.awt.GridLayout(1, 0));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 187, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
-        );
+        jPanelCharacterOption.setLayout(new java.awt.GridLayout(4, 1, 0, 4));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,9 +113,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                     .addComponent(jPanelContainerPersonalCharacters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelCharacterOption, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +127,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
                         .addGap(18, 18, 18)
                         .addComponent(jPanelContainerPersonalCharacters, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGap(245, 245, 245)
+                        .addComponent(jPanelCharacterOption, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -139,7 +145,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelCharacterOption;
     private javax.swing.JPanel jPanelContainer;
     private javax.swing.JPanel jPanelContainerPersonalCharacters;
     // End of variables declaration//GEN-END:variables
@@ -175,7 +181,14 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
         });
     }
 
+
     @Override
-    public void startTurn(Fightable fightable) {
+    public void startTurn(Character character, Boolean isally) {
+        if (character instanceof Fightable){
+            if(character instanceof MainCharacter mainCharacter) {
+                jPanelCharacterOption.add(new MainCharacterOptions(mainCharacter));
+            }
+
+        }
     }
 }

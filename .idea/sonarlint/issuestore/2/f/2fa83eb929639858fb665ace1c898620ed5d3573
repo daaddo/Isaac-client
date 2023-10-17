@@ -1,21 +1,23 @@
 
 L
-java:S3740"/Provide the parametrized type for this generic.(ô³â½8ã’Ò²1
+java:S3740"/Provide the parametrized type for this generic.(ô³â½8„‡µ“³1
 
-java:S1319S"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(»ÓÅ¾úÿÿÿÿ8ã’Ò²1
+java:S1319R"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(»ÓÅ¾úÿÿÿÿ8…‡µ“³1
 …
-java:S1319S"cThe type of "toSort" should be an interface such as "Map" rather than the implementation "HashMap".(»ÓÅ¾úÿÿÿÿ8ã’Ò²1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8ã’Ò²1
-o
-java:S37764"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(‚×º8Ñã’Ò²1
-F	java:S106K"+Replace this use of System.out by a logger.(ÙàÖ8Öã’Ò²1
-K
-java:S1481U".Remove this unused "fightable" local variable.(€û°‡8¾ÚùÒ²1
+java:S1319R"cThe type of "toSort" should be an interface such as "Map" rather than the implementation "HashMap".(»ÓÅ¾úÿÿÿÿ8…‡µ“³1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8†‡µ“³1
+F	java:S106K"+Replace this use of System.out by a logger.(ÙàÖ8Ÿ‡µ“³1
 V
-java:S2864W"4Iterate over the "entrySet" instead of the "keySet".(¼Äà³ùÿÿÿÿ8Úã’Ò²1
+java:S2864L"4Iterate over the "entrySet" instead of the "keySet".(€ãˆúÿÿÿÿ8Ÿ‡µ“³1
+K
+java:S1481T".Remove this unused "fightable" local variable.(€û°‡8¡‡µ“³1
+V
+java:S2864V"4Iterate over the "entrySet" instead of the "keySet".(¼Äà³ùÿÿÿÿ8¡‡µ“³1
+n
+java:S1128"QRemove this unused import 'org.example.EldenRing.isaac.events.FightEventListner'.(ì“8¢‡µ“³1
 q
-java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Character'.(¢€¢8ÓÕÓ²1
+java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Character'.(¢€¢8¢‡µ“³1
 O
-java:S1128"-Remove this unused import 'org.example.Main'.(€¸áÕøÿÿÿÿ8ÓÕÓ²1
+java:S1128"-Remove this unused import 'org.example.Main'.(€¸áÕøÿÿÿÿ8¢‡µ“³1
 M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÔÕÓ²1
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8¢‡µ“³1

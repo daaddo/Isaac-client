@@ -23,8 +23,5 @@ public class Enemy extends Character implements Fightable {
         return this.agility;
     }
 
-    @Override
-    public String getNome() {
-        return getName();
-    }
+
 }

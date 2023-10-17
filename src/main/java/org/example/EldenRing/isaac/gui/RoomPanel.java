@@ -9,10 +9,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import org.example.EldenRing.isaac.TODO;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Enemy;
 import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
@@ -150,6 +152,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner, F
     }
 
     @Override
+    @TODO(todo="fare in modo che solo le stanze adiacenti vengano colorate di NON visitato")
     public void move(RoomCoordinates roomCoordinates){
 
         if (roomCoordinates.row() == this.roomCoordinates.row() && roomCoordinates.column() == this.roomCoordinates.column() && !this.isStarterRoom()&&!GameManager.getInstance().isFighting()  ) {
@@ -188,6 +191,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner, F
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     new BattleFrame(character);
+
                 }
             });
 
@@ -202,10 +206,8 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner, F
     }
 
     @Override
-    public void startTurn(Fightable fightable) {
-        for (MainCharacter mainCharacter : character) {
+    public void startTurn(Character character, Boolean isally) {
 
-        }
     }
 
 

@@ -1,7 +1,9 @@
 
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8¡¥ºô±1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8†Ğÿ’³1
 v
-java:S1450"TRemove the "gioco" field and declare it as a local variable in the relevant methods.(ÿÚÌšüÿÿÿÿ8–ÃÑ²1
-G	java:S1063"+Replace this use of System.out by a logger.(‹ñŠ•8Á¥ºô±1
+java:S1450"TRemove the "gioco" field and declare it as a local variable in the relevant methods.(ÿÚÌšüÿÿÿÿ8˜Ğÿ’³1
+G	java:S1065"+Replace this use of System.out by a logger.(‹ñŠ•8Ğÿ’³1
 ^
-java:S1126O"AReplace this if-then-else statement by a single return statement.(ãâÜç8Ç¥ºô±1
+java:S1126Q"AReplace this if-then-else statement by a single return statement.(ãâÜç8 Ğÿ’³1
+j
+java:S1128"HRemove this unused import 'org.example.EldenRing.isaac.gui.BattleFrame'.(Û™ş®üÿÿÿÿ8ÜışÁ³1

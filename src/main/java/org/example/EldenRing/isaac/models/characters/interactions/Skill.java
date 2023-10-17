@@ -8,7 +8,8 @@ import java.util.List;
 public abstract class Skill {
     private String name;
     private List<Interaction> interactions;
-    public enum Target{
+    private TargetType targetType;
+    public enum TargetType{
         SELF,
         ENEMY,
         DEAD,
@@ -16,9 +17,23 @@ public abstract class Skill {
         ENEMYTEAM,
         ALL;
     }
-    public Skill(String name,Interaction ... interactions) {
+
+    public List<Interaction> getInteractions() {
+        return interactions;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public TargetType getTarget() {
+        return this.targetType;
+    }
+
+    public Skill(String name, TargetType targetType, Interaction ... interactions) {
         this.name = name;
         this.interactions = Arrays.stream(interactions).toList();
+        this.targetType = targetType;
     }
     public abstract void skillUsage(Character character);
     public final void activate(Character character){

@@ -4,19 +4,38 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.events.FightEventListner;
+import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.interactions.Interaction;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
+
 import javax.swing.*;
 
 /**
  *
  * @author trapa
  */
-public class MainCharacterOptions extends javax.swing.JPanel {
+public class MainCharacterOptions extends javax.swing.JPanel implements FightEventListner {
 
     /**
      * Creates new form MainCharacterOptions
      */
     public MainCharacterOptions() {
         initComponents();
+        GameManager.getInstance().subscribeFightListner(this);
+    }
+    public MainCharacterOptions(MainCharacter character) {
+        initComponents();
+        this.setBackground(java.awt.Color.GREEN);
+        GameManager.getInstance().subscribeFightListner(this);
+        //iter through the character and add the buttons
+        for (Skill skill : character.getSkills()) {
+            this.jPanelInteractionsContainer.add(new InteractionPanel(skill));
+
+        }
     }
     public JComponent addAll(JComponent ... components){
         for (JComponent component : components) {
@@ -68,5 +87,17 @@ public class MainCharacterOptions extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelActualHealthAndMaxHealth;
     private javax.swing.JPanel jPanelInteractionsContainer;
+
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+        if (isally){
+            this.jLabelActualHealthAndMaxHealth.setText(character.getCurrentHealth()+"/"+character.getMaxHealth());
+            this.jPanelInteractionsContainer.removeAll();
+            this.jPanelInteractionsContainer.revalidate();
+            this.jPanelInteractionsContainer.repaint();
+        }
+    }
+
+
     // End of variables declaration//GEN-END:variables
 }

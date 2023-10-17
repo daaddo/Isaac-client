@@ -1,5 +1,6 @@
 package org.example.EldenRing.isaac.manager;
 
+import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.Main;
@@ -49,10 +50,9 @@ public class FightManager {
         }
     }
 
-    public void nextTurn(){
+    public HashMap<Character,Boolean> nextTurn(){
         initializedMaps();
-        HashMap<Fightable, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
-
+        HashMap< Character, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
             while (agilityOver100AndIsAllyMap.isEmpty()) {
                 allyAgilityMap.forEach((key, value) -> {
                     if (value >= 100) {
@@ -71,18 +71,15 @@ public class FightManager {
                     }
                 });
             }
-            HashMap<Fightable, Boolean> sortedMapByAgility = sortMap(agilityOver100AndIsAllyMap);
-            sortedMapByAgility.forEach((key, value) -> System.out.println(key.getNome() + "  " + value));
-            for (Fightable fightable : sortedMapByAgility.keySet()) {
-                GameManager.getInstance().giveTurn(fightable);
-            }
-            agilityOver100AndIsAllyMap.clear();
+            HashMap<Character, Boolean> sortedMapByAgility = sortMap(agilityOver100AndIsAllyMap);
+            sortedMapByAgility.forEach((key, value) -> System.out.println(key.getName() + "  " + value));
+            return sortedMapByAgility;
     }
-    public  HashMap<Fightable,Boolean> sortMap(HashMap<Fightable,Boolean> toSort){
-        HashMap<Fightable,Boolean> agilityOver100AndIsAllyMapAfterSort = new HashMap<>();
-        for (Fightable fightable : toSort.keySet()) {
+    public  HashMap<Character,Boolean> sortMap(HashMap<Character,Boolean> toSort){
+        HashMap<Character,Boolean> agilityOver100AndIsAllyMapAfterSort = new HashMap<>();
+        for (Character fightable : toSort.keySet()) {
             int max = 0;
-            for (Fightable fightable1 : toSort.keySet()) {
+            for (Character fightable1 : toSort.keySet()) {
                 if(fightable1.getAgility()>max){
                     agilityOver100AndIsAllyMapAfterSort.put(fightable1,toSort.get(fightable1));
                 }

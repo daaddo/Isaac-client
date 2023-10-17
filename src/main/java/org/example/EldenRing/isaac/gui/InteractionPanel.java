@@ -4,6 +4,14 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.events.FightEventListner;
+import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
+
+import java.awt.*;
+
 /**
  *
  * @author trapa
@@ -15,6 +23,32 @@ public class InteractionPanel extends javax.swing.JPanel {
      */
     public InteractionPanel() {
         initComponents();
+    }
+    public InteractionPanel(Skill skill) {
+        initComponents();
+        this.jButton1.setToolTipText("<html><b> ciccio</b> <br> <font color = red> frasetta rossa</font>");
+        this.jButton1.setText(skill.getName());
+        switch (skill.getTarget()) {
+            case SELF -> {
+                this.setBackground(java.awt.Color.GREEN);
+            }
+            case ENEMY -> {
+                this.setBackground(java.awt.Color.RED);
+            }
+            case DEAD -> {
+                this.setBackground(Color.yellow);
+
+            }
+            case ALLYTEAM -> {
+                this.setBackground(Color.BLUE);
+            }
+            case ENEMYTEAM -> {
+                this.setBackground(Color.ORANGE);
+            }
+            case ALL -> {
+                this.setBackground(new Color(128,0,128));
+            }
+        }
     }
 
     /**
@@ -30,6 +64,11 @@ public class InteractionPanel extends javax.swing.JPanel {
         jLabelInteractionName = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabelInteractionName.setText("jLabel1");
 
@@ -49,9 +88,14 @@ public class InteractionPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelInteractionName;
     // End of variables declaration//GEN-END:variables
 }
+//prendo da qua la abilità che devo usare poi la passo su Game Manager e da li

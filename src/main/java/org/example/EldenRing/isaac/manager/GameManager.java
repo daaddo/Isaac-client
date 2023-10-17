@@ -3,6 +3,8 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.Game;
+import org.example.EldenRing.isaac.gui.BattleFrame;
+import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.RoomCoordinates;
@@ -11,13 +13,16 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GameManager {
+public class GameManager <T extends Character> {
     private List<MainCharacter> characters = new LinkedList<>();
     private RoomCoordinates pointerRoom;
     private Game gioco;
-
+    private T character;
     private static GameManager instance = null;
     private boolean isFighting = false;
+    private List<GameEventListner> gameEventListners = new ArrayList<>();
+    private List<GameEventListner> roomGameListners = new ArrayList<>();
+    private List<FightEventListner> fightEventListners = new ArrayList<>();
 
     private GameManager() {
     }
@@ -30,9 +35,7 @@ public class GameManager {
         this.characters = character;
     }
 
-    private List<GameEventListner> gameEventListners = new ArrayList<>();
-    private List<GameEventListner> roomGameListners = new ArrayList<>();
-    private List<FightEventListner> fightEventListners = new ArrayList<>();
+
 
     public static GameManager getInstance() {
         if (instance == null) {
@@ -55,7 +58,7 @@ public class GameManager {
             gameEventListner.newGame(gioco.getPiano());
         }
     }
-public void addCharacter(MainCharacter character){
+    public void addCharacter(MainCharacter character){
         this.characters.add(character);
 }
     public void teleport(RoomCoordinates coordinates){
@@ -95,7 +98,9 @@ public void addCharacter(MainCharacter character){
     public void unsubscribeGameListner(GameEventListner gameListner){
         this.gameEventListners.remove(gameListner);
     }
-
+    public void subscribeFightListner(FightEventListner fightEventListner){
+        this.fightEventListners.add(fightEventListner);
+    }
     public boolean isFighting() {
         return isFighting;
     }
@@ -103,9 +108,9 @@ public void addCharacter(MainCharacter character){
         this.isFighting = bool;
     }
 
-    public void giveTurn(Fightable fightable) {
+    public void giveTurn(T character, Boolean isAlly) {
         for (FightEventListner fightEventListner : fightEventListners) {
-            fightEventListner.startTurn(fightable);
+            fightEventListner.startTurn(character, isAlly);
         }
     }
 }

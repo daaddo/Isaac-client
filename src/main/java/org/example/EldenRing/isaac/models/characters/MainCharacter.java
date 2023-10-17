@@ -3,6 +3,7 @@ package org.example.EldenRing.isaac.models.characters;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
 
+import java.util.Collections;
 import java.util.List;
 
 public class MainCharacter extends Character implements Fightable {
@@ -27,8 +28,7 @@ public class MainCharacter extends Character implements Fightable {
         return this.agility;
     }
 
-    @Override
-    public String getNome() {
-        return  getName();
+    public List<Skill> getSkills() {
+        return Collections.unmodifiableList(skills);
     }
 }

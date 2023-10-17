@@ -1,18 +1,23 @@
 
 K
-java:S1604ª"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8„ŠòÒ²1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8Š½ñÒ²1
+java:S1604°"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8»¯‰”³1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8¼¯‰”³1
+Ÿ
+java:S1186¸"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŠàÉ¹8â¯‰”³1
 y
-java:S1450Œ"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ8¹½ñÒ²1
+java:S1450’"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ8ã¯‰”³1
 y
-java:S1450"VRemove the "jPanel2" field and declare it as a local variable in the relevant methods.(õ òçüÿÿÿÿ8¯ŠòÒ²1
+java:S1450“"VRemove the "jPanel2" field and declare it as a local variable in the relevant methods.(õ òçüÿÿÿÿ8ã¯‰”³1
 M
-java:S1197‘"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8ÃŠòÒ²1
+java:S1197—"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8ğ¯‰”³1
 c
-java:S2147 "ECombine this catch with the one at line 158, which has the same body.(¨¦Š½8ÃŠòÒ²1
+java:S2147¦"ECombine this catch with the one at line 164, which has the same body.(¨¦Š½8ñ¯‰”³1
 c
-java:S2147¢"ECombine this catch with the one at line 160, which has the same body.(ã€ 8ÃŠòÒ²1
+java:S2147¨"ECombine this catch with the one at line 166, which has the same body.(ã€ 8ñ¯‰”³1
 b
-java:S2147¤"ECombine this catch with the one at line 162, which has the same body.(ñÎ¯%8ÄŠòÒ²1
+java:S2147ª"ECombine this catch with the one at line 168, which has the same body.(ñÎ¯%8ñ¯‰”³1
+n
+java:S1128
+"LRemove this unused import 'org.example.EldenRing.isaac.manager.GameManager'.(¦ÙÀòúÿÿÿÿ8›¸Œ”³1
 J
-java:S1128"(Remove this unused import 'javax.swing'.(Ìí¿Üüÿÿÿÿ8—‹õ²1
+java:S1128"(Remove this unused import 'javax.swing'.(Ìí¿Üüÿÿÿÿ8œ¸Œ”³1
