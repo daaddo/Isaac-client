@@ -101,3 +101,7 @@ c
 3src/main/java/org/example/EldenRing/isaac/TODO.java,d\9\d9b838535d1c387344d481e954983a7d41f9ecde
 n
 >src/main/java/org/example/EldenRing/isaac/gui/NoRoomPanel.form,c\f\cfdceebf72be3b688e98bfe5547d3b1b4bbf060a
+n
+>src/main/java/org/example/EldenRing/isaac/gui/LandingPage.form,f\b\fb5fe6be1aec1b4e465b3cf08e14a17b5c6d1d9e
+™
+isrc/main/java/org/example/EldenRing/isaac/models/characters/allymodels/SuperAgilityMainCharacterTest.java,8\3\8390439c59c490bd37fd08b4f72888b394437cab

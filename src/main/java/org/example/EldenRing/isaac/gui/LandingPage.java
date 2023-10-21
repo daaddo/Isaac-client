@@ -153,7 +153,7 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().addCharacter(new SuperAgilityMainCharacterTest("deborah", List.of(new StroncaturaSkillInteraction())));
+            GameManager.getInstance().addCharacter(new SuperAgilityMainCharacterTest("deborah", List.of(new StroncaturaSkillInteraction(), new StroncaturaSkillInteraction())));
         }
         else if (actionCommand.equals("Test2")) {
             GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5,"C:\\images\\dennys.png"));

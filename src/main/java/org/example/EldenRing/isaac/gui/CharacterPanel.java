@@ -7,10 +7,9 @@ package org.example.EldenRing.isaac.gui;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.Enemy;
-import org.example.EldenRing.isaac.models.characters.Fightable;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,6 +49,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     public CharacterPanel(Character enemy) {
         this.character = enemy;
         GameManager.getInstance().subscribeFightListner(this);
+        FightManager.getInstance().subscribeFightListner(this);
         this.enemyImgPath = enemy.getAvatarPath();
         initComponents();
         jLabelEnemyHealth.setText(""+enemy.getCurrentHealth()+" / "+enemy.getMaxHealth());
@@ -124,9 +124,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        // TODO add your handling code here:
-        //TODO qualcosa tipo getCurrentPlayer() di gameManager e poi da quel player bisogna prendere l abilità selezionata,
-        // ad esempio, clicco su un abilità, si evidenzia, poi se clicco su un nemico la uso
+
     }//GEN-LAST:event_formMouseClicked
 
 
@@ -150,6 +148,23 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         }
 
     }
+
+    @Override
+    public void setColor(Skill.TargetType targetType) {
+
+    }
+
+
+    @Override
+    public void setTarget(Target target) {
+        if (target.target().equals(this.character)){
+            this.jPanelEnemyImg.setBackground(Color.RED);
+        }
+    }
+
+    @Override
+    public void resetTarget() {
+            }
 
 
     // End of variables declaration//GEN-END:variables

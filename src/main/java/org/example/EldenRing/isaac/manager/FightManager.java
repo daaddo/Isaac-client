@@ -3,6 +3,7 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.Main;
 
 import java.util.ArrayList;
@@ -15,17 +16,77 @@ public class FightManager {
 
     private FightManager() {
     }
+    private Character currentCharacter;
     private Map<MainCharacter,Integer> allyAgilityMap = new HashMap();
     private Map<Enemy,Integer> enemyAgilityMap = new HashMap<>();
 
+    private List<FightEventListner> fightEventListners = new ArrayList<>();
     public static FightManager getInstance() {
         if (instance == null) {
             instance = new FightManager();
         }
         return instance;
     }
+    public void reset(){
+        for (MainCharacter mainCharacter : allyAgilityMap.keySet()) {
+            for (FightEventListner fightEventListner : fightEventListners) {
+
+            }
+        }
+    }
+    public void subscribeFightListner(FightEventListner fightEventListner){
+        this.fightEventListners.add(fightEventListner);
+    }
+    public void unsubscribeFightListner(FightEventListner fightEventListner){
+        this.fightEventListners.remove(fightEventListner);
+    }
     public void addEnemy(Enemy enemy){
         this.enemyAgilityMap.put(enemy,enemy.getAgility());
+    }
+    public void highLightTarget(Skill.TargetType type){
+        switch (type){
+            case SELF -> {
+                for (FightEventListner fightEventListner : fightEventListners) {
+                    fightEventListner.setTarget(new Target(this.currentCharacter));
+                }
+            }
+            case ENEMY -> {
+                for (Enemy enemy : enemyAgilityMap.keySet()) {
+                    for (FightEventListner fightEventListner : fightEventListners) {
+                        fightEventListner.setTarget(new Target(enemy));
+                    }
+                }
+            }
+            case DEAD -> {
+            }
+            case ALLYTEAM -> {
+                for (MainCharacter mainCharacter : allyAgilityMap.keySet()) {
+                    for (FightEventListner fightEventListner : fightEventListners) {
+                        fightEventListner.setTarget(new Target(mainCharacter));
+                    }
+                }
+            }
+            case ENEMYTEAM -> {
+                for (FightEventListner fightEventListner : fightEventListners) {
+                    for (Enemy enemy : enemyAgilityMap.keySet()) {
+                        fightEventListner.setTarget(new Target(enemy));
+                    }
+                }
+            }
+            case ALL -> {
+                for (MainCharacter mainCharacter : allyAgilityMap.keySet()) {
+                    for (FightEventListner fightEventListner : fightEventListners) {
+                        fightEventListner.setTarget(new Target(mainCharacter));
+                    }
+                }
+                for (FightEventListner fightEventListner : fightEventListners) {
+                    for (Enemy enemy : enemyAgilityMap.keySet()) {
+                        fightEventListner.setTarget(new Target(enemy));
+                    }
+                }
+            }
+        }
+
     }
     public boolean isAllDead (Map<? extends Fightable,Integer> map){
         for (Fightable fightable : map.keySet()) {
@@ -48,6 +109,14 @@ public class FightManager {
         if(allyAgilityMap.isEmpty() || enemyAgilityMap.isEmpty()){
             throw new NullPointerException("Maps are not initialized");
         }
+    }
+
+    public void setCurrentCharacter(Character currentCharacter) {
+        this.currentCharacter = currentCharacter;
+    }
+
+    public Character getCurrentCharacter() {
+        return currentCharacter;
     }
 
     public HashMap<Character,Boolean> nextTurn(){

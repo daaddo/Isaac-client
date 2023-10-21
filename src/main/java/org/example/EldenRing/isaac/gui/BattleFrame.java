@@ -8,12 +8,12 @@ import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.Fightable;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
-import org.example.EldenRing.isaac.models.characters.NormalEnemy;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -30,21 +30,25 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     private HashMap<? extends Character,Boolean> turnMap = new HashMap<>();
     public BattleFrame(List<MainCharacter> character) {
         initComponents();
+        GameManager.getInstance().subscribeFightListner(this);
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
         addAlly(character);
         addEnemy(enemies);
-
-
         turnMap = FightManager.getInstance().nextTurn();
         //return the first elemenent of the map
         Character character1 = turnMap.keySet().stream().findFirst().get();
         Boolean b = turnMap.get(character1);
         GameManager.getInstance().giveTurn(character1,b);
-        this.jPanelCharacterOption.add(new MainCharacterOptions((MainCharacter) character1));
         invalidate();
         validate();
         repaint();
         setVisible(true);
+    }
+    public void setEnemiesBackground(Skill.TargetType type){
+
+    }
+    public boolean isAlly(Character character){
+        return turnMap.get(character);
     }
     public static void startTurn(){
         FightManager.getInstance().nextTurn();
@@ -66,6 +70,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
     }
 
+    public Fightable getCurrentCharacter(){
+        return (Fightable) turnMap.keySet().stream().findFirst().get();
+    }
     public BattleFrame(){
         initComponents();
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
@@ -74,10 +81,6 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
         }
 
     }
-    public void startFight(){
-        FightManager.getInstance().nextTurn();
-    }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,7 +105,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
         jPanelContainerPersonalCharacters.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanelCharacterOption.setLayout(new java.awt.GridLayout(4, 1, 0, 4));
+        jPanelCharacterOption.setLayout(new java.awt.GridLayout(4, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,9 +189,26 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     public void startTurn(Character character, Boolean isally) {
         if (character instanceof Fightable){
             if(character instanceof MainCharacter mainCharacter) {
-                jPanelCharacterOption.add(new MainCharacterOptions(mainCharacter));
+                for (Skill skill : mainCharacter.getSkills()) {
+                    jPanelCharacterOption.add(new InteractionPanel(skill));
+                }
             }
 
         }
+    }
+
+    @Override
+    public void setColor(Skill.TargetType targetType) {
+
+    }
+
+    @Override
+    public void setTarget(Target target) {
+
+    }
+
+    @Override
+    public void resetTarget() {
+
     }
 }

@@ -26,7 +26,7 @@ import org.example.EldenRing.isaac.RoomCoordinates;
 /**
  * @author trapa
  */
-public class RoomPanel extends javax.swing.JPanel implements GameEventListner, FightEventListner {
+public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     private Color originalcolor;
     private boolean starterRoom = false;
     private RoomCoordinates roomCoordinates;
@@ -191,7 +191,6 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner, F
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     new BattleFrame(character);
-
                 }
             });
 
@@ -202,11 +201,6 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner, F
 
     @Override
     public void selectCharacter(List<MainCharacter> character) {
-
-    }
-
-    @Override
-    public void startTurn(Character character, Boolean isally) {
 
     }
 

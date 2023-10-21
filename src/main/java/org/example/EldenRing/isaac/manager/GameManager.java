@@ -8,6 +8,7 @@ import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.RoomCoordinates;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -111,6 +112,12 @@ public class GameManager <T extends Character> {
     public void giveTurn(T character, Boolean isAlly) {
         for (FightEventListner fightEventListner : fightEventListners) {
             fightEventListner.startTurn(character, isAlly);
+        }
+    }
+
+    public void setColor(Skill.TargetType type) {
+        for (FightEventListner fightEventListner : fightEventListners) {
+            fightEventListner.setColor(type);
         }
     }
 }

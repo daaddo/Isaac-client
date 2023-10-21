@@ -9,6 +9,7 @@ import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Interaction;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
@@ -37,6 +38,26 @@ public class MainCharacterOptions extends javax.swing.JPanel implements FightEve
 
         }
     }
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+
+    }
+
+    @Override
+    public void setColor(Skill.TargetType targetType) {
+
+    }
+
+    @Override
+    public void setTarget(Target target) {
+
+    }
+
+    @Override
+    public void resetTarget() {
+
+    }
+
     public JComponent addAll(JComponent ... components){
         for (JComponent component : components) {
             this.add(component);
@@ -52,52 +73,30 @@ public class MainCharacterOptions extends javax.swing.JPanel implements FightEve
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelActualHealthAndMaxHealth = new javax.swing.JLabel();
         jPanelInteractionsContainer = new javax.swing.JPanel();
 
-        jLabelActualHealthAndMaxHealth.setText("jLabel1");
-
-        jPanelInteractionsContainer.setLayout(new java.awt.GridLayout(2, 2, 15, 3));
+        jPanelInteractionsContainer.setLayout(new java.awt.GridLayout(4, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelActualHealthAndMaxHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelInteractionsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelInteractionsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelActualHealthAndMaxHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 51, Short.MAX_VALUE))
-                    .addComponent(jPanelInteractionsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelInteractionsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelActualHealthAndMaxHealth;
     private javax.swing.JPanel jPanelInteractionsContainer;
-
-    @Override
-    public void startTurn(Character character, Boolean isally) {
-        if (isally){
-            this.jLabelActualHealthAndMaxHealth.setText(character.getCurrentHealth()+"/"+character.getMaxHealth());
-            this.jPanelInteractionsContainer.removeAll();
-            this.jPanelInteractionsContainer.revalidate();
-            this.jPanelInteractionsContainer.repaint();
-        }
-    }
-
-
     // End of variables declaration//GEN-END:variables
 }

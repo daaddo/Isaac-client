@@ -5,9 +5,11 @@
 package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.FightEventListner;
+import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import java.awt.*;
@@ -18,6 +20,8 @@ import java.awt.*;
  */
 public class InteractionPanel extends javax.swing.JPanel {
 
+    private boolean isActive = false;
+    private Skill skill;
     /**
      * Creates new form InteractionPanel
      */
@@ -26,27 +30,28 @@ public class InteractionPanel extends javax.swing.JPanel {
     }
     public InteractionPanel(Skill skill) {
         initComponents();
+        this.skill = skill;
         this.jButton1.setToolTipText("<html><b> ciccio</b> <br> <font color = red> frasetta rossa</font>");
-        this.jButton1.setText(skill.getName());
+        this.jButton1.setText("<html> <b> <font color = yellow>"+skill.getName()+"</font></b> <br> <font color = red>");
         switch (skill.getTarget()) {
             case SELF -> {
-                this.setBackground(java.awt.Color.GREEN);
+                this.jButton1.setBackground(java.awt.Color.GREEN);
             }
             case ENEMY -> {
-                this.setBackground(java.awt.Color.RED);
+                this.jButton1.setBackground(java.awt.Color.RED);
             }
             case DEAD -> {
-                this.setBackground(Color.yellow);
+                this.jButton1.setBackground(Color.yellow);
 
             }
             case ALLYTEAM -> {
-                this.setBackground(Color.BLUE);
+                this.jButton1.setBackground(Color.BLUE);
             }
             case ENEMYTEAM -> {
-                this.setBackground(Color.ORANGE);
+                this.jButton1.setBackground(Color.ORANGE);
             }
             case ALL -> {
-                this.setBackground(new Color(128,0,128));
+                this.jButton1.setBackground(new Color(128,0,128));
             }
         }
     }
@@ -61,30 +66,28 @@ public class InteractionPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabelInteractionName = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabelInteractionName.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-            .addComponent(jLabelInteractionName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInteractionName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -92,10 +95,20 @@ public class InteractionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        isActive = !isActive;
+        if (isActive){
+            FightManager.getInstance().highLightTarget(skill.getTarget());
+        }
+        else{
+            FightManager.getInstance().reset();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabelInteractionName;
     // End of variables declaration//GEN-END:variables
 }
 //prendo da qua la abilità che devo usare poi la passo su Game Manager e da li

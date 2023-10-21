@@ -1,6 +1,11 @@
 
+L
+java:S3740"/Provide the parametrized type for this generic.(ó³Ö8ƒ–“£´1
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡
-ƒ
-java:S1450E"mRemove the "jLabelActualHealthAndMaxHealth" field and declare it as a local variable in the relevant methods.(ïÇÏÿ
-€
-java:S1450F"jRemove the "jPanelInteractionsContainer" field and declare it as a local variable in the relevant methods.(äÿ°€
+£
+java:S1186R"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ª£“ûÿÿÿÿ8»–“£´1
+v
+java:S1128
+"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8Û–“£´1
+…
+java:S1128"cRemove this unused import 'org.example.EldenRing.isaac.models.characters.interactions.Interaction'.(˜¢¨¤ıÿÿÿÿ8Û–“£´1
