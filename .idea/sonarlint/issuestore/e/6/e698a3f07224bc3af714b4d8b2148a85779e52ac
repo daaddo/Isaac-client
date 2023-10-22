@@ -1,19 +1,14 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8£ôşÁ³1
-€
-java:S1450‡"]Remove the "jPanelEnemyImg" field and declare it as a local variable in the relevant methods.(ÇŠçùÿÿÿÿ8éõşÁ³1
+Q
+java:S3740"/Provide the parametrized type for this generic.(›§ëšøÿÿÿÿ8ı¶©¸µ1
+d
+java:S1192O"HDefine a constant instead of duplicating this literal "jLabel1" 3 times.(Óßõ_8€·©¸µ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8‚·©¸µ1
+„
+java:S1450"aRemove the "jLabelCharacterImg" field and declare it as a local variable in the relevant methods.(ôğøÿÿÿÿ8ôµ¹µ1
 M
-java:S1948"+Make "character" transient or serializable.(Şş˜˜ıÿÿÿÿ8íõşÁ³1
+java:S1948"+Make "character" transient or serializable.(Şş˜˜ıÿÿÿÿ8·©¸µ1
 W
-java:S1161L":Add the "@Override" annotation above this method signature(†ŒË³8²öşÁ³1
+java:S1161H":Add the "@Override" annotation above this method signature(†ŒË³8äŒ½¸µ1
 G
-java:S1172}"*Remove this unused method parameter "evt".(€›öö8ÊöşÁ³1
-T
-java:S1135~"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8ÊöşÁ³1
-O
-java:S1135"2Complete the task associated to this TODO comment.(ù¢Ñ…8ËöşÁ³1
-G	java:S106‘"+Replace this use of System.out by a logger.(İÄéQ8ÑöşÁ³1
-o
-java:S1128"MRemove this unused import 'org.example.EldenRing.isaac.manager.FightManager'.(ÌåÎüÿÿÿÿ8ÓöşÁ³1
-P
-java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8ÓöşÁ³1
+java:S1172{"*Remove this unused method parameter "evt".(€›öö8ŠÄ¾¸µ1

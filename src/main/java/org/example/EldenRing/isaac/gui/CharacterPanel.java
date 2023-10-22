@@ -12,6 +12,7 @@ import org.example.EldenRing.isaac.models.characters.Character;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 /**
  *
@@ -23,13 +24,12 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
 
 
-
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        ImageIcon imageIcon = new ImageIcon(characterImgPath);
-        Image image = imageIcon.getImage();
-        g.drawImage(image, 0, 0, null);
+        URL imageUrl = getClass().getResource(characterImgPath);
+        ImageIcon icon = new ImageIcon(imageUrl);
+        Image image = icon.getImage();
         Image scaledImage = image.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
         g.drawImage(scaledImage, getHeight(), 0, null);
     }
@@ -41,19 +41,18 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     public CharacterPanel(){
         initComponents();
     }
-    public CharacterPanel(Character enemy) {
-        this.character = enemy;
+    public CharacterPanel(Character character) {
+        this.character = character;
         GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
-        this.characterImgPath = enemy.getAvatarPath();
+        this.characterImgPath = character.getAvatarPath();
         initComponents();
-        jLabelCharacterHealth.setText(""+enemy.getCurrentHealth()+" / "+enemy.getMaxHealth());
-        jLabelCharacterName.setText(enemy.getName());
+        jLabelCharacterHealth.setText(""+character.getCurrentHealth()+" / "+character.getMaxHealth());
+        jLabelCharacterName.setText(character.getName());
         this.invalidate();
         this.validate();
         this.repaint();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,7 +62,8 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPaneCharacterImg = new javax.swing.JPanel();
+        jPanelCharacterImg = new javax.swing.JPanel();
+        jLabelCharacterImg = new javax.swing.JLabel();
         jLabelCharacterHealth = new javax.swing.JLabel();
         jLabelCharacterName = new javax.swing.JLabel();
 
@@ -74,17 +74,19 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
             }
         });
 
-        jPaneCharacterImg.setBackground(new java.awt.Color(255, 255, 0));
+        jPanelCharacterImg.setBackground(new java.awt.Color(255, 255, 0));
 
-        javax.swing.GroupLayout jPanelEnemyImgLayout = new javax.swing.GroupLayout(jPaneCharacterImg);
-        jPaneCharacterImg.setLayout(jPanelEnemyImgLayout);
+        jLabelCharacterImg.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanelEnemyImgLayout = new javax.swing.GroupLayout(jPanelCharacterImg);
+        jPanelCharacterImg.setLayout(jPanelEnemyImgLayout);
         jPanelEnemyImgLayout.setHorizontalGroup(
             jPanelEnemyImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelEnemyImgLayout.setVerticalGroup(
             jPanelEnemyImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 208, Short.MAX_VALUE)
+            .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
         );
 
         jLabelCharacterHealth.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
@@ -99,7 +101,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPaneCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +112,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPaneCharacterImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelCharacterImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jLabelCharacterName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -124,9 +126,10 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelCharacterImg;
     private javax.swing.JLabel jLabelCharacterHealth;
     private javax.swing.JLabel jLabelCharacterName;
-    private javax.swing.JPanel jPaneCharacterImg;
+    private javax.swing.JPanel jPanelCharacterImg;
 
     @Override
     public void startTurn(Character character, Boolean isally) {
@@ -135,10 +138,9 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 this.jLabelCharacterHealth.setText(character.getCurrentHealth() + "/" + character.getMaxHealth());
 
             }
-            this.jPaneCharacterImg.removeAll();
-
-            this.jPaneCharacterImg.revalidate();
-            this.jPaneCharacterImg.repaint();
+            this.jPanelCharacterImg.removeAll();
+            this.jPanelCharacterImg.revalidate();
+            this.jPanelCharacterImg.repaint();
 
         }
 
@@ -150,7 +152,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     @Override
     public void setTarget(Target target) {
         if (target.target().equals(this.character)){
-            this.jPaneCharacterImg.setBackground(Color.RED);
+            this.setBackground(Color.RED);
         }
     }
 
@@ -159,10 +161,9 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
         if (target.target().equals(this.character)){
             // set backgrounf to transparent
-            this.jPaneCharacterImg.setBackground(null);
+            this.setBackground(null);
         }
     }
-
-
     // End of variables declaration//GEN-END:variables
+
 }

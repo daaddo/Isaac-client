@@ -1,6 +1,4 @@
 
-L
-java:S3740"/Provide the parametrized type for this generic.(©Ë¾õ8è›“£´1
 K
 java:S1604¿"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8°™”³1
 E
@@ -14,8 +12,6 @@ v	java:S120"ZRename this package name to match the regular expression '^[a-z_
 java:S1186–"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶û’8Ï™”³1
 Ÿ
 java:S1186Ë"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›ìš›8Ï™”³1
-¤
-java:S1186Ğ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ª£“ûÿÿÿÿ8Úœ“£´1
 S
 java:S1948 "1Make "roomCoordinates" transient or serializable.(ò×ª¸úÿÿÿÿ8Ğ™”³1
 G
@@ -27,8 +23,12 @@ java:S1948$")Make "enemies" transient or serializable.(–ùé¶8Ñ™”³1
 G	java:S106V"+Replace this use of System.out by a logger.(•„ğ–8Õ™”³1
 G	java:S106["+Replace this use of System.out by a logger.(‰­¹É8Ö™”³1
 M	java:S106½"+Replace this use of System.out by a logger.(Í©äÛûÿÿÿÿ8Ü™”³1
+n
+java:S1128"QRemove this unused import 'org.example.EldenRing.isaac.events.FightEventListner'.(ì“8Ïº«·µ1
 o
 java:S1128"MRemove this unused import 'org.example.EldenRing.isaac.manager.FightManager'.(ÌåÎüÿÿÿÿ8›¸”³1
+q
+java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Character'.(¢€¢8Ïº«·µ1
 v
 java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8Ÿ“£´1
 H

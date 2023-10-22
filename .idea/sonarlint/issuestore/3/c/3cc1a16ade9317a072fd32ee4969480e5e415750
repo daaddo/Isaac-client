@@ -1,31 +1,39 @@
 
 J
-java:S1604C"(Make this anonymous inner class a lambda(…æ©âÿÿÿÿÿ8Ü‘“£´1
+java:S1604L"(Make this anonymous inner class a lambda(…æ©âÿÿÿÿÿ8Ü‘“£´1
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡
-z
-java:S1450b"dRemove the "jLabelInteractionName" field and declare it as a local variable in the relevant methods.(Ãã’
+I
+java:S1948"'Make "skill" transient or serializable.(Ûİ¢¶ûÿÿÿÿ8£Á³µµ1
 9
-java:S6205 "Remove this redundant block.(š¤ô©8ƒ”“£´1
+java:S6205%"Remove this redundant block.(š¤ô©8ƒ”“£´1
 9
-java:S6205#"Remove this redundant block.(¨ÄÊ¡8†”“£´1
+java:S6205("Remove this redundant block.(¨ÄÊ¡8†”“£´1
 >
-java:S6205&"Remove this redundant block.(Ö“‚˜ÿÿÿÿÿ8ˆ”“£´1
+java:S6205+"Remove this redundant block.(Ö“‚˜ÿÿÿÿÿ8ˆ”“£´1
 9
-java:S6205*"Remove this redundant block.(ÚŒË8‰”“£´1
+java:S6205/"Remove this redundant block.(ÚŒË8‰”“£´1
 >
-java:S6205-"Remove this redundant block.(÷—Âñüÿÿÿÿ8Š”“£´1
+java:S62052"Remove this redundant block.(÷—Âñüÿÿÿÿ8Š”“£´1
 >
-java:S62050"Remove this redundant block.(©Ö©¨ùÿÿÿÿ8Œ”“£´1
+java:S62055"Remove this redundant block.(©Ö©¨ùÿÿÿÿ8Œ”“£´1
+W
+java:S1161H":Add the "@Override" annotation above this method signature(†ŒË³8¯Á³µµ1
 G
-java:S1172["*Remove this unused method parameter "evt".(‚À‡ä8¸”“£´1
+java:S1172^"*Remove this unused method parameter "evt".(‚À‡ä8¸”“£´1
 T
-java:S1135\"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8º”“£´1
+java:S1135_"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8º”“£´1
+L
+java:S1172b"*Remove this unused method parameter "evt".(óÄÔØøÿÿÿÿ8¶Á³µµ1
+T
+java:S1135c"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8·Á³µµ1
 n
 java:S1128"QRemove this unused import 'org.example.EldenRing.isaac.events.FightEventListner'.(ì“8½”“£´1
 n
-java:S1128"LRemove this unused import 'org.example.EldenRing.isaac.manager.GameManager'.(¦ÙÀòúÿÿÿÿ8¾”“£´1
+java:S1128	"LRemove this unused import 'org.example.EldenRing.isaac.manager.GameManager'.(¦ÙÀòúÿÿÿÿ8¾”“£´1
 q
-java:S1128	"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Character'.(¢€¢8¿”“£´1
-v
 java:S1128
-"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8¿”“£´1
+"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Character'.(¢€¢8¿”“£´1
+v
+java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8¿”“£´1
+n
+java:S1128"QRemove this unused import 'org.example.EldenRing.isaac.models.characters.Target'.(÷ãÀ8ºÁ³µµ1

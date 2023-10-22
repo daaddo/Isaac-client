@@ -1,47 +1,47 @@
 
 u
-java:S1192Ÿ"WDefine a constant instead of duplicating this literal "C:\\images\\dennys.png" 3 times.(Ë¼¬8ï“£´1
+java:S1192 "WDefine a constant instead of duplicating this literal "C:\\images\\dennys.png" 3 times.(Ë¼¬8–¿Âµµ1
 E
-java:S16046"(Make this anonymous inner class a lambda(¶‹¯ò8îª¡±1
+java:S16047"(Make this anonymous inner class a lambda(¶‹¯ò8˜¿Âµµ1
 E
-java:S1604V"(Make this anonymous inner class a lambda(¼á¿8Ÿîª¡±1
+java:S1604W"(Make this anonymous inner class a lambda(¼á¿8˜¿Âµµ1
 K
-java:S1604©"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8¡îª¡±1
+java:S1604ª"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8˜¿Âµµ1
 K
-java:S1604Ñ"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8¡îª¡±1
+java:S1604Ò"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8™¿Âµµ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8§îª¡±1
 Ÿ
-java:S1186á"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶û’8¸ïª¡±1
+java:S1186â"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶û’8×¿Âµµ1
 
-java:S1186æ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¼ËÕ28¹ïª¡±1
+java:S1186ç"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¼ËÕ28è¿Âµµ1
 ¤
-java:S1186ë"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ºêÿÚøÿÿÿÿ8ºïª¡±1
+java:S1186ì"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ºêÿÚøÿÿÿÿ8ƒÀÂµµ1
 Ÿ
-java:S1186ò"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›ìš›8ºïª¡±1
+java:S1186ó"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›ìš›8„ÀÂµµ1
 y
-java:S1450Ù"[Remove the "jButtonGioca" field and declare it as a local variable in the relevant methods.(°ƒİ¹8¿ïª¡±1
+java:S1450Ú"[Remove the "jButtonGioca" field and declare it as a local variable in the relevant methods.(°ƒİ¹8‡ÀÂµµ1
 y
-java:S1450Û"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ8Àïª¡±1
+java:S1450Ü"VRemove the "jLabel1" field and declare it as a local variable in the relevant methods.(°ãÉ¸ÿÿÿÿÿ8Àïª¡±1
 y
-java:S1450Ü"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ8Âïª¡±1
+java:S1450İ"VRemove the "jPanel1" field and declare it as a local variable in the relevant methods.(´œ½ÿÿÿÿÿ8Âïª¡±1
 y
-java:S1450İ"VRemove the "jPanel2" field and declare it as a local variable in the relevant methods.(õ òçüÿÿÿÿ8Ãïª¡±1
+java:S1450Ş"VRemove the "jPanel2" field and declare it as a local variable in the relevant methods.(õ òçüÿÿÿÿ8Ãïª¡±1
 t
-java:S1450Ş"VRemove the "jPanel3" field and declare it as a local variable in the relevant methods.(Œ³èÈ8Äïª¡±1
+java:S1450ß"VRemove the "jPanel3" field and declare it as a local variable in the relevant methods.(Œ³èÈ8ŒÀÂµµ1
 H
-java:S1172“"*Remove this unused method parameter "evt".(ï’¾Ü8¾ğª¡±1
+java:S1172”"*Remove this unused method parameter "evt".(ï’¾Ü8¢ÀÂµµ1
 U
-java:S1135”"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8Àğª¡±1
+java:S1135•"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8£ÀÂµµ1
 M
-java:S1172—"*Remove this unused method parameter "evt".(™œîêúÿÿÿÿ8Ãğª¡±1
+java:S1172˜"*Remove this unused method parameter "evt".(™œîêúÿÿÿÿ8¤ÀÂµµ1
 U
-java:S1135˜"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8Æğª¡±1
-H	java:S106š"+Replace this use of System.out by a logger.(¹£»î8Êğª¡±1
+java:S1135™"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8¥ÀÂµµ1
+H	java:S106›"+Replace this use of System.out by a logger.(¹£»î8¥ÀÂµµ1
 M
-java:S1197¸"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8äğª¡±1
+java:S1197¹"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8¬ÀÂµµ1
 c
-java:S2147Ç"ECombine this catch with the one at line 197, which has the same body.(¨¦Š½8åğª¡±1
+java:S2147È"ECombine this catch with the one at line 198, which has the same body.(¨¦Š½8®ÀÂµµ1
 c
-java:S2147É"ECombine this catch with the one at line 199, which has the same body.(ã€ 8åğª¡±1
+java:S2147Ê"ECombine this catch with the one at line 200, which has the same body.(ã€ 8®ÀÂµµ1
 b
-java:S2147Ë"ECombine this catch with the one at line 201, which has the same body.(ñÎ¯%8æğª¡±1
+java:S2147Ì"ECombine this catch with the one at line 202, which has the same body.(ñÎ¯%8¯ÀÂµµ1

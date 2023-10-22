@@ -1,23 +1,42 @@
 
 L
-java:S3740"/Provide the parametrized type for this generic.(ô³â½8„‡µ“³1
-
-java:S1319R"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(»ÓÅ¾úÿÿÿÿ8…‡µ“³1
-…
-java:S1319R"cThe type of "toSort" should be an interface such as "Map" rather than the implementation "HashMap".(»ÓÅ¾úÿÿÿÿ8…‡µ“³1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8†‡µ“³1
-F	java:S106K"+Replace this use of System.out by a logger.(ÙàÖ8Ÿ‡µ“³1
-V
-java:S2864L"4Iterate over the "entrySet" instead of the "keySet".(€ãˆúÿÿÿÿ8Ÿ‡µ“³1
+java:S3740"/Provide the parametrized type for this generic.(ô³â½8„‡µ“³1
 K
-java:S1481T".Remove this unused "fightable" local variable.(€û°‡8¡‡µ“³1
-V
-java:S2864V"4Iterate over the "entrySet" instead of the "keySet".(¼Äà³ùÿÿÿÿ8¡‡µ“³1
-n
-java:S1128"QRemove this unused import 'org.example.EldenRing.isaac.events.FightEventListner'.(ì“8¢‡µ“³1
-q
-java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Character'.(¢€¢8¢‡µ“³1
+java:S3740"/Provide the parametrized type for this generic.(âóê>8ø¾³µµ1
+Q
+java:S3740 "/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ø¾³µµ1
+Q
+java:S3740%"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ù¾³µµ1
+L
+java:S3740*"/Provide the parametrized type for this generic.(ÿ²™–8ù¾³µµ1
+L
+java:S3740-"/Provide the parametrized type for this generic.(³ã¼Ü8ù¾³µµ1
+Q
+java:S37406"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ù¾³µµ1
+Q
+java:S3740<"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+Q
+java:S3740E"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+Q
+java:S3740K"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+Q
+java:S3740S"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+Q
+java:S3740W"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8û¾³µµ1
+
+java:S1319"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(¡Ø…•ÿÿÿÿÿ8ş¾³µµ1
+‹
+java:S1319˜"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ŠğŠ…8ş¾³µµ1
+
+java:S1319˜"cThe type of "toSort" should be an interface such as "Map" rather than the implementation "HashMap".(ŠğŠ…8ş¾³µµ1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8†‡µ“³1
+o
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ô»ôë8¥À³µµ1
+J	java:S108A")Either remove or fill this block of code.(Ö“‚˜ÿÿÿÿÿ8¯À³µµ1
+H	java:S106•"+Replace this use of System.out by a logger.(ÑäÌ“8ÆÀ³µµ1
+Q
+java:S1481š".Remove this unused "fightable" local variable.(ÁÍıÿÿÿÿ8ÊÀ³µµ1
+R
+java:S2864œ"4Iterate over the "entrySet" instead of the "keySet".(ã°ëŒ8ÌÀ³µµ1
 O
-java:S1128"-Remove this unused import 'org.example.Main'.(€¸áÕøÿÿÿÿ8¢‡µ“³1
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8¢‡µ“³1
+java:S1128"-Remove this unused import 'org.example.Main'.(€¸áÕøÿÿÿÿ8¢‡µ“³1

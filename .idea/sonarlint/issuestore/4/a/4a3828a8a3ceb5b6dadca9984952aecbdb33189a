@@ -1,2 +1,6 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥á™Çûÿÿÿÿ
+v
+java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8âÀ³µµ1
+
+java:S1128"]Remove this unused import 'org.example.EldenRing.isaac.models.characters.interactions.Skill'.(ÁÏ£Òÿÿÿÿÿ8ýÖµµµ1
