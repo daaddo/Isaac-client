@@ -8,6 +8,7 @@ import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.allymodels.SuperAgilityMainCharacterTest;
+import org.example.EldenRing.isaac.models.characters.interactions.DeBuffAllEnemiesSkillInteraction;
 import org.example.EldenRing.isaac.models.characters.interactions.StroncaturaSkillInteraction;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.RoomCoordinates;
@@ -153,7 +154,7 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().addCharacter(new SuperAgilityMainCharacterTest("deborah", List.of(new StroncaturaSkillInteraction(), new StroncaturaSkillInteraction())));
+            GameManager.getInstance().addCharacter(new SuperAgilityMainCharacterTest("deborah", List.of(new StroncaturaSkillInteraction(), new DeBuffAllEnemiesSkillInteraction())));
         }
         else if (actionCommand.equals("Test2")) {
             GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5,"C:\\images\\dennys.png"));

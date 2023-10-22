@@ -11,7 +11,7 @@ public class SkeletonMinion extends NormalEnemy {
             public void fight(int piano) {
                 System.out.println("[DEBUG] SKELETON ATTACKS");
             }
-        },"C:/images/image-removebg-preview (1).png",enemyType,1,6);
+        },"images/image-removebg-preview (1).png",enemyType,1,6);
     }
     public void revive(){
         this.setCurrentHealth(this.getMaxHealth()/2);

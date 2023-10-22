@@ -11,6 +11,6 @@ public class DennysMinion extends NormalEnemy {
             public void fight(int piano) {
                 System.out.println("[DEBUG]: Ghost ha attaccato");
             }
-        },"C:/images/dennys.png",enemytipe,2,5);
+        },"images/dennys.png",enemytipe,2,5);
     }
 }

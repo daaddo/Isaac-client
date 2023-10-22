@@ -197,10 +197,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
         }
     }
 
-    @Override
-    public void setColor(Skill.TargetType targetType) {
 
-    }
 
     @Override
     public void setTarget(Target target) {
@@ -208,7 +205,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     }
 
     @Override
-    public void resetTarget() {
+    public void resetTarget(Target target) {
 
     }
+
+
 }

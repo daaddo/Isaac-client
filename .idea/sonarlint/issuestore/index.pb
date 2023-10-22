@@ -77,8 +77,6 @@ w
 Gsrc/main/java/org/example/EldenRing/isaac/events/FightEventListner.java,4\a\4a3828a8a3ceb5b6dadca9984952aecbdb33189a
 s
 Csrc/main/java/org/example/EldenRing/isaac/gui/InteractionPanel.java,3\c\3cc1a16ade9317a072fd32ee4969480e5e415750
-w
-Gsrc/main/java/org/example/EldenRing/isaac/gui/MainCharacterOptions.java,7\9\790c8c8204c63895aabd30bedf7c97911ebbf72a
 p
 @src/main/java/org/example/EldenRing/isaac/rooms/models/Room.java,6\a\6ad6be718e92eaca2ff5c30849546befeac5347a
 w

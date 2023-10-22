@@ -30,7 +30,12 @@ public class FightManager {
     public void reset(){
         for (MainCharacter mainCharacter : allyAgilityMap.keySet()) {
             for (FightEventListner fightEventListner : fightEventListners) {
-
+                fightEventListner.resetTarget(new Target(mainCharacter));
+            }
+        }
+        for (Enemy enemy : enemyAgilityMap.keySet()) {
+            for (FightEventListner fightEventListner : fightEventListners) {
+                fightEventListner.resetTarget(new Target(enemy));
             }
         }
     }

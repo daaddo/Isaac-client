@@ -7,8 +7,7 @@ import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 public interface FightEventListner <T extends Character>{
     void startTurn(T character, Boolean isally);
-    @Deprecated(forRemoval = true)
-    void setColor(Skill.TargetType targetType);
+
     void setTarget(Target target);
-    void resetTarget();
+    void resetTarget(Target target);
 }

@@ -115,9 +115,4 @@ public class GameManager <T extends Character> {
         }
     }
 
-    public void setColor(Skill.TargetType type) {
-        for (FightEventListner fightEventListner : fightEventListners) {
-            fightEventListner.setColor(type);
-        }
-    }
 }

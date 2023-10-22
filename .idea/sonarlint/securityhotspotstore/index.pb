@@ -73,8 +73,6 @@ v
 Fsrc/main/java/org/example/EldenRing/isaac/manager/DatabaseManager.java,d\a\da7afe070dd08e748854b0cff1b78907670ff451
 v
 Fsrc/main/java/org/example/EldenRing/isaac/events/GameEventListner.java,d\3\d32e4a4af6dc49ac2ad17ff74580669421f190b8
-w
-Gsrc/main/java/org/example/EldenRing/isaac/gui/MainCharacterOptions.java,7\9\790c8c8204c63895aabd30bedf7c97911ebbf72a
 s
 Csrc/main/java/org/example/EldenRing/isaac/gui/InteractionPanel.java,3\c\3cc1a16ade9317a072fd32ee4969480e5e415750
 w
