@@ -7,12 +7,12 @@ package org.example.EldenRing.isaac.gui;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.Target;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 
 /**
  *
@@ -27,12 +27,47 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        URL imageUrl = getClass().getResource(characterImgPath);
-        ImageIcon icon = new ImageIcon(imageUrl);
-        Image image = icon.getImage();
-        Image scaledImage = image.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
-        g.drawImage(scaledImage, getHeight(), 0, null);
+        // URL imageUrl = getClass().getResource(characterImgPath);
+       // jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logger_logo4.png"))); // NOI18N
+     //   ImageIcon icon = new ImageIcon(imageUrl);
+       // Image image = icon.getImage();
+
     }
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+        if (character.equals(this.character)){
+            if (character instanceof MainCharacter) {
+                this.jLabelCharacterHealth.setText(character.getCurrentHealth() + "/" + character.getMaxHealth());
+
+            }
+            this.jPanelCharacterImg.removeAll();
+
+            this.jPanelCharacterImg.revalidate();
+            this.jPanelCharacterImg.repaint();
+
+        }
+
+    }
+
+
+
+
+    @Override
+    public void setTarget(Target target) {
+        if (target.target().equals(this.character)){
+            this.jPanelCharacterImg.setBackground(Color.RED);
+        }
+    }
+
+    @Override
+    public void resetTarget(Target target) {
+
+        if (target.target().equals(this.character)){
+            // set backgrounf to transparent
+            this.jPanelCharacterImg.setBackground(null);
+        }
+    }
+
 
     /**
      * Creates new form JPanelEnemy
@@ -42,11 +77,15 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         initComponents();
     }
     public CharacterPanel(Character character) {
+        initComponents();
         this.character = character;
         GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
         this.characterImgPath = character.getAvatarPath();
-        initComponents();
+        System.out.println(characterImgPath);
+        Image image = new ImageIcon(CharacterPanel.class.getResource(characterImgPath)).getImage();
+        this.jLabelCharacterImg.setIcon(new ImageIcon(image));
+
         jLabelCharacterHealth.setText(""+character.getCurrentHealth()+" / "+character.getMaxHealth());
         jLabelCharacterName.setText(character.getName());
         this.invalidate();
@@ -76,16 +115,14 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
         jPanelCharacterImg.setBackground(new java.awt.Color(255, 255, 0));
 
-        jLabelCharacterImg.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanelEnemyImgLayout = new javax.swing.GroupLayout(jPanelCharacterImg);
-        jPanelCharacterImg.setLayout(jPanelEnemyImgLayout);
-        jPanelEnemyImgLayout.setHorizontalGroup(
-            jPanelEnemyImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelCharacterImgLayout = new javax.swing.GroupLayout(jPanelCharacterImg);
+        jPanelCharacterImg.setLayout(jPanelCharacterImgLayout);
+        jPanelCharacterImgLayout.setHorizontalGroup(
+            jPanelCharacterImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanelEnemyImgLayout.setVerticalGroup(
-            jPanelEnemyImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelCharacterImgLayout.setVerticalGroup(
+            jPanelCharacterImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
         );
 
@@ -126,44 +163,10 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelCharacterImg;
     private javax.swing.JLabel jLabelCharacterHealth;
+    private javax.swing.JLabel jLabelCharacterImg;
     private javax.swing.JLabel jLabelCharacterName;
     private javax.swing.JPanel jPanelCharacterImg;
-
-    @Override
-    public void startTurn(Character character, Boolean isally) {
-        if (character.equals(this.character)){
-            if (character instanceof MainCharacter) {
-                this.jLabelCharacterHealth.setText(character.getCurrentHealth() + "/" + character.getMaxHealth());
-
-            }
-            this.jPanelCharacterImg.removeAll();
-            this.jPanelCharacterImg.revalidate();
-            this.jPanelCharacterImg.repaint();
-
-        }
-
-    }
-
-
-
-
-    @Override
-    public void setTarget(Target target) {
-        if (target.target().equals(this.character)){
-            this.setBackground(Color.RED);
-        }
-    }
-
-    @Override
-    public void resetTarget(Target target) {
-
-        if (target.target().equals(this.character)){
-            // set backgrounf to transparent
-            this.setBackground(null);
-        }
-    }
     // End of variables declaration//GEN-END:variables
 
 }

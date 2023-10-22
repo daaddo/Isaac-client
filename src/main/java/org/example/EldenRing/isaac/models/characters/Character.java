@@ -48,7 +48,9 @@ public abstract class Character implements Droppable {
         this.agility = agility;
         this.avatarPath = avatarPath;
     }
-    public abstract String getAvatarPath();
+    public String getAvatarPath() {
+        return avatarPath;
+    }
     public int getAgility() {
         return agility;
     }

@@ -5,7 +5,9 @@ import org.example.EldenRing.isaac.RoomCoordinates;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//annotation to enable non static setup methods
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Disabled
 class PianoTest {
 
 

@@ -18,10 +18,6 @@ public class MainCharacter extends Character implements Fightable {
         return 0;
     }
 
-    @Override
-    public String getAvatarPath() {
-        return this.avatarPath;
-    }
 
     @Override
     public int getAgility(){

@@ -8,9 +8,7 @@ public class Enemy extends Character implements Fightable {
         super(name, maxHealth, currentHealth, fightingBehaviour, agilty,avatarPath);
         this.difficultyPoint = difficultyPoint;
     }
-    public String getAvatarPath(){
-        return this.avatarPath;
-    }
+
     @Override
     public int getValue() {
         return 0;
