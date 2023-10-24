@@ -175,32 +175,32 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         );
     }// </editor-fold>//GEN-END:initComponents
     @TODO(todo="aggiungere la logica dietro gli attacchi")
+    private void useSkill(Skill skill){
+        if(skill.getTarget()== Skill.TargetType.ENEMY || skill.getTarget()== Skill.TargetType.ENEMYTEAM){
+            if (this.character instanceof Enemy enemy){
+                System.out.println("[DEBUG] Enemy clicked");
+            }
+            else{
+                System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
+            }
+        }
+        else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ){
+            if (this.character instanceof MainCharacter ally){
+                System.out.println("[DEBUG] ally clicked");
+            }
+            else{
+                System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
+            }
+        } else if (skill.getTarget() == Skill.TargetType.ALL) {
+            System.out.println("[DEBUG] All characters skill clicked");
+        }
+    }
+
     private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         Optional<Skill> currentskillTargetActive = FightManager.getInstance().getCurrentInteractionActive();
         if (currentskillTargetActive.isPresent()){
             Skill skill = currentskillTargetActive.get();
-            if(skill.getTarget()== Skill.TargetType.ENEMY || skill.getTarget()== Skill.TargetType.ENEMYTEAM){
-                if (this.character instanceof Enemy enemy){
-                    System.out.println("[DEBUG] Enemy clicked");
-                    return;
-                }
-                else{
-                    System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
-                    return;
-                }
-            }
-            else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ){
-                if (this.character instanceof MainCharacter ally){
-                    System.out.println("[DEBUG] ally clicked");
-                    return;
-                }
-                else{
-                    System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
-                    return;
-                }
-            } else if (skill.getTarget() == Skill.TargetType.ALL) {
-                System.out.println("[DEBUG] All characters skill clicked");
-            }
+            useSkill(skill);
         }
         else{
             System.out.println("[DEBUG] No skill active");
