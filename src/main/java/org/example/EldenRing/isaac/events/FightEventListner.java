@@ -5,6 +5,8 @@ import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
+import java.util.Optional;
+
 public interface FightEventListner <T extends Character>{
     void startTurn(T character, Boolean isally);
 
@@ -12,4 +14,5 @@ public interface FightEventListner <T extends Character>{
     void resetTarget(Target target);
 
     Boolean isInteractionActive();
+    Optional<Skill> getActiveInteraction();
 }

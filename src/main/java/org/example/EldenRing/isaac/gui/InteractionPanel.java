@@ -13,6 +13,7 @@ import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import java.awt.*;
+import java.util.Optional;
 
 /**
  *
@@ -134,6 +135,14 @@ public class InteractionPanel extends javax.swing.JPanel implements FightEventLi
     @Override
     public Boolean isInteractionActive() {
         return isActive;
+    }
+
+    @Override
+    public Optional<Skill> getActiveInteraction() {
+        if (isActive){
+            return Optional.of(skill);
+        }
+        return Optional.empty();
     }
     // End of variables declaration//GEN-END:variables
 }

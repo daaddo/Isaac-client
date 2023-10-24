@@ -56,7 +56,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
     private void addAlly(List<MainCharacter> character) {
         for (int i = 0; i < character.size(); i++) {
-            jPanelContainerPersonalCharacters.add(new CharacterPanel(character.get(i)));
+            jPanelContainerPersonalCharacters.add(new CharacterPanel(character.get(i),true));
             FightManager.getInstance().addAlly(character.get(i));
 
         }
@@ -64,7 +64,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
     private void addEnemy(List<NormalEnemy> enemies) {
         for (int i = 0; i < enemies.size(); i++) {
-            jPanelContainer.add(new CharacterPanel(enemies.get(i)));
+            jPanelContainer.add(new CharacterPanel(enemies.get(i),false));
             FightManager.getInstance().addEnemy(enemies.get(i));
         }
 
@@ -75,11 +75,6 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     }
     public BattleFrame(){
         initComponents();
-        List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
-        for (int i = 0; i < enemies.size(); i++) {
-            jPanelContainer.add(new CharacterPanel(enemies.get(i)));
-        }
-
     }
 
     /**
@@ -212,6 +207,11 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     @Override
     public Boolean isInteractionActive() {
         return false;
+    }
+
+    @Override
+    public Optional<Skill> getActiveInteraction() {
+        return Optional.empty();
     }
 
 

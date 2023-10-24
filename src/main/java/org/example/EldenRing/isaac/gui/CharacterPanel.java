@@ -4,15 +4,21 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.TODO;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.Enemy;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.Target;
+import org.example.EldenRing.isaac.models.characters.interactions.Interaction;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.Optional;
 
 /**
  *
@@ -21,7 +27,7 @@ import java.awt.*;
 public class CharacterPanel extends javax.swing.JPanel implements FightEventListner {
     private Character character;
     private String characterImgPath;
-
+    private Boolean isAlly;
 
 
     @Override
@@ -73,6 +79,11 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         return false;
     }
 
+    @Override
+    public Optional<Skill> getActiveInteraction() {
+        return Optional.empty();
+    }
+
 
     /**
      * Creates new form JPanelEnemy
@@ -81,7 +92,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     public CharacterPanel(){
         initComponents();
     }
-    public CharacterPanel(Character character) {
+    public CharacterPanel(Character character, Boolean isAlly) {
         initComponents();
         this.character = character;
         GameManager.getInstance().subscribeFightListner(this);
@@ -97,6 +108,8 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         this.validate();
         this.repaint();
     }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,8 +174,37 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+    @TODO(todo="aggiungere la logica dietro gli attacchi")
+    private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        Optional<Skill> currentskillTargetActive = FightManager.getInstance().getCurrentInteractionActive();
+        if (currentskillTargetActive.isPresent()){
+            Skill skill = currentskillTargetActive.get();
+            if(skill.getTarget()== Skill.TargetType.ENEMY || skill.getTarget()== Skill.TargetType.ENEMYTEAM){
+                if (this.character instanceof Enemy enemy){
+                    System.out.println("[DEBUG] Enemy clicked");
+                    return;
+                }
+                else{
+                    System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
+                    return;
+                }
+            }
+            else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ){
+                if (this.character instanceof MainCharacter ally){
+                    System.out.println("[DEBUG] ally clicked");
+                    return;
+                }
+                else{
+                    System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
+                    return;
+                }
+            } else if (skill.getTarget() == Skill.TargetType.ALL) {
+                System.out.println("[DEBUG] All characters skill clicked");
+            }
+        }
+        else{
+            System.out.println("[DEBUG] No skill active");
+        }
 
     }//GEN-LAST:event_formMouseClicked
 

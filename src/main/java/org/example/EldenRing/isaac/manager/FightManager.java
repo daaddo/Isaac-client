@@ -3,13 +3,11 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.interactions.Interaction;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.Main;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FightManager {
     private static FightManager instance = null;
@@ -41,6 +39,16 @@ public class FightManager {
     }
     public void subscribeFightListner(FightEventListner fightEventListner){
         this.fightEventListners.add(fightEventListner);
+    }
+
+    public Optional<Skill> getCurrentInteractionActive(){
+        Optional<Skill> interaction = Optional.empty();
+        for (FightEventListner fightEventListner : fightEventListners) {
+            if(fightEventListner.isInteractionActive()){
+                interaction = fightEventListner.getActiveInteraction();
+            }
+        }
+        return interaction;
     }
     public void unsubscribeFightListner(FightEventListner fightEventListner){
         this.fightEventListners.remove(fightEventListner);
