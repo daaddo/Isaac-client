@@ -167,4 +167,14 @@ public class FightManager {
     public void addAlly(MainCharacter ally) {
         this.allyAgilityMap.put(ally, ally.getAgility());
     }
+
+    public Boolean isAnyActive() {
+        Boolean isAnyActive = false;
+        for (FightEventListner fightEventListner : fightEventListners) {
+            if (fightEventListner.isInteractionActive()) {
+                isAnyActive =  true;
+            }
+        }
+        return isAnyActive;
+    }
 }

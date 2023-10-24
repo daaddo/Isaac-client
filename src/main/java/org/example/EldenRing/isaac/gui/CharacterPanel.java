@@ -68,6 +68,11 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         }
     }
 
+    @Override
+    public Boolean isInteractionActive() {
+        return false;
+    }
+
 
     /**
      * Creates new form JPanelEnemy

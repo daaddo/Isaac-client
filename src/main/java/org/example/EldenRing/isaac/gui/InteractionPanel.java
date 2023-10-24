@@ -18,7 +18,7 @@ import java.awt.*;
  *
  * @author trapa
  */
-public class InteractionPanel extends javax.swing.JPanel {
+public class InteractionPanel extends javax.swing.JPanel implements FightEventListner{
 
     private boolean isActive = false;
     private Skill skill;
@@ -30,6 +30,7 @@ public class InteractionPanel extends javax.swing.JPanel {
     }
     public InteractionPanel(Skill skill) {
         initComponents();
+        FightManager.getInstance().subscribeFightListner(this);
         this.skill = skill;
         this.jButton1.setToolTipText("<html><b> ciccio</b> <br> <font color = red> frasetta rossa</font>");
         this.jButton1.setText("<html> <b> <font color = yellow>"+skill.getName()+"</font></b> <br> <font color = red>");
@@ -97,18 +98,43 @@ public class InteractionPanel extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        isActive = !isActive;
-        if (isActive){
-            FightManager.getInstance().highLightTarget(skill.getTarget());
-        }
-        else{
+        Boolean isActive = !this.isActive;
+        if (FightManager.getInstance().isAnyActive()){
             FightManager.getInstance().reset();
         }
+        if(isActive) {
+            FightManager.getInstance().highLightTarget(skill.getTarget());
+        }
+        else {
+            FightManager.getInstance().reset();
+        }
+        this.isActive = isActive;
+
     }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+
+    }
+
+    @Override
+    public void setTarget(Target target) {
+
+    }
+
+    @Override
+    public void resetTarget(Target target) {
+        this.isActive = false;
+    }
+
+    @Override
+    public Boolean isInteractionActive() {
+        return isActive;
+    }
     // End of variables declaration//GEN-END:variables
 }
 //prendo da qua la abilità che devo usare poi la passo su Game Manager e da li

@@ -23,12 +23,16 @@ Q
 java:S3740S"/Provide the parametrized type for this generic.(‡þÀÖøÿÿÿÿ8ú¾³µµ1
 Q
 java:S3740W"/Provide the parametrized type for this generic.(‡þÀÖøÿÿÿÿ8û¾³µµ1
+R
+java:S3740­"/Provide the parametrized type for this generic.(‡þÀÖøÿÿÿÿ8ëöÌ“¶1
 
 java:S1319"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(¡Ø…•ÿÿÿÿÿ8þ¾³µµ1
 ‹
 java:S1319˜"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ŠðŠ…8þ¾³µµ1
 
 java:S1319˜"cThe type of "toSort" should be an interface such as "Map" rather than the implementation "HashMap".(ŠðŠ…8þ¾³µµ1
+K
+java:S5411®"(Use a primitive boolean expression here.(¼·ëÔÿÿÿÿÿ8÷öÌ“¶1
 u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8†‡µ“³1
 o
 java:S37763"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ô»ôë8¥À³µµ1

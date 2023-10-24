@@ -209,5 +209,10 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
     }
 
+    @Override
+    public Boolean isInteractionActive() {
+        return false;
+    }
+
 
 }

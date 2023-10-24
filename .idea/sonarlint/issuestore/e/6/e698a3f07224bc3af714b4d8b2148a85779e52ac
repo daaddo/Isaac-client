@@ -1,18 +1,16 @@
 
 Q
 java:S3740"/Provide the parametrized type for this generic.(›§ëšøÿÿÿÿ8¿ßê¾µ1
-d
-java:S1192S"HDefine a constant instead of duplicating this literal "jLabel1" 3 times.(Óßõ_8Äßê¾µ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8Æßê¾µ1
 M
 java:S1948"+Make "character" transient or serializable.(Şş˜˜ıÿÿÿÿ8áßê¾µ1
 E
 java:S1185"(Remove this method to simply inherit it.(¶øÂÁ8Ö–¿µ1
 ]	java:S125"<This block of commented-out lines of code should be removed.(ÒÂ…¨ûÿÿÿÿ8Û‘í¾µ1
-L	java:S1062"+Replace this use of System.out by a logger.(Å·ÜÛøÿÿÿÿ8–•¿µ1
+J
+java:S2447I"-Null is returned but a "Boolean" is expected.(¥¹ï8ÅíÌ“¶1
+L	java:S106Z"+Replace this use of System.out by a logger.(Å·ÜÛøÿÿÿÿ8–•¿µ1
 W
-java:S1161L":Add the "@Override" annotation above this method signature(†ŒË³8òßê¾µ1
-G
-java:S1172"*Remove this unused method parameter "evt".(€›öö8şßê¾µ1
-K
-java:S1128")Remove this unused import 'java.net.URL'.(ñìÁ„üÿÿÿÿ8¢Ö–¿µ1
+java:S1161t":Add the "@Override" annotation above this method signature(†ŒË³8òßê¾µ1
+H
+java:S1172¥"*Remove this unused method parameter "evt".(€›öö8şßê¾µ1

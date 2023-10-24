@@ -6,7 +6,7 @@ import org.example.EldenRing.isaac.models.characters.interactions.impl.WeakenDeb
 
 public class StroncaturaSkillInteraction extends Skill {
     public StroncaturaSkillInteraction() {
-        super("Stroncatura",TargetType.ENEMY, new WeakenDebuff(), new ContinuousHealingBuff());
+        super("Stroncatura",TargetType.ALL, new WeakenDebuff(), new ContinuousHealingBuff());
     }
 
 

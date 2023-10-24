@@ -10,4 +10,6 @@ public interface FightEventListner <T extends Character>{
 
     void setTarget(Target target);
     void resetTarget(Target target);
+
+    Boolean isInteractionActive();
 }
