@@ -12,7 +12,7 @@ import java.util.List;
 public class SuperAgilityMainCharacterTest extends MainCharacter {
     private List<Skill> skills;
     public SuperAgilityMainCharacterTest(String name, List<Skill> interactions) {
-        super(name, interactions,30,"/images/isaac.png");
+        super(name, interactions,10,"/images/isaac.png");
         this.skills = interactions;
     }
 

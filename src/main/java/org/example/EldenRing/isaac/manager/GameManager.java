@@ -3,12 +3,9 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.Game;
-import org.example.EldenRing.isaac.gui.BattleFrame;
 import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.Fightable;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.RoomCoordinates;
-import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -111,7 +108,7 @@ public class GameManager <T extends Character> {
 
     public void giveTurn(T character, Boolean isAlly) {
         for (FightEventListner fightEventListner : fightEventListners) {
-            fightEventListner.startTurn(character, isAlly);
+            fightEventListner.getNextTurns(character, isAlly);
         }
     }
 

@@ -118,7 +118,7 @@ public class InteractionPanel extends javax.swing.JPanel implements FightEventLi
     private javax.swing.JButton jButton1;
 
     @Override
-    public void startTurn(Character character, Boolean isally) {
+    public void getNextTurns(Character character, Boolean isally) {
 
     }
 
@@ -143,6 +143,11 @@ public class InteractionPanel extends javax.swing.JPanel implements FightEventLi
             return Optional.of(skill);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+
     }
     // End of variables declaration//GEN-END:variables
 }

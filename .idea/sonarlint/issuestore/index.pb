@@ -111,3 +111,5 @@ n
 >src/test/java/org/example/EldenRing/isaac/piano/PianoTest.java,f\2\f27dc39c5f385d171746e866c24dababd68aa2c2
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+š
+jsrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/OnAlliesTestSkillInteraction.java,8\f\8face83ff074296f394b7c1437e66cbe12d81d8e

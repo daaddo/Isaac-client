@@ -1,11 +1,10 @@
 package org.example.EldenRing.isaac.manager;
 
 import org.example.EldenRing.isaac.events.FightEventListner;
+import org.example.EldenRing.isaac.gui.BattleFrame;
 import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.interactions.Interaction;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
-import org.example.Main;
 
 import java.util.*;
 
@@ -132,7 +131,13 @@ public class FightManager {
         return currentCharacter;
     }
 
-    public HashMap<Character,Boolean> nextTurn(){
+    public void giveTurn(Character character,Boolean isAlly){
+        for (FightEventListner fightEventListner : fightEventListners) {
+            fightEventListner.getNextTurns(character,isAlly);
+        }
+    }
+
+    public HashMap<Character,Boolean> getNextTurnCharacters(){
         initializedMaps();
         HashMap< Character, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
             while (agilityOver100AndIsAllyMap.isEmpty()) {
@@ -184,5 +189,13 @@ public class FightManager {
             }
         }
         return isAnyActive;
+    }
+
+    public void callNextTurn() {
+        for (FightEventListner fightEventListner : fightEventListners) {
+            if(fightEventListner instanceof BattleFrame){
+                ((BattleFrame) fightEventListner).goNextRound();
+            }
+        }
     }
 }

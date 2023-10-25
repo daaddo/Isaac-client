@@ -1,16 +1,30 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(›§ëšøÿÿÿÿ8¿ßê¾µ1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8Æßê¾µ1
+java:S3740"/Provide the parametrized type for this generic.(›§ëšøÿÿÿÿ8ÀğÆ™¶1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8ÎğÆ™¶1
 M
-java:S1948"+Make "character" transient or serializable.(Şş˜˜ıÿÿÿÿ8áßê¾µ1
+java:S1948"+Make "character" transient or serializable.(Şş˜˜ıÿÿÿÿ8ùğÆ™¶1
 E
-java:S1185"(Remove this method to simply inherit it.(¶øÂÁ8Ö–¿µ1
-]	java:S125"<This block of commented-out lines of code should be removed.(ÒÂ…¨ûÿÿÿÿ8Û‘í¾µ1
-J
-java:S2447I"-Null is returned but a "Boolean" is expected.(¥¹ï8ÅíÌ“¶1
-L	java:S106Z"+Replace this use of System.out by a logger.(Å·ÜÛøÿÿÿÿ8–•¿µ1
-W
-java:S1161t":Add the "@Override" annotation above this method signature(†ŒË³8òßê¾µ1
-H
-java:S1172¥"*Remove this unused method parameter "evt".(€›öö8şßê¾µ1
+java:S1185""(Remove this method to simply inherit it.(¶øÂÁ8ûğÆ™¶1
+]	java:S125$"<This block of commented-out lines of code should be removed.(ÒÂ…¨ûÿÿÿÿ8üğÆ™¶1
+O
+java:S1172_"-Remove this unused method parameter "isAlly".(”±ÒÒúÿÿÿÿ8ñÆ™¶1
+L	java:S106e"+Replace this use of System.out by a logger.(Å·ÜÛøÿÿÿÿ8‚ñÆ™¶1
+X
+java:S1161":Add the "@Override" annotation above this method signature(†ŒË³8ŠñÆ™¶1
+M
+java:S1481´"*Remove this unused "enemy" local variable.(½¥Îˆùÿÿÿÿ8™ñÆ™¶1
+G	java:S106µ"+Replace this use of System.out by a logger.(à¯«}8šñÆ™¶1
+H	java:S106¸"+Replace this use of System.out by a logger.(ÆÔÁã8šñÆ™¶1
+L
+java:S1481¼")Remove this unused "ally" local variable.(–İ«¸üÿÿÿÿ8›ñÆ™¶1
+M	java:S106½"+Replace this use of System.out by a logger.(¾äÙôøÿÿÿÿ8›ñÆ™¶1
+H	java:S106À"+Replace this use of System.out by a logger.(â£‚8ñÆ™¶1
+M	java:S106Ã"+Replace this use of System.out by a logger.(İËò¨ÿÿÿÿÿ8ñÆ™¶1
+M
+java:S1172Ç"*Remove this unused method parameter "evt".(¼¡è¾ùÿÿÿÿ8¶öË™¶1
+H	java:S106Î"+Replace this use of System.out by a logger.(àùÑ›8 ñÆ™¶1
+…
+java:S1128"cRemove this unused import 'org.example.EldenRing.isaac.models.characters.interactions.Interaction'.(˜¢¨¤ıÿÿÿÿ8¡ñÆ™¶1
+L
+java:S1068"*Remove this unused "isAlly" private field.(ÉÚÙ¼şÿÿÿÿ8¡ñÆ™¶1

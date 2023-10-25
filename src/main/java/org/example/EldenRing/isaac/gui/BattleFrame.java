@@ -12,8 +12,6 @@ import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -23,27 +21,39 @@ import java.util.Optional;
  * @author trapa
  */
 public class BattleFrame extends javax.swing.JFrame implements FightEventListner {
-
     /**
      * Creates new form BattleFrame
      */
     private HashMap<? extends Character,Boolean> turnMap = new HashMap<>();
+    private nextCharacter nextCharacter;
     public BattleFrame(List<MainCharacter> character) {
         initComponents();
         GameManager.getInstance().subscribeFightListner(this);
+        FightManager.getInstance().subscribeFightListner(this);
         List<NormalEnemy> enemies = new RandomEnemiesForARoomFactory().normalEnemiesRandomGenerator();
         addAlly(character);
         addEnemy(enemies);
-        turnMap = FightManager.getInstance().nextTurn();
-        //return the first elemenent of the map
+        turnMap = FightManager.getInstance().getNextTurnCharacters();
         Character character1 = turnMap.keySet().stream().findFirst().get();
         Boolean b = turnMap.get(character1);
-        GameManager.getInstance().giveTurn(character1,b);
+        nextCharacter = new nextCharacter(character1,b);
+        GameManager.getInstance().giveTurn(nextCharacter.character(), nextCharacter.isAlly());
         invalidate();
         validate();
         repaint();
         setVisible(true);
     }
+
+    public void goNextRound(){
+        turnMap.remove(turnMap.keySet().stream().findFirst().get());
+        if (turnMap.isEmpty()){
+            turnMap = FightManager.getInstance().getNextTurnCharacters();
+        }
+        nextCharacter = new nextCharacter(turnMap.keySet().stream().findFirst().get(),turnMap.get(turnMap.keySet().stream().findFirst().get()));
+        GameManager.getInstance().giveTurn(nextCharacter.character(), nextCharacter.isAlly());
+
+    }
+
     public void setEnemiesBackground(Skill.TargetType type){
 
     }
@@ -51,7 +61,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
         return turnMap.get(character);
     }
     public static void startTurn(){
-        FightManager.getInstance().nextTurn();
+        FightManager.getInstance().getNextTurnCharacters();
     }
 
     private void addAlly(List<MainCharacter> character) {
@@ -181,7 +191,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
 
     @Override
-    public void startTurn(Character character, Boolean isally) {
+    public void getNextTurns(Character character, Boolean isally) {
         if (character instanceof Fightable){
             if(character instanceof MainCharacter mainCharacter) {
                 for (Skill skill : mainCharacter.getSkills()) {
@@ -212,6 +222,12 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     @Override
     public Optional<Skill> getActiveInteraction() {
         return Optional.empty();
+    }
+
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+        this.nextCharacter = new nextCharacter(character,isally);
+        goNextRound();
     }
 
 

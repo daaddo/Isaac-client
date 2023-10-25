@@ -1,46 +1,44 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(Û¿Üşøÿÿÿÿ8ØôÌ“¶1
+java:S3740"/Provide the parametrized type for this generic.(Û¿Üşøÿÿÿÿ8Ú§Â˜¶1
 J
-java:S1604M"(Make this anonymous inner class a lambda(…æ©âÿÿÿÿÿ8Ü‘“£´1
+java:S1604N"(Make this anonymous inner class a lambda(…æ©âÿÿÿÿÿ8ã§Â˜¶1
 J
-java:S5411f"(Use a primitive boolean expression here.( áúÿÿÿÿ8éôÌ“¶1
+java:S5411g"(Use a primitive boolean expression here.( áúÿÿÿÿ8ä§Â˜¶1
 J
-java:S5411j"(Use a primitive boolean expression here.(»¤•Çıÿÿÿÿ8ëôÌ“¶1
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡
+java:S5411j"(Use a primitive boolean expression here.(»¤•Çıÿÿÿÿ8å§Â˜¶1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²š‡8é§Â˜¶1
 £
-java:S1186y"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ª£“ûÿÿÿÿ8ŸõÌ“¶1
+java:S1186y"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ª£“ûÿÿÿÿ8­¨Â˜¶1
 £
-java:S1186~"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯­œøÿÿÿÿ8 õÌ“¶1
-¤
-java:S1186ƒ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ï†ŒŞıÿÿÿÿ8 õÌ“¶1
+java:S1186~"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯­œøÿÿÿÿ8®¨Â˜¶1
 I
-java:S1948"'Make "skill" transient or serializable.(Ûİ¢¶ûÿÿÿÿ8£Á³µµ1
+java:S1948"'Make "skill" transient or serializable.(Ûİ¢¶ûÿÿÿÿ8²¨Â˜¶1
 9
-java:S6205&"Remove this redundant block.(š¤ô©8ƒ”“£´1
+java:S6205'"Remove this redundant block.(š¤ô©8º¨Â˜¶1
 9
-java:S6205)"Remove this redundant block.(¨ÄÊ¡8†”“£´1
+java:S6205*"Remove this redundant block.(¨ÄÊ¡8º¨Â˜¶1
 >
-java:S6205,"Remove this redundant block.(Ö“‚˜ÿÿÿÿÿ8ˆ”“£´1
+java:S6205-"Remove this redundant block.(Ö“‚˜ÿÿÿÿÿ8»¨Â˜¶1
 9
-java:S62050"Remove this redundant block.(ÚŒË8‰”“£´1
+java:S62051"Remove this redundant block.(ÚŒË8¼¨Â˜¶1
 >
-java:S62053"Remove this redundant block.(÷—Âñüÿÿÿÿ8Š”“£´1
+java:S62054"Remove this redundant block.(÷—Âñüÿÿÿÿ8½¨Â˜¶1
 >
-java:S62056"Remove this redundant block.(©Ö©¨ùÿÿÿÿ8Œ”“£´1
+java:S62057"Remove this redundant block.(©Ö©¨ùÿÿÿÿ8¾¨Â˜¶1
 W
-java:S1161I":Add the "@Override" annotation above this method signature(†ŒË³8¯Á³µµ1
+java:S1161J":Add the "@Override" annotation above this method signature(†ŒË³8Ä¨Â˜¶1
 G
-java:S1172_"*Remove this unused method parameter "evt".(‚À‡ä8¸”“£´1
+java:S1172`"*Remove this unused method parameter "evt".(‚À‡ä8Î¨Â˜¶1
 T
-java:S1135`"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8º”“£´1
+java:S1135a"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8Î¨Â˜¶1
 L
-java:S1172c"*Remove this unused method parameter "evt".(óÄÔØøÿÿÿÿ8¶Á³µµ1
+java:S1172d"*Remove this unused method parameter "evt".(óÄÔØøÿÿÿÿ8Ğ¨Â˜¶1
 ^
-java:S1117e"<Rename "isActive" which hides the field declared at line 23.(å‰®½ÿÿÿÿÿ8æõÌ“¶1
+java:S1117f"<Rename "isActive" which hides the field declared at line 24.(å‰®½ÿÿÿÿÿ8Ñ¨Â˜¶1
 T
-java:S1135d"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8·Á³µµ1
+java:S1135e"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8Ñ¨Â˜¶1
 n
-java:S1128	"LRemove this unused import 'org.example.EldenRing.isaac.manager.GameManager'.(¦ÙÀòúÿÿÿÿ8¾”“£´1
+java:S1128	"LRemove this unused import 'org.example.EldenRing.isaac.manager.GameManager'.(¦ÙÀòúÿÿÿÿ8…£Ô¾¶1
 v
-java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8¿”“£´1
+java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(è“Í–ÿÿÿÿÿ8…£Ô¾¶1

@@ -12,7 +12,6 @@ import org.example.EldenRing.isaac.models.characters.Character;
 import org.example.EldenRing.isaac.models.characters.Enemy;
 import org.example.EldenRing.isaac.models.characters.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.Target;
-import org.example.EldenRing.isaac.models.characters.interactions.Interaction;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import javax.swing.*;
@@ -40,14 +39,12 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
     }
     @Override
-    public void startTurn(Character character, Boolean isally) {
+    public void getNextTurns(Character character, Boolean isally) {
         if (character.equals(this.character)){
             if (character instanceof MainCharacter) {
                 this.jLabelCharacterHealth.setText(character.getCurrentHealth() + "/" + character.getMaxHealth());
-
             }
             this.jPanelCharacterImg.removeAll();
-
             this.jPanelCharacterImg.revalidate();
             this.jPanelCharacterImg.repaint();
 
@@ -82,6 +79,11 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     @Override
     public Optional<Skill> getActiveInteraction() {
         return Optional.empty();
+    }
+
+    @Override
+    public void startTurn(Character character, Boolean isally) {
+
     }
 
 
@@ -201,6 +203,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         if (currentskillTargetActive.isPresent()){
             Skill skill = currentskillTargetActive.get();
             useSkill(skill);
+            FightManager.getInstance().callNextTurn();
         }
         else{
             System.out.println("[DEBUG] No skill active");

@@ -1,46 +1,52 @@
 
 L
-java:S3740"/Provide the parametrized type for this generic.(ô³â½8„‡µ“³1
+java:S3740"/Provide the parametrized type for this generic.(ô³â½8¥ º˜¶1
 K
-java:S3740"/Provide the parametrized type for this generic.(âóê>8ø¾³µµ1
+java:S3740"/Provide the parametrized type for this generic.(âóê>8¥ º˜¶1
 Q
-java:S3740 "/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ø¾³µµ1
+java:S3740"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¥ º˜¶1
 Q
-java:S3740%"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ù¾³µµ1
+java:S3740#"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¥ º˜¶1
 L
-java:S3740*"/Provide the parametrized type for this generic.(ÿ²™–8ù¾³µµ1
+java:S3740("/Provide the parametrized type for this generic.(ÿ²™–8¥ º˜¶1
+Q
+java:S3740."/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¥ º˜¶1
 L
-java:S3740-"/Provide the parametrized type for this generic.(³ã¼Ü8ù¾³µµ1
+java:S37405"/Provide the parametrized type for this generic.(³ã¼Ü8¥ º˜¶1
 Q
-java:S37406"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ù¾³µµ1
+java:S3740>"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¥ º˜¶1
 Q
-java:S3740<"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+java:S3740D"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¥ º˜¶1
 Q
-java:S3740E"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+java:S3740M"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¦ º˜¶1
 Q
-java:S3740K"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+java:S3740S"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¦ º˜¶1
 Q
-java:S3740S"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ú¾³µµ1
+java:S3740["/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¦ º˜¶1
 Q
-java:S3740W"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8û¾³µµ1
+java:S3740_"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¦ º˜¶1
 R
-java:S3740­"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ëöÌ“¶1
-
-java:S1319"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(¡Ø…•ÿÿÿÿÿ8ş¾³µµ1
+java:S3740µ"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8¦ º˜¶1
+
+java:S1319‡"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(¡Ø…•ÿÿÿÿÿ8§ º˜¶1
 ‹
-java:S1319˜"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ŠğŠ…8ş¾³µµ1
+java:S1319 "mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ŠğŠ…8¨ º˜¶1
 
-java:S1319˜"cThe type of "toSort" should be an interface such as "Map" rather than the implementation "HashMap".(ŠğŠ…8ş¾³µµ1
+java:S1319 "cThe type of "toSort" should be an interface such as "Map" rather than the implementation "HashMap".(ŠğŠ…8¨ º˜¶1
+J
+java:S5411/"(Use a primitive boolean expression here.(¼·ëÔÿÿÿÿÿ8© º˜¶1
 K
-java:S5411®"(Use a primitive boolean expression here.(¼·ëÔÿÿÿÿÿ8÷öÌ“¶1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8†‡µ“³1
+java:S5411¶"(Use a primitive boolean expression here.(¼·ëÔÿÿÿÿÿ8© º˜¶1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8ª º˜¶1
 o
-java:S37763"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ô»ôë8¥À³µµ1
-J	java:S108A")Either remove or fill this block of code.(Ö“‚˜ÿÿÿÿÿ8¯À³µµ1
-H	java:S106•"+Replace this use of System.out by a logger.(ÑäÌ“8ÆÀ³µµ1
+java:S3776;"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ô»ôë8‚¡º˜¶1
+J	java:S108I")Either remove or fill this block of code.(Ö“‚˜ÿÿÿÿÿ8…¡º˜¶1
+H	java:S106"+Replace this use of System.out by a logger.(ÑäÌ“8“¡º˜¶1
 Q
-java:S1481š".Remove this unused "fightable" local variable.(ÁÍıÿÿÿÿ8ÊÀ³µµ1
+java:S1481¢".Remove this unused "fightable" local variable.(ÁÍıÿÿÿÿ8•¡º˜¶1
 R
-java:S2864œ"4Iterate over the "entrySet" instead of the "keySet".(ã°ëŒ8ÌÀ³µµ1
+java:S2864¤"4Iterate over the "entrySet" instead of the "keySet".(ã°ëŒ8•¡º˜¶1
+…
+java:S1128"cRemove this unused import 'org.example.EldenRing.isaac.models.characters.interactions.Interaction'.(˜¢¨¤ıÿÿÿÿ8‚¦Ô¾¶1
 O
-java:S1128"-Remove this unused import 'org.example.Main'.(€¸áÕøÿÿÿÿ8¢‡µ“³1
+java:S1128"-Remove this unused import 'org.example.Main'.(€¸áÕøÿÿÿÿ8ƒ¦Ô¾¶1
