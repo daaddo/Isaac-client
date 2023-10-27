@@ -33,18 +33,19 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     public void paint(Graphics g) {
         super.paint(g);
         // URL imageUrl = getClass().getResource(characterImgPath);
-       // jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logger_logo4.png"))); // NOI18N
-     //   ImageIcon icon = new ImageIcon(imageUrl);
-       // Image image = icon.getImage();
+        // jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logger_logo4.png"))); // NOI18N
+        // ImageIcon icon = new ImageIcon(imageUrl);
+        // Image image = icon.getImage();
 
     }
+
+
     @Override
     public void getNextTurns(Character character, Boolean isally) {
         if (character.equals(this.character)){
             if (character instanceof MainCharacter) {
                 this.jLabelCharacterHealth.setText(character.getCurrentHealth() + "/" + character.getMaxHealth());
             }
-            this.jPanelCharacterImg.removeAll();
             this.jPanelCharacterImg.revalidate();
             this.jPanelCharacterImg.repaint();
 
@@ -178,9 +179,11 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     }// </editor-fold>//GEN-END:initComponents
     @TODO(todo="aggiungere la logica dietro gli attacchi")
     private void useSkill(Skill skill){
+        boolean clicked = false;
         if(skill.getTarget()== Skill.TargetType.ENEMY || skill.getTarget()== Skill.TargetType.ENEMYTEAM){
             if (this.character instanceof Enemy enemy){
                 System.out.println("[DEBUG] Enemy clicked");
+                clicked = true;
             }
             else{
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
@@ -189,22 +192,32 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ){
             if (this.character instanceof MainCharacter ally){
                 System.out.println("[DEBUG] ally clicked");
+                clicked = true;
             }
             else{
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
             }
         } else if (skill.getTarget() == Skill.TargetType.ALL) {
             System.out.println("[DEBUG] All characters skill clicked");
+            clicked = true;
+
+        }
+        if (clicked) {
+
+            FightManager.getInstance().resetInteractions();
         }
     }
 
     private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         Optional<Skill> currentskillTargetActive = FightManager.getInstance().getCurrentInteractionActive();
+
         if (currentskillTargetActive.isPresent()){
             Skill skill = currentskillTargetActive.get();
             useSkill(skill);
+            FightManager.getInstance().reset();
             FightManager.getInstance().callNextTurn();
         }
+
         else{
             System.out.println("[DEBUG] No skill active");
         }

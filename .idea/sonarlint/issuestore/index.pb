@@ -113,3 +113,5 @@ n
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 š
 jsrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/OnAlliesTestSkillInteraction.java,8\f\8face83ff074296f394b7c1437e66cbe12d81d8e
+p
+@src/main/java/org/example/EldenRing/isaac/gui/nextCharacter.java,b\a\bad0ad2a955c4732575e71bfcb4387da95a9568f

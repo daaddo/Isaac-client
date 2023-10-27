@@ -198,4 +198,12 @@ public class FightManager {
             }
         }
     }
+
+    public void resetInteractions() {
+        for (FightEventListner fightEventListner : fightEventListners) {
+            if(fightEventListner instanceof BattleFrame battleFrame){
+                battleFrame.resetInteraction();
+            }
+        }
+    }
 }

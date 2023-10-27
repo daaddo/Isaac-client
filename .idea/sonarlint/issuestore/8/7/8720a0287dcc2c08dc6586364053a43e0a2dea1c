@@ -1,15 +1,21 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(»šÜüúÿÿÿÿ8ö½³µµ1
+java:S3740"/Provide the parametrized type for this generic.(»šÜüúÿÿÿÿ8ö½³µµ1
+K
+java:S3740"/Provide the parametrized type for this generic.(âóê>8şÜÃ¶1
 Q
-java:S3740)"/Provide the parametrized type for this generic.(Ì‹¡ßüÿÿÿÿ8ö½³µµ1
+java:S3740&"/Provide the parametrized type for this generic.(Ì‹¡ßüÿÿÿÿ8ö½³µµ1
 Q
-java:S3740+"/Provide the parametrized type for this generic.(¨šş¼ıÿÿÿÿ8ö½³µµ1
+java:S3740("/Provide the parametrized type for this generic.(¨šş¼ıÿÿÿÿ8ö½³µµ1
+L
+java:S3740c"/Provide the parametrized type for this generic.(ÿ²™–8ÿÜÃ¶1
+Q
+java:S3740n"/Provide the parametrized type for this generic.(‡şÀÖøÿÿÿÿ8ÿÜÃ¶1
 u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8†Ğÿ’³1
 v
-java:S1450"TRemove the "gioco" field and declare it as a local variable in the relevant methods.(ÿÚÌšüÿÿÿÿ8˜Ğÿ’³1
-G	java:S1067"+Replace this use of System.out by a logger.(‹ñŠ•8Ğÿ’³1
+java:S1450"TRemove the "gioco" field and declare it as a local variable in the relevant methods.(ÿÚÌšüÿÿÿÿ8˜Ğÿ’³1
+G	java:S1064"+Replace this use of System.out by a logger.(‹ñŠ•8Ğÿ’³1
 ^
-java:S1126S"AReplace this if-then-else statement by a single return statement.(ãâÜç8 Ğÿ’³1
+java:S1126P"AReplace this if-then-else statement by a single return statement.(ãâÜç8 Ğÿ’³1
 J
-java:S1068"-Remove this unused "character" private field.(˜‘8Å¾³µµ1
+java:S1068"-Remove this unused "character" private field.(˜‘8Å¾³µµ1

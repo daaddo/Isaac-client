@@ -231,4 +231,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     }
 
 
+    public void resetInteraction() {
+        jPanelCharacterOption.removeAll();
+        jPanelCharacterOption.revalidate();
+        jPanelCharacterOption.repaint();
+    }
 }
