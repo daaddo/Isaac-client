@@ -11,7 +11,7 @@ import org.example.EldenRing.isaac.factory.FightingRoomFactory;
 import org.example.EldenRing.isaac.factory.NormalPrizeRoomFactory;
 import org.example.EldenRing.isaac.factory.StarterRoomFactory;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.RoomCoordinates;
 

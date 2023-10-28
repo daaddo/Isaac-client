@@ -1,6 +1,7 @@
-package org.example.EldenRing.isaac.models.characters.interactions;
+package org.example.EldenRing.isaac.models.characters.interactions.skills;
 
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.models.characters.interactions.impl.ContinuousHealingBuff;
 import org.example.EldenRing.isaac.models.characters.interactions.impl.WeakenDebuff;
 

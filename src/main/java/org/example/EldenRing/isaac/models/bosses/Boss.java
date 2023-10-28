@@ -1,7 +1,6 @@
 package org.example.EldenRing.isaac.models.bosses;
 
-import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.piano.Piano;
+import org.example.EldenRing.isaac.models.characters.type.Character;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 
 

@@ -3,8 +3,8 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.Game;
-import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
 import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.util.ArrayList;

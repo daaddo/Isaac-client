@@ -1,11 +1,15 @@
-package org.example.EldenRing.isaac.models.characters;
+package org.example.EldenRing.isaac.models.characters.type;
 
+import org.example.EldenRing.isaac.models.characters.Special;
+import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 
+import java.util.List;
+
 public abstract class NormalEnemy extends Enemy{
     private Special enemytipe;
-
+    private List<Skill> skills;
 
 
     public NormalEnemy(String name,
@@ -15,7 +19,8 @@ public abstract class NormalEnemy extends Enemy{
                        String imgPath,
                        Special enemytipe,
                        int difficulty,
-                       int agilty
+                       int agilty,
+                       List<Skill> skills
     ) {
         super(name, (int) (maxHealth*enemytipe.getMultiplyier()*(Piano.getNumero()/1.2)),
                 (int) (currentHealth*enemytipe.getMultiplyier()*(Piano.getNumero()/1.2)),
@@ -25,6 +30,7 @@ public abstract class NormalEnemy extends Enemy{
                 imgPath
         );
         this.enemytipe= enemytipe;
+        this.skills = skills;
 
     }
 

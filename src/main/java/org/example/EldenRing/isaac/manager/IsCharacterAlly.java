@@ -1,6 +1,6 @@
 package org.example.EldenRing.isaac.manager;
 
-import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.type.Fightable;
 
 public class IsCharacterAlly {
     private Fightable character;

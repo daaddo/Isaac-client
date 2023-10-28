@@ -6,11 +6,11 @@ package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.allymodels.SuperAgilityMainCharacterTest;
-import org.example.EldenRing.isaac.models.characters.interactions.DeBuffAllEnemiesSkillInteraction;
-import org.example.EldenRing.isaac.models.characters.interactions.OnAlliesTestSkillInteraction;
-import org.example.EldenRing.isaac.models.characters.interactions.StroncaturaSkillInteraction;
+import org.example.EldenRing.isaac.models.characters.interactions.skills.DeBuffAllEnemiesSkillInteraction;
+import org.example.EldenRing.isaac.models.characters.interactions.skills.OnAlliesTestSkillInteraction;
+import org.example.EldenRing.isaac.models.characters.interactions.skills.StroncaturaSkillInteraction;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.RoomCoordinates;
 

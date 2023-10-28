@@ -1,4 +1,4 @@
-package org.example.EldenRing.isaac.models.characters;
+package org.example.EldenRing.isaac.models.characters.type;
 
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 

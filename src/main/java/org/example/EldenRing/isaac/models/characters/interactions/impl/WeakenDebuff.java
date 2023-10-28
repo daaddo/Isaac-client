@@ -1,7 +1,7 @@
 package org.example.EldenRing.isaac.models.characters.interactions.impl;
 
-import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.interactions.DebuffInteraction;
+import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.interactions.type.DebuffInteraction;
 
 public class WeakenDebuff implements DebuffInteraction {
     @Override

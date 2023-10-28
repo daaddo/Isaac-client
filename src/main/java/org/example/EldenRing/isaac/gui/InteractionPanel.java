@@ -6,9 +6,7 @@ package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
-import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.Fightable;
+import org.example.EldenRing.isaac.models.characters.type.Character;
 import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 

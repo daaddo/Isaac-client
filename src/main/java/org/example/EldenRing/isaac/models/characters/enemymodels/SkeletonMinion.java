@@ -1,6 +1,6 @@
 package org.example.EldenRing.isaac.models.characters.enemymodels;
 
-import org.example.EldenRing.isaac.models.characters.NormalEnemy;
+import org.example.EldenRing.isaac.models.characters.type.NormalEnemy;
 import org.example.EldenRing.isaac.models.characters.Special;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
 

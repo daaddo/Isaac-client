@@ -1,11 +1,7 @@
 package org.example.EldenRing.isaac.models.characters.allymodels;
 
-import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.Fightable;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
-import org.example.EldenRing.isaac.models.characters.interactions.impl.ContinuousHealingBuff;
-import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
 
 import java.util.List;
 

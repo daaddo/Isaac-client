@@ -4,6 +4,8 @@ import org.example.EldenRing.isaac.models.characters.*;
 import org.example.EldenRing.isaac.models.characters.enemymodels.DennysMinion;
 import org.example.EldenRing.isaac.models.characters.enemymodels.GhostMinion;
 import org.example.EldenRing.isaac.models.characters.enemymodels.SkeletonMinion;
+import org.example.EldenRing.isaac.models.characters.type.Enemy;
+import org.example.EldenRing.isaac.models.characters.type.NormalEnemy;
 import org.example.EldenRing.isaac.piano.Piano;
 
 import java.util.ArrayList;

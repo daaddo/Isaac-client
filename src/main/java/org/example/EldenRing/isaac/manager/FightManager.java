@@ -3,8 +3,11 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.gui.BattleFrame;
 import org.example.EldenRing.isaac.models.characters.*;
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.type.Character;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
+import org.example.EldenRing.isaac.models.characters.type.Enemy;
+import org.example.EldenRing.isaac.models.characters.type.Fightable;
+import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
 
 import java.util.*;
 

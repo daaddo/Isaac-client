@@ -8,9 +8,9 @@ import org.example.EldenRing.isaac.TODO;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.Character;
-import org.example.EldenRing.isaac.models.characters.Enemy;
-import org.example.EldenRing.isaac.models.characters.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Enemy;
+import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 

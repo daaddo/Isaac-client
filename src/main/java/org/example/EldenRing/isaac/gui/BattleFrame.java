@@ -9,8 +9,11 @@ import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.*;
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.type.Character;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
+import org.example.EldenRing.isaac.models.characters.type.Fightable;
+import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.NormalEnemy;
 
 import java.util.HashMap;
 import java.util.List;

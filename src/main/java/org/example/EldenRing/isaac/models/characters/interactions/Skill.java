@@ -1,6 +1,8 @@
 package org.example.EldenRing.isaac.models.characters.interactions;
 
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.interactions.type.BuffInteraction;
+import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
 
 import java.util.Arrays;
 import java.util.List;

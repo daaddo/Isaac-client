@@ -1,6 +1,6 @@
 package org.example.EldenRing.isaac.events;
 
-import org.example.EldenRing.isaac.models.characters.Character;
+import org.example.EldenRing.isaac.models.characters.type.Character;
 import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
