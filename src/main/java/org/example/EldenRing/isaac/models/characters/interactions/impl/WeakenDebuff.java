@@ -6,6 +6,7 @@ import org.example.EldenRing.isaac.models.characters.interactions.type.DebuffInt
 public class WeakenDebuff implements DebuffInteraction {
     private int turnsLeft;
     private int amount;
+    private String imgPath = "/images/icon1";
 
     public WeakenDebuff(int turnsLeft, int amount) {
         this.turnsLeft = turnsLeft;

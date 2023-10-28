@@ -7,6 +7,7 @@ public class ContinuousHealingBuff implements BuffInteraction {
 
     private int turnsLeft;
     private int amount;
+    private String imgPath = "/images/icon1";
 
     public ContinuousHealingBuff(int turnsLeft, int amount) {
         this.turnsLeft = turnsLeft;
