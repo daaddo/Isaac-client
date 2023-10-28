@@ -6,8 +6,10 @@ import org.example.EldenRing.isaac.models.characters.interactions.impl.Continuou
 import org.example.EldenRing.isaac.models.characters.interactions.impl.WeakenDebuff;
 
 public class DeBuffAllEnemiesSkillInteraction extends Skill {
-    public DeBuffAllEnemiesSkillInteraction() {
-        super("DebuffAllEnemies",TargetType.ENEMYTEAM, new WeakenDebuff(), new ContinuousHealingBuff());
+    public DeBuffAllEnemiesSkillInteraction(int contininuousHealingBuffDuration, int contininuousHealingBuffAmount, int weakenDebuffDuration, int weakenDebuffAmount) {
+        super("DebuffAllEnemies",TargetType.ENEMYTEAM,
+                new ContinuousHealingBuff(contininuousHealingBuffAmount,contininuousHealingBuffDuration),
+                new WeakenDebuff(weakenDebuffAmount,weakenDebuffDuration));
     }
 
     @Override

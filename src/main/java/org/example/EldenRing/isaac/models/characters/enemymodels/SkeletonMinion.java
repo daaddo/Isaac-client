@@ -1,8 +1,12 @@
 package org.example.EldenRing.isaac.models.characters.enemymodels;
 
+import org.example.EldenRing.isaac.models.characters.interactions.skills.DeBuffAllEnemiesSkillInteraction;
+import org.example.EldenRing.isaac.models.characters.interactions.skills.StroncaturaSkillInteraction;
 import org.example.EldenRing.isaac.models.characters.type.NormalEnemy;
 import org.example.EldenRing.isaac.models.characters.Special;
 import org.example.EldenRing.isaac.rooms.fight.FightingBehaviour;
+
+import java.util.List;
 
 public class SkeletonMinion extends NormalEnemy {
     public SkeletonMinion(Special enemyType) {
@@ -11,7 +15,7 @@ public class SkeletonMinion extends NormalEnemy {
             public void fight(int piano) {
                 System.out.println("[DEBUG] SKELETON ATTACKS");
             }
-        }, "/images/image-removebg-preview(1).png",enemyType,1,6);
+        }, "/images/image-removebg-preview(1).png",enemyType,1,6, List.of(new DeBuffAllEnemiesSkillInteraction(2,3,2,3),new StroncaturaSkillInteraction(2,3,2,3)));
     }
     public void revive(){
         this.setCurrentHealth(this.getMaxHealth()/2);

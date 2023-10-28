@@ -6,8 +6,10 @@ import org.example.EldenRing.isaac.models.characters.interactions.impl.Continuou
 import org.example.EldenRing.isaac.models.characters.interactions.impl.WeakenDebuff;
 
 public class OnAlliesTestSkillInteraction extends Skill {
-    public OnAlliesTestSkillInteraction() {
-        super("TESTSKILL TYPE ALLY",TargetType.ALLYTEAM, new WeakenDebuff(), new ContinuousHealingBuff());
+    public OnAlliesTestSkillInteraction(int contininuousHealingBuffDuration, int contininuousHealingBuffAmount, int weakenDebuffDuration, int weakenDebuffAmount) {
+        super("TESTSKILL TYPE ALLY",TargetType.ALLYTEAM,
+                new WeakenDebuff(weakenDebuffDuration , weakenDebuffAmount),
+                new ContinuousHealingBuff(contininuousHealingBuffDuration, contininuousHealingBuffAmount));
     }
 
 

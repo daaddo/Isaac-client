@@ -155,16 +155,16 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().addCharacter(new SuperAgilityMainCharacterTest("deborah", List.of(new StroncaturaSkillInteraction(), new DeBuffAllEnemiesSkillInteraction(), new OnAlliesTestSkillInteraction())));
+            GameManager.getInstance().addCharacter(new SuperAgilityMainCharacterTest("deborah", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3))));
         }
         else if (actionCommand.equals("Test2")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction()),5,"C:\\images\\dennys.png"));
+            GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),5,"C:\\images\\dennys.png"));
         }
         else if (actionCommand.equals("Test3")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction()),4,"C:\\images\\dennys.png"));
+            GameManager.getInstance().addCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),4,"C:\\images\\dennys.png"));
         }
         else if (actionCommand.equals("Test4")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction()),6,"C:\\images\\dennys.png"));
+            GameManager.getInstance().addCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),6,"C:\\images\\dennys.png"));
         } else {
             JOptionPane.showMessageDialog(null,"codice non valido","ERRORE",JOptionPane.ERROR_MESSAGE);
         }

@@ -126,6 +126,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         jLabelCharacterImg = new javax.swing.JLabel();
         jLabelCharacterHealth = new javax.swing.JLabel();
         jLabelCharacterName = new javax.swing.JLabel();
+        jPanelContainerCurrentEffects = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 51));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,6 +156,10 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         jLabelCharacterName.setForeground(new java.awt.Color(255, 0, 0));
         jLabelCharacterName.setText("jLabel1");
 
+        jPanelContainerCurrentEffects.setBackground(null);
+        jPanelContainerCurrentEffects.setOpaque(false);
+        jPanelContainerCurrentEffects.setLayout(new java.awt.GridLayout(2, 5, 3, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,6 +171,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                     .addComponent(jLabelCharacterName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
                     .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(jPanelContainerCurrentEffects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +180,9 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 .addGap(1, 1, 1)
                 .addComponent(jLabelCharacterName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelContainerCurrentEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
     @TODO(todo="aggiungere la logica dietro gli attacchi")
@@ -230,6 +238,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     private javax.swing.JLabel jLabelCharacterImg;
     private javax.swing.JLabel jLabelCharacterName;
     private javax.swing.JPanel jPanelCharacterImg;
+    private javax.swing.JPanel jPanelContainerCurrentEffects;
     // End of variables declaration//GEN-END:variables
 
 }

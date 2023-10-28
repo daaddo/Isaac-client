@@ -6,8 +6,18 @@ import org.example.EldenRing.isaac.models.characters.interactions.type.BuffInter
 public class ContinuousHealingBuff implements BuffInteraction {
 
     private int turnsLeft;
+    private int amount;
+
+    public ContinuousHealingBuff(int turnsLeft, int amount) {
+        this.turnsLeft = turnsLeft;
+        this.amount = amount;
+    }
+
     @Override
     public void buff(Character self) {
-        self.setMaxHealth(self.getCurrentHealth()+10);
+        if (turnsLeft > 0) {
+            self.setMaxHealth(self.getCurrentHealth()+10);
+        }
+        turnsLeft--;
     }
 }
