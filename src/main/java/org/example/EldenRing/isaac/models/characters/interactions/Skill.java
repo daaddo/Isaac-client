@@ -1,11 +1,13 @@
 package org.example.EldenRing.isaac.models.characters.interactions;
 
+import org.example.EldenRing.isaac.models.characters.interactions.type.AttackInteraction;
 import org.example.EldenRing.isaac.models.characters.type.Character;
 import org.example.EldenRing.isaac.models.characters.interactions.type.BuffInteraction;
 import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class Skill {
     private String name;
@@ -23,6 +25,9 @@ public abstract class Skill {
     public List<Interaction> getInteractions() {
         return interactions;
     }
+    public List<Optional<AttackInteraction>> getAttackInteractions(){
+        return interactions.stream().filter(interaction -> interaction instanceof AttackInteraction).map(interaction -> Optional.of((AttackInteraction) interaction)).toList();
+    }
 
     public String getName() {
         return name;
@@ -39,11 +44,7 @@ public abstract class Skill {
     }
     public abstract void skillUsage(Character character);
     public final void activate(Character character){
-        for (Interaction interaction : interactions) {
-            if (interaction instanceof BuffInteraction buff) {
-                buff.buff(character);
-            }
-        }
+
         skillUsage(character);
     }
 }

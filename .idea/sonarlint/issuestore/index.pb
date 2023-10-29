@@ -87,5 +87,3 @@ n
 >src/test/java/org/example/EldenRing/isaac/piano/PianoTest.java,f\2\f27dc39c5f385d171746e866c24dababd68aa2c2
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-p
-@src/main/java/org/example/EldenRing/isaac/gui/nextCharacter.java,b\a\bad0ad2a955c4732575e71bfcb4387da95a9568f

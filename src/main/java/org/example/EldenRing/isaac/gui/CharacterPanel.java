@@ -8,6 +8,7 @@ import org.example.EldenRing.isaac.TODO;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
+import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
 import org.example.EldenRing.isaac.models.characters.type.Character;
 import org.example.EldenRing.isaac.models.characters.type.Enemy;
 import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
@@ -17,6 +18,7 @@ import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -186,15 +188,23 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         );
     }// </editor-fold>//GEN-END:initComponents
     @TODO(todo="aggiungere la logica dietro gli attacchi")
-    private void useSkill(Skill skill){
+    private boolean useSkill(Skill skill){
+        List<Interaction> interactions = skill.getInteractions();
         boolean clicked = false;
         if(skill.getTarget()== Skill.TargetType.ENEMY || skill.getTarget()== Skill.TargetType.ENEMYTEAM){
             if (this.character instanceof Enemy enemy){
                 System.out.println("[DEBUG] Enemy clicked");
+                if (interactions.size()>0){
+                    for (Interaction interaction: interactions){
+                        interaction.use();
+                    }
+                }
                 clicked = true;
+
             }
             else{
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
+                return false;
             }
         }
         else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ){
@@ -204,6 +214,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
             }
             else{
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
+                return false;
             }
         } else if (skill.getTarget() == Skill.TargetType.ALL) {
             System.out.println("[DEBUG] All characters skill clicked");
@@ -213,7 +224,9 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         if (clicked) {
 
             FightManager.getInstance().resetInteractions();
+            return clicked;
         }
+        return false;
     }
 
     private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -221,9 +234,11 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
         if (currentskillTargetActive.isPresent()){
             Skill skill = currentskillTargetActive.get();
-            useSkill(skill);
-            FightManager.getInstance().reset();
-            FightManager.getInstance().callNextTurn();
+            boolean b = useSkill(skill);
+            if (b) {
+                FightManager.getInstance().reset();
+                FightManager.getInstance().callNextTurn();
+            }
         }
 
         else{

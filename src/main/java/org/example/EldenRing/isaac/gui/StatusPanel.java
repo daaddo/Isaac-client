@@ -4,6 +4,8 @@
  */
 package org.example.EldenRing.isaac.gui;
 
+import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
+
 /**
  *
  * @author trapa
@@ -15,6 +17,11 @@ public class StatusPanel extends javax.swing.JPanel {
      */
     public StatusPanel() {
         initComponents();
+    }
+    public StatusPanel(Interaction interaction) {
+        initComponents();
+        interaction.getImgPath().orElse(null);
+        jLabel1.setIcon(new javax.swing.ImageIcon(interaction.getImgPath().get()));
     }
 
     /**
