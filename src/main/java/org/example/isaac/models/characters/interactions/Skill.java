@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class Skill {
+public abstract class Skill<T extends Unit> {
     private String name;
-    private List<Interaction> interactions;
+    private List<Interaction<T>> interactions;
     private TargetType targetType;
     public enum TargetType{
         SELF,
@@ -21,7 +21,7 @@ public abstract class Skill {
         ALL;
     }
 
-    public List<Interaction> getInteractions() {
+    public List<Interaction<T>> getInteractions() {
         return interactions;
     }
     public List<Optional<AttackInteraction>> getAttackInteractions(){
@@ -36,7 +36,7 @@ public abstract class Skill {
         return this.targetType;
     }
 
-    public Skill(String name, TargetType targetType, Interaction ... interactions) {
+    public Skill(String name, TargetType targetType, Interaction<T> ... interactions) {
         this.name = name;
         this.interactions = Arrays.stream(interactions).toList();
         this.targetType = targetType;

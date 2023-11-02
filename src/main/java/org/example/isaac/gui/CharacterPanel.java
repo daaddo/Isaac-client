@@ -97,6 +97,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     }
 
     public CharacterPanel(Unit unit, Boolean isAlly) {
+        this.isAlly = isAlly;
         initComponents();
         this.unit = unit;
         GameManager.getInstance().subscribeFightListner(this);
@@ -112,7 +113,18 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         this.validate();
         this.repaint();
     }
+    @Override
+    public void setInteractionsToOtherCharacters(Skill.TargetType type, Interaction<T> interaction) {
+        if ((!isAlly && type == Skill.TargetType.ENEMYTEAM)) {
+            jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+        }
+        if (isAlly && type == Skill.TargetType.ALLYTEAM) {
+            jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+        }
+        if (type == Skill.TargetType.ALL) {
 
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,7 +201,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
 
     @TODO(todo = "aggiungere la logica dietro gli attacchi")
     private boolean useSkill(Skill skill) {
-        List<Interaction> interactions = skill.getInteractions();
+        List<Interaction<T>> interactions = skill.getInteractions();
         boolean clicked = false;
         if (skill.getTarget() == Skill.TargetType.ENEMY) {
             if (this.unit instanceof Enemy enemy) {
@@ -212,8 +224,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {
-                        interaction.setTargets(FightManager.getInstance().getEnemies());
-                        jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+                        FightManager.getInstance().setInteraction(Skill.TargetType.ENEMYTEAM, interaction);
                     }
                 }
                 clicked = true;
@@ -306,10 +317,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     private javax.swing.JPanel jPanelCharacterImg;
     private javax.swing.JPanel jPanelContainerCurrentEffects;
 
-    @Override
-    public void setInteractionsToOtherCharacters(Skill.TargetType type, Interaction<T> interaction) {
 
-    }
 
 
     // End of variables declaration//GEN-END:variables
