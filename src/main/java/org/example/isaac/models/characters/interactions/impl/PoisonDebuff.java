@@ -11,7 +11,7 @@ import java.util.Optional;
 public class PoisonDebuff<T extends Unit> implements DebuffInteraction<T> {
     private int turnsLeft;
     private int amount;
-    private String imgPath = "/images/icon2";
+    private String imgPath = "/images/icon2NoBg.png";
     private List<T> enemies = new ArrayList<>();
 
     public PoisonDebuff(int turnsLeft, int amount, T ... enemies) {

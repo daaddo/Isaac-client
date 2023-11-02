@@ -7,6 +7,9 @@ package org.example.isaac.gui;
 import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  *
  * @author trapa
@@ -16,13 +19,20 @@ public class StatusPanel<T extends Unit> extends javax.swing.JPanel {
     /**
      * Creates new form StatusPanel
      */
+    private String characterImgPath;
     public StatusPanel() {
         initComponents();
     }
     public StatusPanel(Interaction<T> interaction) {
+
         initComponents();
+
         if (interaction.getImgPath().isPresent()) {
-            jLabel1.setIcon(new javax.swing.ImageIcon(String.valueOf(interaction.getImgPath().get())));
+            this.characterImgPath = interaction.getImgPath().orElse(null);
+            if (characterImgPath == null) return;
+            Image img = new ImageIcon(StatusPanel.class.getResource(characterImgPath)).getImage();
+
+            jLabel1.setIcon(new ImageIcon(img));
         }
     }
 
@@ -39,17 +49,15 @@ public class StatusPanel<T extends Unit> extends javax.swing.JPanel {
 
         setOpaque(false);
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

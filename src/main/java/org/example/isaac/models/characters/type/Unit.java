@@ -1,7 +1,10 @@
 package org.example.isaac.models.characters.type;
 
+import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.rooms.fight.FightingBehaviour;
 import org.example.isaac.rooms.prizeBehaviour.Droppable;
+
+import java.util.List;
 
 public abstract class Unit implements Droppable {
     private String name;
@@ -10,6 +13,7 @@ public abstract class Unit implements Droppable {
     protected FightingBehaviour fightingBehaviour;
     protected String avatarPath;
     protected int agility;
+    protected List<Interaction<? extends Unit>> activeInteractions;
 
 
     public String getName() {

@@ -11,7 +11,7 @@ import java.util.Optional;
 public class ShieldBuff<T extends Unit> implements BuffInteraction<T> {
     private int turnsLeft;
     private int amount;
-    private String imgPath = "/images/icon1";
+    private String imgPath = "/images/icon1NoBg.png";
     private List<T> allies = new ArrayList<>();
 
 

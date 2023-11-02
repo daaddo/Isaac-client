@@ -10,7 +10,7 @@ import java.util.Optional;
 public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
     private int turnsLeft;
     private int amount;
-    private String imgPath = "/images/icon1";
+    private String imgPath = "/images/icon1NoBg.png";
     List<T> enemies = new ArrayList<>();
 
     public WeakenDebuff(int turnsLeft, int amount, T ... characters) {

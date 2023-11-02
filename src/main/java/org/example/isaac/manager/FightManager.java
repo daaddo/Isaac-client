@@ -4,6 +4,7 @@ import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.gui.BattleFrame;
 import org.example.isaac.gui.CharacterPanel;
+import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.type.Enemy;
@@ -229,5 +230,10 @@ public class FightManager {
 
     public void subscribePanelListner(CharactersEventListner characterPanel) {
         this.charactersEventListners.add(characterPanel);
+    }
+    public void setInteraction(Skill.TargetType type, Interaction<? extends Unit> interaction){
+        for (CharactersEventListner charactersEventListner : charactersEventListners) {
+            charactersEventListner.setInteractionsToOtherCharacters(type,interaction);
+        }
     }
 }

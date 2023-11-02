@@ -106,7 +106,6 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         System.out.println(characterImgPath);
         Image image = new ImageIcon(CharacterPanel.class.getResource(characterImgPath)).getImage();
         this.jLabelCharacterImg.setIcon(new ImageIcon(image));
-
         jLabelCharacterHealth.setText("" + unit.getCurrentHealth() + " / " + unit.getMaxHealth());
         jLabelCharacterName.setText(unit.getName());
         this.invalidate();
@@ -214,9 +213,6 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {
                         interaction.setTargets(FightManager.getInstance().getEnemies());
-                        Optional<String> imgPath = interaction.getImgPath();
-                        String s = imgPath.get();
-                        System.out.println("[DEBUG] imgPath: " + s);
                         jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
                     }
                 }
@@ -232,7 +228,6 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                     for (Interaction interaction : interactions) {
                         interaction.setTargets(FightManager.getInstance().getAllies());
                         interaction.use();
-                        Optional<String> imgPath = interaction.getImgPath();
                         jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
 
                     }
