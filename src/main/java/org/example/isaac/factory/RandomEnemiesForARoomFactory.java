@@ -35,6 +35,7 @@ public class RandomEnemiesForARoomFactory {
     }
 
     public List<NormalEnemy> normalEnemiesRandomGenerator() {
+
         int difficultyMultiplyier = (int) ((10 * Math.random() + 5) * Piano.getNumero());
         List<NormalEnemy> enemies = new ArrayList<>();
         while (calculateTotalDifficultyOfList(enemies) < difficultyMultiplyier && enemies.size() < 4) {
@@ -42,8 +43,8 @@ public class RandomEnemiesForARoomFactory {
             if (calculateTotalDifficultyOfList(enemies) > difficultyMultiplyier + 2) {
                 //TODO refactor in modo da levare il doppio remove,
                 // possibile sostituendo il +2 di difficultyMultiplyier con funzione o costante della difficoltà massima di un nemico
-                enemies.remove(enemies.size());
-                enemies.remove(enemies.size());
+                enemies.remove(enemies.size()-1);
+                enemies.remove(enemies.size()-1);
             }
         }
         return enemies;

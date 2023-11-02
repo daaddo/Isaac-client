@@ -25,7 +25,7 @@ import java.util.Optional;
  *
  * @author trapa
  */
-public class BattleFrame extends javax.swing.JFrame implements FightEventListner {
+public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements FightEventListner<T> {
     /**
      * Creates new form BattleFrame
      */

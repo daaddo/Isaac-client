@@ -11,26 +11,8 @@ public class RoomsFactory {
     public static final int MASSIMALE = 15 ;
     public static final int MAXROOMS = 25;
 
-    private int numberOfRoomsByRow(int[] a){
-        int count = 0;
-        for (int i=0; i<a.length;i++) {
-            if (a[i] == 1){
-                count++;
-            }
-        }
-        return count;
-    }
-    private  void cleanUp(int[][] toClean){
-        for (int i = 0; i < toClean.length; i++){
-            int a =(numberOfRoomsByRow(toClean[i]));
-            while (a>4){
-                int v = (int) (Math.random() * toClean.length);
-                toClean[i][v] = 0;
-                toClean[v][i] = 0;
-                a =(numberOfRoomsByRow(toClean[i]));
-            }
-        }
-    }
+
+
 
     private boolean isRoomSpotFree(int [][] matrix, int i, int j){
         try {
@@ -75,7 +57,7 @@ public class RoomsFactory {
             return false;
         }
     }
-    public static List<Room> getNearRoomsClass(Room[][] matrix, RoomCoordinates target){
+    /*public static List<Room> getNearRoomsClass(Room[][] matrix, RoomCoordinates target){
         List<Room> rooms = new ArrayList<>();
         if(matrix[target.row()-1][target.column() ] == null && !(isRoomSpotFreeClass(matrix, target.row()-1, target.column()))){
             rooms.add(null);
@@ -105,7 +87,7 @@ public class RoomsFactory {
             rooms.add(matrix[target.row()][target.column()-1]);
         }
         return rooms;
-    }
+    }*/
 
     public List<RoomCoordinates> getAllRooms(int[][] rooms){
         List<RoomCoordinates> allCoords = new ArrayList<>();
@@ -135,14 +117,15 @@ public class RoomsFactory {
         int randomRoomsNumber = MASSIMALE;
         System.out.println(randomRoomsNumber);
         int[][] floor = new int[randomRoomsNumber][randomRoomsNumber];
-        int center_row = MASSIMALE /2;
-        int center_col = MASSIMALE /2;
-        floor[center_row][center_col]=1;
-        //setta tutte le celle adiacenti come occupate
-        RoomCoordinates top = new RoomCoordinates(center_row-1,center_col);
-        RoomCoordinates down = new RoomCoordinates(center_row+1,center_col);
-        RoomCoordinates left = new RoomCoordinates(center_row,center_col-1);
-        RoomCoordinates right = new RoomCoordinates(center_row,center_col+1);
+        int centerRow = MASSIMALE /2;
+        int centerCol = MASSIMALE /2;
+        floor[centerRow][centerCol]=1;
+
+        // questa parte setta tutte le celle adiacenti come occupate
+        RoomCoordinates top = new RoomCoordinates(centerRow-1,centerCol);
+        RoomCoordinates down = new RoomCoordinates(centerRow+1,centerCol);
+        RoomCoordinates left = new RoomCoordinates(centerRow,centerCol-1);
+        RoomCoordinates right = new RoomCoordinates(centerRow,centerCol+1);
 
         List<RoomCoordinates> nextRooms = new ArrayList<>();
         nextRooms.add(top);
@@ -166,7 +149,6 @@ public class RoomsFactory {
                 }
                 List<RoomCoordinates> nearRooms = getNearRooms(floor, nextRoom);
                 if (nearRooms.isEmpty()){
-                    System.out.println("re capì?");
                     RoomCoordinates randomRoom = getRandomRoom(floor);
                     nearRooms.addAll(getNearRooms(floor, randomRoom));
                 }
@@ -195,90 +177,8 @@ public class RoomsFactory {
         //END
 
         //set starter room to 2
-        floor[center_row][center_col] = 2;
-/*
-
-        for (int i = 0; i < MASSIMALE; i++) {
-            for (int j = 0; j<MASSIMALE; j++){
-
-                int roomNumber = floor[i][j];
-                System.out.print(roomNumber+"  ");
-            }
-            System.out.println();
-        }*/
+        floor[centerRow][centerCol] = 2;
 
         return floor;
-    }
-    public void stampaMatrice(int[][] matrice){
-        for (int i = 0; i < MASSIMALE; i++) {
-            for (int j = 0; j<MASSIMALE; j++){
-
-                int roomNumber = matrice[i][j];
-                System.out.print(roomNumber+"  ");
-            }
-            System.out.println();
-        }
-    }
-    public static int count(int[][] matrix){
-        int count = 0;
-        for (int i = 0; i < MASSIMALE; i++) {
-            for (int j = 0; j < MASSIMALE; j++) {
-                if(matrix[i][j] ==1){
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-    /*public static Room[][] subsitute(int[][] matrix){
-        Room[][] matrixOfRooms = new Room[MASSIMALE][MASSIMALE];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (matrix[i][j]==1){
-                    double random = Math.random();
-                    if (random<0.35) {
-                        matrixOfRooms[i][j] = new NormalPrizeRoomFactory().createRoom(new RoomCoordinates(i,j));
-                    }
-                    if (random >=0.35 ) {
-                        matrixOfRooms[i][j] = new FightingRoomFactory().createRoom(new RoomCoordinates(i,j));
-                    }
-
-                }
-                else{
-                    matrixOfRooms[i][j] = null;
-                }
-                if(matrix[i][j]==2){
-                    matrixOfRooms[i][j] = new StarterRoomFactory().createRoom(new RoomCoordinates(i,j));
-                }
-                System.out.print(matrix[i][j]+"  ");
-            }
-            System.out.println();
-        }
-        for (int j = 0; j < MASSIMALE; j++) {
-            for (int k = 0; k < MASSIMALE; k++) {
-                if (matrixOfRooms[j][k] !=null ){
-                    matrixOfRooms[j][k].addNearRooms();
-                }
-            }
-        }
-        System.out.println("\n");
-        return matrixOfRooms;
-    }*/
-    public static void toStringMatrix(Room[][] matrix){
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (matrix[i][j] == null){
-                    System.out.print(0+"  ");
-                }
-                if (matrix[i][j] != null && !(matrix[i][j] instanceof StarterRoom)) {
-
-                    System.out.print(1+"  ");
-                }
-                if(matrix[i][j] instanceof StarterRoom){
-                    System.out.print(2+"  ");
-                }
-            }
-            System.out.println();
-        }
     }
 }
