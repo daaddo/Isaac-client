@@ -7,29 +7,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WeakenDebuff implements DebuffInteraction {
+public class WeakenDebuff<T extends Character> implements DebuffInteraction<T> {
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon1";
-    List<Character> enemies = new ArrayList<>();
+    List<T> enemies = new ArrayList<>();
 
-    public WeakenDebuff(int turnsLeft, int amount, Character ... characters) {
+    public WeakenDebuff(int turnsLeft, int amount, T ... characters) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
-        for (Character character : characters) {
+        for (T character : characters) {
             this.enemies.add(character);
         }
     }
 
-    public void setEnemies(List<Character> enemies) {
+    public void setEnemies(List<T> enemies) {
         this.enemies = enemies;
     }
-
+    //TODO Refactorare Character in modo che accetti setAttack
     @Override
-    public void debuff() {
-        for (Character character : enemies) {
-            character.setCurrentHealth(character.getCurrentHealth()-10);
+    public boolean debuff() {
+        if (turnsLeft == 0) return false;
+        for (Character enemy : enemies) {
+            enemy.setCurrentHealth(enemy.getCurrentHealth()-amount);
         }
+        if (turnsLeft == 0) return false;
+        turnsLeft--;
+        return true;
     }
 
 
@@ -39,8 +43,13 @@ public class WeakenDebuff implements DebuffInteraction {
     }
 
     @Override
-    public void use() {
-        debuff();
+    public  boolean use() {
+        return debuff();
+    }
+
+    @Override
+    public void setTargets(List<T> targets) {
+        setEnemies(targets);
     }
 
 

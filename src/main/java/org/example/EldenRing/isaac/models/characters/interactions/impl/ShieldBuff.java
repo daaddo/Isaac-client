@@ -4,33 +4,36 @@ import org.example.EldenRing.isaac.models.characters.interactions.type.BuffInter
 import org.example.EldenRing.isaac.models.characters.type.Character;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 //TODO aggiungere costruttore
-public class ShieldBuff implements BuffInteraction {
+public class ShieldBuff<T extends Character> implements BuffInteraction<T> {
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon1";
-    private List<Character> allies = new ArrayList<>();
+    private List<T> allies = new ArrayList<>();
 
 
-    public ShieldBuff(int turnsLeft, int amount, Character ... allies) {
+    public ShieldBuff(int turnsLeft, int amount, T ... allies) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
-        for (Character ally : allies) {
-            this.allies.add(ally);
-        }
+        this.allies.addAll(Arrays.asList(allies));
     }
 
-    public void setAllies(List<Character> allies) {
+    public void setAllies(List<T> allies) {
         this.allies = allies;
     }
 
     @Override
-    public void buff() {
+    public boolean buff() {
+        if (turnsLeft == 0) return false;
         for (Character ally : allies) {
-            ally.setMaxHealth(ally.getCurrentHealth()+10);
+            ally.setCurrentHealth(ally.getCurrentHealth()+amount);
         }
+        if (turnsLeft == 0) return false;
+        turnsLeft--;
+        return true;
     }
 
 
@@ -40,8 +43,13 @@ public class ShieldBuff implements BuffInteraction {
     }
 
     @Override
-    public void use() {
-        buff();
+    public  boolean use() {
+        return buff();
+    }
+
+    @Override
+    public void setTargets(List<T> targets) {
+        setAllies(targets);
     }
 
 

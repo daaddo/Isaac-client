@@ -16,6 +16,7 @@ import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
 import org.example.EldenRing.isaac.models.characters.type.NormalEnemy;
 import org.example.EldenRing.isaac.models.nextCharacter;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +30,8 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
      * Creates new form BattleFrame
      */
     private HashMap<? extends Character,Boolean> turnMap = new HashMap<>();
-    private org.example.EldenRing.isaac.models.nextCharacter nextCharacter;
+    private nextCharacter nextCharacter;
+
     public BattleFrame(List<MainCharacter> character) {
         initComponents();
         GameManager.getInstance().subscribeFightListner(this);
@@ -46,6 +48,7 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
         validate();
         repaint();
         setVisible(true);
+
     }
 
     public void goNextRound(){

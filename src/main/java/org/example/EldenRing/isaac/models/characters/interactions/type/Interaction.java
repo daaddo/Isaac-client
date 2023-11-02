@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface Interaction{
+public interface Interaction<T extends Character>{
     Optional<String> getImgPath();
-    void use();
+    boolean use();
+    void setTargets( List<T> targets);
 }

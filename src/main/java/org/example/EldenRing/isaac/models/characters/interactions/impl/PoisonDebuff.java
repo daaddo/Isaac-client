@@ -4,25 +4,24 @@ import org.example.EldenRing.isaac.models.characters.interactions.type.DebuffInt
 import org.example.EldenRing.isaac.models.characters.type.Character;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 //TODO aggiungere costruttore
-public class PoisonDebuff implements DebuffInteraction {
+public class PoisonDebuff<T extends Character> implements DebuffInteraction<T> {
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon2";
-    private List<Character> enemies = new ArrayList<>();
+    private List<T> enemies = new ArrayList<>();
 
-    public PoisonDebuff(int turnsLeft, int amount, Character ... enemies) {
+    public PoisonDebuff(int turnsLeft, int amount, T ... enemies) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
-        for (Character enemy : enemies) {
-            this.enemies.add(enemy);
-        }
+        this.enemies.addAll(Arrays.asList(enemies));
 
     }
 
-    public void setEnemies(List<Character> enemies) {
+    public void setEnemies(List<T> enemies) {
         this.enemies = enemies;
     }
 
@@ -32,15 +31,25 @@ public class PoisonDebuff implements DebuffInteraction {
     }
 
     @Override
-    public void use() {
-        debuff();
+    public  boolean use() {
+        return debuff();
+    }
+
+    @Override
+    public void setTargets(List<T> targets) {
+        setEnemies(targets);
     }
 
 
     @Override
-    public void debuff() {
+    public boolean debuff() {
+        if (turnsLeft == 0) return false;
+
         for (Character enemy : enemies) {
             enemy.setCurrentHealth(enemy.getCurrentHealth()-10);
         }
+        if (turnsLeft == 0) return false;
+        turnsLeft--;
+        return true;
     }
 }

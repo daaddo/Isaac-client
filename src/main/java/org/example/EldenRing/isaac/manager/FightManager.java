@@ -19,7 +19,8 @@ public class FightManager {
     private Character currentCharacter;
     private Map<MainCharacter,Integer> allyAgilityMap = new HashMap();
     private Map<Enemy,Integer> enemyAgilityMap = new HashMap<>();
-
+    private List<Enemy> enemies = new ArrayList<>();
+    private List<MainCharacter> allies = new ArrayList<>();
     private List<FightEventListner> fightEventListners = new ArrayList<>();
     public static FightManager getInstance() {
         if (instance == null) {
@@ -57,7 +58,22 @@ public class FightManager {
     }
     public void addEnemy(Enemy enemy){
         this.enemyAgilityMap.put(enemy,enemy.getAgility());
+        this.enemies.add(enemy);
     }
+
+    public void addAlly(MainCharacter ally) {
+        this.allyAgilityMap.put(ally, ally.getAgility());
+        this.allies.add(ally);
+    }
+
+    public List<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public List<MainCharacter> getAllies() {
+        return allies;
+    }
+
     public void highLightTarget(Skill.TargetType type){
         switch (type){
             case SELF -> {
@@ -180,9 +196,7 @@ public class FightManager {
     }
 
 
-    public void addAlly(MainCharacter ally) {
-        this.allyAgilityMap.put(ally, ally.getAgility());
-    }
+
 
     public Boolean isAnyActive() {
         Boolean isAnyActive = false;

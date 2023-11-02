@@ -191,38 +191,87 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     private boolean useSkill(Skill skill){
         List<Interaction> interactions = skill.getInteractions();
         boolean clicked = false;
-        if(skill.getTarget()== Skill.TargetType.ENEMY || skill.getTarget()== Skill.TargetType.ENEMYTEAM){
+        if(skill.getTarget()== Skill.TargetType.ENEMY){
             if (this.character instanceof Enemy enemy){
                 System.out.println("[DEBUG] Enemy clicked");
-                if (interactions.size()>0){
+                if (!interactions.isEmpty()){
                     for (Interaction interaction: interactions){
-                        interaction.use();
+                        interaction.setTargets(List.of(enemy));
                     }
                 }
                 clicked = true;
-
             }
             else{
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
                 return false;
             }
-        }
-        else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ){
-            if (this.character instanceof MainCharacter ally){
-                System.out.println("[DEBUG] ally clicked");
+        } else if (skill.getTarget() == Skill.TargetType.ENEMYTEAM) {
+            if (this.character instanceof Enemy enemy){
+                System.out.println("[DEBUG] Enemy clicked");
+                if (!interactions.isEmpty()){
+                    for (Interaction interaction: interactions){
+                        interaction.setTargets(FightManager.getInstance().getEnemies());
+                    }
+                }
                 clicked = true;
             }
             else{
+                System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
+                return false;
+            }
+        } else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ) {
+            if (this.character instanceof MainCharacter ally) {
+                System.out.println("[DEBUG] ally clicked");
+                if (!interactions.isEmpty()){
+                    for (Interaction interaction: interactions){
+                        interaction.setTargets(FightManager.getInstance().getAllies());
+                    }
+                }
+                clicked = true;
+            } else {
+                System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
+                return false;
+            }
+        } else if (skill.getTarget() == Skill.TargetType.SELF) {
+            if (this.character instanceof MainCharacter ally) {
+                System.out.println("[DEBUG] ally clicked");
+                if (!interactions.isEmpty()){
+                    for (Interaction interaction: interactions){
+                        interaction.setTargets(List.of(ally));
+                    }
+                }
+                clicked = true;
+            } else {
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
                 return false;
             }
         } else if (skill.getTarget() == Skill.TargetType.ALL) {
-            System.out.println("[DEBUG] All characters skill clicked");
-            clicked = true;
-
+            if (this.character instanceof MainCharacter ally) {
+                System.out.println("[DEBUG] ally clicked");
+                if (!interactions.isEmpty()) {
+                    for (Interaction interaction : interactions) {
+                        interaction.setTargets(List.of(ally));
+                    }
+                }
+                clicked = true;
+            } else {
+                System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
+                return false;
+            }
+            if (this.character instanceof Enemy enemy) {
+                System.out.println("[DEBUG] Enemy clicked");
+                if (!interactions.isEmpty()) {
+                    for (Interaction interaction : interactions) {
+                        interaction.setTargets(List.of(enemy));
+                    }
+                }
+                clicked = true;
+            } else {
+                System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
+                return false;
+            }
         }
         if (clicked) {
-
             FightManager.getInstance().resetInteractions();
             return clicked;
         }

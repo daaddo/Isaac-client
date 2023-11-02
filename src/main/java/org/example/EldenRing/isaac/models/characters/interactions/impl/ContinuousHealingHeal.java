@@ -1,39 +1,38 @@
 package org.example.EldenRing.isaac.models.characters.interactions.impl;
 
+import org.example.EldenRing.isaac.models.characters.interactions.type.HealInteraction;
 import org.example.EldenRing.isaac.models.characters.type.Character;
-import org.example.EldenRing.isaac.models.characters.interactions.type.BuffInteraction;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ContinuousHealingBuff implements BuffInteraction {
+public class ContinuousHealingHeal<T extends Character>  implements HealInteraction<T> {
 
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon1";
-    List<Character> allies = new ArrayList<>();
+    List<T> allies = new ArrayList<>();
 
-    public ContinuousHealingBuff(int turnsLeft, int amount, Character ... allies) {
+    public ContinuousHealingHeal(int turnsLeft, int amount, T ... allies) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
-        for (Character ally : allies) {
-            this.allies.add(ally);
-        }
+        this.allies.addAll(List.of(allies));
     }
 
-    public void setAllies(List<Character> allies) {
+    public void setAllies(List<T> allies) {
         this.allies = allies;
     }
 
     @Override
-    public void buff() {
-        if (turnsLeft == 0) return;
+    public boolean heal() {
+        if (turnsLeft == 0) return false;
         for (Character ally : allies) {
             ally.setCurrentHealth(ally.getCurrentHealth()+amount);
         }
+        if (turnsLeft == 0) return false;
         turnsLeft--;
-
+        return true;
     }
 
 
@@ -43,10 +42,14 @@ public class ContinuousHealingBuff implements BuffInteraction {
     }
 
     @Override
-    public void use() {
-        buff();
+    public boolean use() {
+        return heal();
     }
 
+    @Override
+    public void setTargets(List<T> targets) {
+        setAllies(targets);
+    }
 
 
 }

@@ -7,29 +7,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WeaponAttackAttack implements AttackInteraction {
+public class WeaponAttackAttack<T extends Character> implements AttackInteraction<T> {
 
     private int damage;
 
 
 
-    private List<Character> enemies = new ArrayList<>();
-    public WeaponAttackAttack(int damage, Character ... enemies) {
+    private List<T> enemies = new ArrayList<>();
+    public WeaponAttackAttack(int damage, T ... enemies) {
         this.damage = damage;
-        for (Character enemy : enemies) {
+        for (T enemy : enemies) {
             this.enemies.add(enemy);
         }
     }
 
-    public void setEnemies(List<Character> enemies) {
+    public void setEnemies(List<T> enemies) {
         this.enemies = enemies;
     }
 
     @Override
-    public void attack(Character enemy) {
+    public boolean attack() {
         for (Character character : enemies) {
             character.setCurrentHealth(character.getCurrentHealth()-damage);
         }
+        return true;
     }
 
 
@@ -39,10 +40,14 @@ public class WeaponAttackAttack implements AttackInteraction {
     }
 
     @Override
-    public void use() {
-
+    public  boolean use() {
+        return attack();
     }
 
+    @Override
+    public void setTargets(List<T> targets) {
+        setEnemies(targets);
+    }
 
 
 }

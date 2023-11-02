@@ -20,8 +20,9 @@ public class StatusPanel extends javax.swing.JPanel {
     }
     public StatusPanel(Interaction interaction) {
         initComponents();
-        interaction.getImgPath().orElse(null);
-        jLabel1.setIcon(new javax.swing.ImageIcon(interaction.getImgPath().get()));
+        if (interaction.getImgPath().isPresent()) {
+            jLabel1.setIcon(new javax.swing.ImageIcon(String.valueOf(interaction.getImgPath().get())));
+        }
     }
 
     /**

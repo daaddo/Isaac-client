@@ -87,3 +87,15 @@ n
 >src/test/java/org/example/EldenRing/isaac/piano/PianoTest.java,f\2\f27dc39c5f385d171746e866c24dababd68aa2c2
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+è
+_src/main/java/org/example/EldenRing/isaac/models/characters/interactions/impl/PoisonDebuff.java,f\f\ffc396a1d4c0dfa14616d3f547127dfc9f38cc3a
+í
+bsrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/type/BuffInteraction.java,e\9\e9b3ec681911e5733f756ce08a549c5b014c004c
+î
+dsrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/type/DebuffInteraction.java,8\6\86813192fd5157946caa960d73fdd37c895ccaa7
+ç
+]src/main/java/org/example/EldenRing/isaac/models/characters/interactions/impl/ShieldBuff.java,6\9\69d81e14252d64cf17c0d81878c9f5a041d3818c
+õ
+ksrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/skills/AttackSkillInteraction.java,7\c\7c98f581a2c9b5ea0583f662a80268b9880a53a7
+ï
+esrc/main/java/org/example/EldenRing/isaac/models/characters/interactions/impl/WeaponAttackAttack.java,2\2\229bdf65b83f9d868e1428d1a4f4f4609518cd14
