@@ -1,12 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ψ‡²ηψÿÿÿÿ
-j
-java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Character'.(Ά€Ά
-o
-java:S1128"TRemove this unused import 'org.example.EldenRing.isaac.models.characters.Fightable'.(θ“Ν–ÿÿÿÿÿ
-
-java:S1128"rRemove this unused import 'org.example.EldenRing.isaac.models.characters.interactions.impl.ContinuousHealingBuff'.(•“¤Λ
-w
-java:S1128"\Remove this unused import 'org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour'.(Ιϊ¶ξύÿÿÿÿ
-@
-java:S1068"*Remove this unused "skills" private field.(ρέµ‚

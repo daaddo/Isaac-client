@@ -5,6 +5,7 @@
 package org.example.isaac.gui;
 
 import org.example.isaac.TODO;
+import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.manager.FightManager;
 import org.example.isaac.manager.GameManager;
@@ -22,10 +23,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
  * @author trapa
  */
-public class CharacterPanel extends javax.swing.JPanel implements FightEventListner {
+public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implements FightEventListner<T>, CharactersEventListner<T> {
     private Unit unit;
     private String characterImgPath;
     private Boolean isAlly;
@@ -44,7 +44,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
-        if (unit.equals(this.unit)){
+        if (unit.equals(this.unit)) {
             if (unit instanceof MainUnit) {
                 this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
             }
@@ -56,11 +56,9 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     }
 
 
-
-
     @Override
     public void setTarget(Target target) {
-        if (target.target().equals(this.unit)){
+        if (target.target().equals(this.unit)) {
             this.jPanelCharacterImg.setBackground(Color.RED);
         }
     }
@@ -68,7 +66,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     @Override
     public void resetTarget(Target target) {
 
-        if (target.target().equals(this.unit)){
+        if (target.target().equals(this.unit)) {
             // set backgrounf to transparent
             this.jPanelCharacterImg.setBackground(null);
         }
@@ -94,20 +92,22 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
      * Creates new form JPanelEnemy
      */
 
-    public CharacterPanel(){
+    public CharacterPanel() {
         initComponents();
     }
+
     public CharacterPanel(Unit unit, Boolean isAlly) {
         initComponents();
         this.unit = unit;
         GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
+        FightManager.getInstance().subscribePanelListner(this);
         this.characterImgPath = unit.getAvatarPath();
         System.out.println(characterImgPath);
         Image image = new ImageIcon(CharacterPanel.class.getResource(characterImgPath)).getImage();
         this.jLabelCharacterImg.setIcon(new ImageIcon(image));
 
-        jLabelCharacterHealth.setText(""+ unit.getCurrentHealth()+" / "+ unit.getMaxHealth());
+        jLabelCharacterHealth.setText("" + unit.getCurrentHealth() + " / " + unit.getMaxHealth());
         jLabelCharacterName.setText(unit.getName());
         this.invalidate();
         this.validate();
@@ -142,12 +142,12 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         javax.swing.GroupLayout jPanelCharacterImgLayout = new javax.swing.GroupLayout(jPanelCharacterImg);
         jPanelCharacterImg.setLayout(jPanelCharacterImgLayout);
         jPanelCharacterImgLayout.setHorizontalGroup(
-            jPanelCharacterImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                jPanelCharacterImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelCharacterImgLayout.setVerticalGroup(
-            jPanelCharacterImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                jPanelCharacterImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
         );
 
         jLabelCharacterHealth.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
@@ -160,71 +160,81 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
         jPanelContainerCurrentEffects.setBackground(null);
         jPanelContainerCurrentEffects.setOpaque(false);
-        jPanelContainerCurrentEffects.setLayout(new java.awt.GridLayout(2, 5, 3, 0));
+        jPanelContainerCurrentEffects.setLayout(new java.awt.GridLayout(1, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCharacterName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(jPanelContainerCurrentEffects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanelCharacterImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelCharacterName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                        .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
+                        .addComponent(jPanelContainerCurrentEffects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelCharacterImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabelCharacterName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanelContainerCurrentEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanelCharacterImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabelCharacterName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelCharacterHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanelContainerCurrentEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    @TODO(todo="aggiungere la logica dietro gli attacchi")
-    private boolean useSkill(Skill skill){
+
+    @TODO(todo = "aggiungere la logica dietro gli attacchi")
+    private boolean useSkill(Skill skill) {
         List<Interaction> interactions = skill.getInteractions();
         boolean clicked = false;
-        if(skill.getTarget()== Skill.TargetType.ENEMY){
-            if (this.unit instanceof Enemy enemy){
+        if (skill.getTarget() == Skill.TargetType.ENEMY) {
+            if (this.unit instanceof Enemy enemy) {
                 System.out.println("[DEBUG] Enemy clicked");
-                if (!interactions.isEmpty()){
-                    for (Interaction interaction: interactions){
+                if (!interactions.isEmpty()) {
+                    for (Interaction interaction : interactions) {
                         interaction.setTargets(List.of(enemy));
+                        Optional<String> imgPath = interaction.getImgPath();
+                        jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+
                     }
                 }
                 clicked = true;
-            }
-            else{
+            } else {
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
                 return false;
             }
         } else if (skill.getTarget() == Skill.TargetType.ENEMYTEAM) {
-            if (this.unit instanceof Enemy enemy){
+            if (this.unit instanceof Enemy enemy) {
                 System.out.println("[DEBUG] Enemy clicked");
-                if (!interactions.isEmpty()){
-                    for (Interaction interaction: interactions){
+                if (!interactions.isEmpty()) {
+                    for (Interaction interaction : interactions) {
                         interaction.setTargets(FightManager.getInstance().getEnemies());
+                        Optional<String> imgPath = interaction.getImgPath();
+                        String s = imgPath.get();
+                        System.out.println("[DEBUG] imgPath: " + s);
+                        jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
                     }
                 }
                 clicked = true;
-            }
-            else{
+            } else {
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
                 return false;
             }
-        } else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ) {
+        } else if (skill.getTarget() == Skill.TargetType.ALLYTEAM) {
             if (this.unit instanceof MainUnit ally) {
                 System.out.println("[DEBUG] ally clicked");
-                if (!interactions.isEmpty()){
-                    for (Interaction interaction: interactions){
+                if (!interactions.isEmpty()) {
+                    for (Interaction interaction : interactions) {
                         interaction.setTargets(FightManager.getInstance().getAllies());
+                        interaction.use();
+                        Optional<String> imgPath = interaction.getImgPath();
+                        jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+
                     }
                 }
                 clicked = true;
@@ -232,44 +242,43 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
                 return false;
             }
-        } else if (skill.getTarget() == Skill.TargetType.SELF) {
+        } else if (skill.getTarget() == Skill.TargetType.SELF &&
+                !interactions.isEmpty() &&
+                this.unit == FightManager.getInstance().getCurrentCharacter()) {
             if (this.unit instanceof MainUnit ally) {
                 System.out.println("[DEBUG] ally clicked");
-                if (!interactions.isEmpty()){
-                    for (Interaction interaction: interactions){
-                        interaction.setTargets(List.of(ally));
-                    }
-                }
                 clicked = true;
+                for (Interaction interaction : interactions) {
+                    interaction.setTargets(List.of(ally));
+                    Optional<String> imgPath = interaction.getImgPath();
+                    imgPath.ifPresent(string -> jLabelCharacterImg.setIcon(new ImageIcon(getClass().getResource(string))));
+                    jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+                }
             } else {
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
                 return false;
             }
         } else if (skill.getTarget() == Skill.TargetType.ALL) {
-            if (this.unit instanceof MainUnit ally) {
+            if ((this.unit instanceof MainUnit ally)) {
                 System.out.println("[DEBUG] ally clicked");
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {
                         interaction.setTargets(List.of(ally));
+                        jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
                     }
                 }
-                clicked = true;
-            } else {
-                System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
-                return false;
+
             }
             if (this.unit instanceof Enemy enemy) {
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {
                         interaction.setTargets(List.of(enemy));
+                        jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
                     }
                 }
-                clicked = true;
-            } else {
-                System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
-                return false;
             }
+            clicked = true;
         }
         if (clicked) {
             FightManager.getInstance().resetInteractions();
@@ -281,16 +290,14 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         Optional<Skill> currentskillTargetActive = FightManager.getInstance().getCurrentInteractionActive();
 
-        if (currentskillTargetActive.isPresent()){
+        if (currentskillTargetActive.isPresent()) {
             Skill skill = currentskillTargetActive.get();
             boolean b = useSkill(skill);
             if (b) {
                 FightManager.getInstance().reset();
                 FightManager.getInstance().callNextTurn();
             }
-        }
-
-        else{
+        } else {
             System.out.println("[DEBUG] No skill active");
         }
 
@@ -303,6 +310,13 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     private javax.swing.JLabel jLabelCharacterName;
     private javax.swing.JPanel jPanelCharacterImg;
     private javax.swing.JPanel jPanelContainerCurrentEffects;
+
+    @Override
+    public void setInteractionsToOtherCharacters(Skill.TargetType type, Interaction<T> interaction) {
+
+    }
+
+
     // End of variables declaration//GEN-END:variables
 
 }

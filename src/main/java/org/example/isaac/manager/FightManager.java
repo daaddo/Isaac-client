@@ -1,7 +1,9 @@
 package org.example.isaac.manager;
 
+import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.gui.BattleFrame;
+import org.example.isaac.gui.CharacterPanel;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.type.Enemy;
@@ -22,6 +24,7 @@ public class FightManager {
     private List<Enemy> enemies = new ArrayList<>();
     private List<MainUnit> allies = new ArrayList<>();
     private List<FightEventListner> fightEventListners = new ArrayList<>();
+    private List<CharactersEventListner> charactersEventListners = new ArrayList<>();
     public static FightManager getInstance() {
         if (instance == null) {
             instance = new FightManager();
@@ -222,5 +225,9 @@ public class FightManager {
                 battleFrame.resetInteraction();
             }
         }
+    }
+
+    public void subscribePanelListner(CharactersEventListner characterPanel) {
+        this.charactersEventListners.add(characterPanel);
     }
 }

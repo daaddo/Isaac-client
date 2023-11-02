@@ -106,9 +106,8 @@
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-        <Property name="columns" type="int" value="5"/>
-        <Property name="horizontalGap" type="int" value="3"/>
-        <Property name="rows" type="int" value="2"/>
+        <Property name="columns" type="int" value="10"/>
+        <Property name="rows" type="int" value="1"/>
       </Layout>
     </Container>
   </SubComponents>

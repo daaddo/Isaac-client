@@ -1,8 +1,0 @@
-
-
-java:S1488"_Immediately return this expression instead of assigning it to the temporary variable "allboss".(ÉŸŸ’ùÿÿÿÿ8ƒìª¡±1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤öÈ>8„ìª¡±1
-F
-java:S1481")Remove this unused "mesi" local variable.(Ëëæì8šìª¡±1
-F
-java:S2140")Use "java.util.Random.nextInt()" instead.(²ˆ¾Ô8Ÿìª¡±1

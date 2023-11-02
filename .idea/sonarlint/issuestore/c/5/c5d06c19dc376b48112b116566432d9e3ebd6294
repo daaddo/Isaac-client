@@ -1,8 +1,0 @@
-
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(…ú½®8¼óİÁ®1
-c
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(µğÆäúÿÿÿÿ8¸ü’ª¸1
-O
-java:S1068"-Remove this unused "turnsLeft" private field.(¶›‚ùÿÿÿÿ8Äü’ª¸1
-G
-java:S1068"*Remove this unused "amount" private field.(²øá€8Åü’ª¸1
