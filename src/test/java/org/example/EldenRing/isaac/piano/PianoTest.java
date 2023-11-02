@@ -1,7 +1,8 @@
 package org.example.EldenRing.isaac.piano;
 
-import org.example.EldenRing.isaac.rooms.models.StarterRoom;
-import org.example.EldenRing.isaac.RoomCoordinates;
+import org.example.isaac.piano.Piano;
+import org.example.isaac.rooms.models.StarterRoom;
+import org.example.isaac.RoomCoordinates;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;

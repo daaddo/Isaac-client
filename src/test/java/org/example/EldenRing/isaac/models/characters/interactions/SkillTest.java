@@ -1,9 +1,10 @@
 package org.example.EldenRing.isaac.models.characters.interactions;
 
-import org.example.EldenRing.isaac.models.characters.interactions.skills.AttackSkillInteraction;
-import org.example.EldenRing.isaac.models.characters.interactions.skills.StroncaturaSkillInteraction;
-import org.example.EldenRing.isaac.models.characters.interactions.type.AttackInteraction;
-import org.example.EldenRing.isaac.models.characters.type.MainUnit;
+import org.example.isaac.models.characters.interactions.Skill;
+import org.example.isaac.models.characters.interactions.skills.AttackSkillInteraction;
+import org.example.isaac.models.characters.interactions.skills.StroncaturaSkillInteraction;
+import org.example.isaac.models.characters.interactions.type.AttackInteraction;
+import org.example.isaac.models.characters.type.MainUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
