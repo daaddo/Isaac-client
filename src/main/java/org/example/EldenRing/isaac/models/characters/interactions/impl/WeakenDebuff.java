@@ -1,13 +1,13 @@
 package org.example.EldenRing.isaac.models.characters.interactions.impl;
 
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.interactions.type.DebuffInteraction;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WeakenDebuff<T extends Character> implements DebuffInteraction<T> {
+public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon1";
@@ -28,7 +28,7 @@ public class WeakenDebuff<T extends Character> implements DebuffInteraction<T> {
     @Override
     public boolean debuff() {
         if (turnsLeft == 0) return false;
-        for (Character enemy : enemies) {
+        for (Unit enemy : enemies) {
             enemy.setCurrentHealth(enemy.getCurrentHealth()-amount);
         }
         if (turnsLeft == 0) return false;

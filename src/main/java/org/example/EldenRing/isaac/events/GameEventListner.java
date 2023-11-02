@@ -1,6 +1,6 @@
 package org.example.EldenRing.isaac.events;
 
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.RoomCoordinates;
 
@@ -11,6 +11,6 @@ public interface GameEventListner {
 
     void move(RoomCoordinates roomCoordinates);
     void enteredRoom();
-    void selectCharacter(List<MainCharacter> character);
+    void selectCharacter(List<MainUnit> character);
 
 }

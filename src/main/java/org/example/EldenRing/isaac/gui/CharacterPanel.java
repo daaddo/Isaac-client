@@ -9,9 +9,9 @@ import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.type.Enemy;
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
@@ -26,7 +26,7 @@ import java.util.Optional;
  * @author trapa
  */
 public class CharacterPanel extends javax.swing.JPanel implements FightEventListner {
-    private Character character;
+    private Unit unit;
     private String characterImgPath;
     private Boolean isAlly;
 
@@ -43,10 +43,10 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
 
     @Override
-    public void getNextTurns(Character character, Boolean isally) {
-        if (character.equals(this.character)){
-            if (character instanceof MainCharacter) {
-                this.jLabelCharacterHealth.setText(character.getCurrentHealth() + "/" + character.getMaxHealth());
+    public void getNextTurns(Unit unit, Boolean isally) {
+        if (unit.equals(this.unit)){
+            if (unit instanceof MainUnit) {
+                this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
             }
             this.jPanelCharacterImg.revalidate();
             this.jPanelCharacterImg.repaint();
@@ -60,7 +60,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
 
     @Override
     public void setTarget(Target target) {
-        if (target.target().equals(this.character)){
+        if (target.target().equals(this.unit)){
             this.jPanelCharacterImg.setBackground(Color.RED);
         }
     }
@@ -68,7 +68,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     @Override
     public void resetTarget(Target target) {
 
-        if (target.target().equals(this.character)){
+        if (target.target().equals(this.unit)){
             // set backgrounf to transparent
             this.jPanelCharacterImg.setBackground(null);
         }
@@ -85,7 +85,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     }
 
     @Override
-    public void startTurn(Character character, Boolean isally) {
+    public void startTurn(Unit unit, Boolean isally) {
 
     }
 
@@ -97,18 +97,18 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
     public CharacterPanel(){
         initComponents();
     }
-    public CharacterPanel(Character character, Boolean isAlly) {
+    public CharacterPanel(Unit unit, Boolean isAlly) {
         initComponents();
-        this.character = character;
+        this.unit = unit;
         GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
-        this.characterImgPath = character.getAvatarPath();
+        this.characterImgPath = unit.getAvatarPath();
         System.out.println(characterImgPath);
         Image image = new ImageIcon(CharacterPanel.class.getResource(characterImgPath)).getImage();
         this.jLabelCharacterImg.setIcon(new ImageIcon(image));
 
-        jLabelCharacterHealth.setText(""+character.getCurrentHealth()+" / "+character.getMaxHealth());
-        jLabelCharacterName.setText(character.getName());
+        jLabelCharacterHealth.setText(""+ unit.getCurrentHealth()+" / "+ unit.getMaxHealth());
+        jLabelCharacterName.setText(unit.getName());
         this.invalidate();
         this.validate();
         this.repaint();
@@ -192,7 +192,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
         List<Interaction> interactions = skill.getInteractions();
         boolean clicked = false;
         if(skill.getTarget()== Skill.TargetType.ENEMY){
-            if (this.character instanceof Enemy enemy){
+            if (this.unit instanceof Enemy enemy){
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()){
                     for (Interaction interaction: interactions){
@@ -206,7 +206,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 return false;
             }
         } else if (skill.getTarget() == Skill.TargetType.ENEMYTEAM) {
-            if (this.character instanceof Enemy enemy){
+            if (this.unit instanceof Enemy enemy){
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()){
                     for (Interaction interaction: interactions){
@@ -220,7 +220,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 return false;
             }
         } else if(skill.getTarget()== Skill.TargetType.ALLYTEAM ) {
-            if (this.character instanceof MainCharacter ally) {
+            if (this.unit instanceof MainUnit ally) {
                 System.out.println("[DEBUG] ally clicked");
                 if (!interactions.isEmpty()){
                     for (Interaction interaction: interactions){
@@ -233,7 +233,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 return false;
             }
         } else if (skill.getTarget() == Skill.TargetType.SELF) {
-            if (this.character instanceof MainCharacter ally) {
+            if (this.unit instanceof MainUnit ally) {
                 System.out.println("[DEBUG] ally clicked");
                 if (!interactions.isEmpty()){
                     for (Interaction interaction: interactions){
@@ -246,7 +246,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 return false;
             }
         } else if (skill.getTarget() == Skill.TargetType.ALL) {
-            if (this.character instanceof MainCharacter ally) {
+            if (this.unit instanceof MainUnit ally) {
                 System.out.println("[DEBUG] ally clicked");
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {
@@ -258,7 +258,7 @@ public class CharacterPanel extends javax.swing.JPanel implements FightEventList
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
                 return false;
             }
-            if (this.character instanceof Enemy enemy) {
+            if (this.unit instanceof Enemy enemy) {
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {

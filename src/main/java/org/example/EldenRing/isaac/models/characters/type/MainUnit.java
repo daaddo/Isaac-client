@@ -6,9 +6,9 @@ import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
 import java.util.Collections;
 import java.util.List;
 
-public class MainCharacter extends Character implements Fightable {
+public class MainUnit extends Unit implements Fightable {
     private List<Skill> skills;
-    public MainCharacter(String name, List<Skill> interactions, int agilty,String avatarPath) {
+    public MainUnit(String name, List<Skill> interactions, int agilty, String avatarPath) {
         super(name, 30, 30, new NormalFightingBehaviour(), agilty,avatarPath);
         this.skills = interactions;
     }

@@ -1,14 +1,14 @@
 package org.example.EldenRing.isaac.models.characters.interactions.impl;
 
 import org.example.EldenRing.isaac.models.characters.interactions.type.DebuffInteraction;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 //TODO aggiungere costruttore
-public class PoisonDebuff<T extends Character> implements DebuffInteraction<T> {
+public class PoisonDebuff<T extends Unit> implements DebuffInteraction<T> {
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon2";
@@ -45,7 +45,7 @@ public class PoisonDebuff<T extends Character> implements DebuffInteraction<T> {
     public boolean debuff() {
         if (turnsLeft == 0) return false;
 
-        for (Character enemy : enemies) {
+        for (Unit enemy : enemies) {
             enemy.setCurrentHealth(enemy.getCurrentHealth()-10);
         }
         if (turnsLeft == 0) return false;

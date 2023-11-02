@@ -1,13 +1,13 @@
 package org.example.EldenRing.isaac.models.characters.allymodels;
 
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
 import java.util.List;
 
-public class SuperAgilityMainCharacterTest extends MainCharacter {
+public class SuperAgilityMainUnitTest extends MainUnit {
     private List<Skill> skills;
-    public SuperAgilityMainCharacterTest(String name, List<Skill> interactions) {
+    public SuperAgilityMainUnitTest(String name, List<Skill> interactions) {
         super(name, interactions,7,"/images/isaac.png");
         this.skills = interactions;
     }

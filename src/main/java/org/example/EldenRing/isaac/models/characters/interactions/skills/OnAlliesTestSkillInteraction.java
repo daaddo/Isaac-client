@@ -1,6 +1,6 @@
 package org.example.EldenRing.isaac.models.characters.interactions.skills;
 
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.models.characters.interactions.impl.ContinuousHealingHeal;
 import org.example.EldenRing.isaac.models.characters.interactions.impl.WeakenDebuff;
@@ -14,7 +14,7 @@ public class OnAlliesTestSkillInteraction extends Skill {
 
 
     @Override
-    public void skillUsage(Character character) {
-        character.setCurrentHealth(character.getCurrentHealth()-5);
+    public void skillUsage(Unit unit) {
+        unit.setCurrentHealth(unit.getCurrentHealth()-5);
     }
 }

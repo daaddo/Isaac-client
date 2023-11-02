@@ -1,13 +1,13 @@
 package org.example.EldenRing.isaac.models.characters.interactions.impl;
 
 import org.example.EldenRing.isaac.models.characters.interactions.type.AttackInteraction;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WeaponAttackAttack<T extends Character> implements AttackInteraction<T> {
+public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> {
 
     private int damage;
 
@@ -27,8 +27,8 @@ public class WeaponAttackAttack<T extends Character> implements AttackInteractio
 
     @Override
     public boolean attack() {
-        for (Character character : enemies) {
-            character.setCurrentHealth(character.getCurrentHealth()-damage);
+        for (Unit unit : enemies) {
+            unit.setCurrentHealth(unit.getCurrentHealth()-damage);
         }
         return true;
     }

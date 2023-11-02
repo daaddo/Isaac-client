@@ -11,7 +11,7 @@ import org.example.EldenRing.isaac.factory.FightingRoomFactory;
 import org.example.EldenRing.isaac.factory.NormalPrizeRoomFactory;
 import org.example.EldenRing.isaac.factory.StarterRoomFactory;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.RoomCoordinates;
 
@@ -23,12 +23,12 @@ import java.util.List;
  */
 public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     private static int piano = Piano.getNumero();
-    private List<MainCharacter> character;
+    private List<MainUnit> character;
     public static int getPiano() {
         return piano;
     }
 
-    public List<MainCharacter> getCharacter() {
+    public List<MainUnit> getCharacter() {
         return character;
     }
 
@@ -159,7 +159,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     // Variables declaration - do not modify
     private javax.swing.JPanel jPanel1;
 
-    public void setCharacter(List<MainCharacter> character) {
+    public void setCharacter(List<MainUnit> character) {
         this.character = character;
     }
 
@@ -199,7 +199,7 @@ public class MainFrame extends javax.swing.JFrame implements GameEventListner {
     }
 
     @Override
-    public void selectCharacter(List<MainCharacter> character) {
+    public void selectCharacter(List<MainUnit> character) {
         this.character = character;
     }
 

@@ -6,7 +6,7 @@ package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.manager.FightManager;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.Target;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 
@@ -116,7 +116,7 @@ public class InteractionPanel extends javax.swing.JPanel implements FightEventLi
     private javax.swing.JButton jButton1;
 
     @Override
-    public void getNextTurns(Character character, Boolean isally) {
+    public void getNextTurns(Unit unit, Boolean isally) {
 
     }
 
@@ -144,7 +144,7 @@ public class InteractionPanel extends javax.swing.JPanel implements FightEventLi
     }
 
     @Override
-    public void startTurn(Character character, Boolean isally) {
+    public void startTurn(Unit unit, Boolean isally) {
 
     }
     // End of variables declaration//GEN-END:variables

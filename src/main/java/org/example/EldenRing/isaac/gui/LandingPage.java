@@ -6,8 +6,8 @@ package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
-import org.example.EldenRing.isaac.models.characters.allymodels.SuperAgilityMainCharacterTest;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
+import org.example.EldenRing.isaac.models.characters.allymodels.SuperAgilityMainUnitTest;
 import org.example.EldenRing.isaac.models.characters.interactions.skills.DeBuffAllEnemiesSkillInteraction;
 import org.example.EldenRing.isaac.models.characters.interactions.skills.OnAlliesTestSkillInteraction;
 import org.example.EldenRing.isaac.models.characters.interactions.skills.StroncaturaSkillInteraction;
@@ -155,16 +155,16 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().addCharacter(new SuperAgilityMainCharacterTest("deborah", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3))));
+            GameManager.getInstance().addCharacter(new SuperAgilityMainUnitTest("deborah", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3))));
         }
         else if (actionCommand.equals("Test2")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("Pio", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),5,"C:\\images\\dennys.png"));
+            GameManager.getInstance().addCharacter(new MainUnit("Pio", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),5,"C:\\images\\dennys.png"));
         }
         else if (actionCommand.equals("Test3")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("amedeo", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),4,"C:\\images\\dennys.png"));
+            GameManager.getInstance().addCharacter(new MainUnit("amedeo", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),4,"C:\\images\\dennys.png"));
         }
         else if (actionCommand.equals("Test4")) {
-            GameManager.getInstance().addCharacter(new MainCharacter("Felipe", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),6,"C:\\images\\dennys.png"));
+            GameManager.getInstance().addCharacter(new MainUnit("Felipe", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),6,"C:\\images\\dennys.png"));
         } else {
             JOptionPane.showMessageDialog(null,"codice non valido","ERRORE",JOptionPane.ERROR_MESSAGE);
         }
@@ -241,7 +241,7 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
 
 
     @Override
-    public void selectCharacter(List<MainCharacter> character) {
+    public void selectCharacter(List<MainUnit> character) {
 
     }
     // End of variables declaration//GEN-END:variables

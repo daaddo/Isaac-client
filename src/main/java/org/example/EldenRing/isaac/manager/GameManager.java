@@ -3,16 +3,16 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.Game;
-import org.example.EldenRing.isaac.models.characters.type.Character;
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 import org.example.EldenRing.isaac.RoomCoordinates;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GameManager <T extends Character> {
-    private List<MainCharacter> characters = new LinkedList<>();
+public class GameManager <T extends Unit> {
+    private List<MainUnit> characters = new LinkedList<>();
     private RoomCoordinates pointerRoom;
     private Game gioco;
     private T character;
@@ -25,11 +25,11 @@ public class GameManager <T extends Character> {
     private GameManager() {
     }
 
-    public List<MainCharacter> getCharacter() {
+    public List<MainUnit> getCharacter() {
         return this.characters;
     }
 
-    public void setCharacter(List<MainCharacter> character) {
+    public void setCharacter(List<MainUnit> character) {
         this.characters = character;
     }
 
@@ -42,7 +42,7 @@ public class GameManager <T extends Character> {
         return instance;
     }
 
-    public void insertCharacter(List<MainCharacter> character){
+    public void insertCharacter(List<MainUnit> character){
         for (GameEventListner gameEventListner : gameEventListners) {
             gameEventListner.selectCharacter(character);
         }
@@ -56,7 +56,7 @@ public class GameManager <T extends Character> {
             gameEventListner.newGame(gioco.getPiano());
         }
     }
-    public void addCharacter(MainCharacter character){
+    public void addCharacter(MainUnit character){
         this.characters.add(character);
 }
     public void teleport(RoomCoordinates coordinates){

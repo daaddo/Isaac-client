@@ -5,7 +5,7 @@ import org.example.EldenRing.isaac.models.characters.interactions.impl.Continuou
 import org.example.EldenRing.isaac.models.characters.interactions.impl.WeakenDebuff;
 import org.example.EldenRing.isaac.models.characters.interactions.impl.WeaponAttackAttack;
 import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 
 import java.util.Arrays;
 
@@ -16,12 +16,12 @@ public class AttackSkillInteraction extends Skill {
         super("SkillTEST ATTACK", TargetType.ENEMY,
                 new WeaponAttackAttack(3), new WeakenDebuff(5,5), new ContinuousHealingHeal(5,5), new WeaponAttackAttack(4));
     }
-    public void setTargets(Character ... characters){
+    public void setTargets(Unit... units){
         for (Interaction interaction : getInteractions()) {
-            interaction.setTargets(Arrays.stream(characters).toList());
+            interaction.setTargets(Arrays.stream(units).toList());
         }
     }
     @Override
-    public void skillUsage(Character character) {
+    public void skillUsage(Unit unit) {
     }
 }

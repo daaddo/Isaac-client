@@ -5,12 +5,13 @@
 package org.example.EldenRing.isaac.gui;
 
 import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 
 /**
  *
  * @author trapa
  */
-public class StatusPanel extends javax.swing.JPanel {
+public class StatusPanel<T extends Unit> extends javax.swing.JPanel {
 
     /**
      * Creates new form StatusPanel
@@ -18,7 +19,7 @@ public class StatusPanel extends javax.swing.JPanel {
     public StatusPanel() {
         initComponents();
     }
-    public StatusPanel(Interaction interaction) {
+    public StatusPanel(Interaction<T> interaction) {
         initComponents();
         if (interaction.getImgPath().isPresent()) {
             jLabel1.setIcon(new javax.swing.ImageIcon(String.valueOf(interaction.getImgPath().get())));

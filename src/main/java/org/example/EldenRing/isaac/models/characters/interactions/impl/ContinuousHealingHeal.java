@@ -1,13 +1,13 @@
 package org.example.EldenRing.isaac.models.characters.interactions.impl;
 
 import org.example.EldenRing.isaac.models.characters.interactions.type.HealInteraction;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ContinuousHealingHeal<T extends Character>  implements HealInteraction<T> {
+public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T> {
 
     private int turnsLeft;
     private int amount;
@@ -27,7 +27,7 @@ public class ContinuousHealingHeal<T extends Character>  implements HealInteract
     @Override
     public boolean heal() {
         if (turnsLeft == 0) return false;
-        for (Character ally : allies) {
+        for (Unit ally : allies) {
             ally.setCurrentHealth(ally.getCurrentHealth()+amount);
         }
         if (turnsLeft == 0) return false;

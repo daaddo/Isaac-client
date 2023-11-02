@@ -9,10 +9,10 @@ import org.example.EldenRing.isaac.factory.RandomEnemiesForARoomFactory;
 import org.example.EldenRing.isaac.manager.FightManager;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.*;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.models.characters.type.Fightable;
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 import org.example.EldenRing.isaac.models.characters.type.NormalEnemy;
 import org.example.EldenRing.isaac.models.nextCharacter;
 
@@ -29,10 +29,10 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     /**
      * Creates new form BattleFrame
      */
-    private HashMap<? extends Character,Boolean> turnMap = new HashMap<>();
+    private HashMap<? extends Unit,Boolean> turnMap = new HashMap<>();
     private nextCharacter nextCharacter;
 
-    public BattleFrame(List<MainCharacter> character) {
+    public BattleFrame(List<MainUnit> character) {
         initComponents();
         GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
@@ -40,10 +40,10 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
         addAlly(character);
         addEnemy(enemies);
         turnMap = FightManager.getInstance().getNextTurnCharacters();
-        Character character1 = turnMap.keySet().stream().findFirst().get();
-        Boolean b = turnMap.get(character1);
-        nextCharacter = new nextCharacter(character1,b);
-        GameManager.getInstance().giveTurn(nextCharacter.character(), nextCharacter.isAlly());
+        Unit unit1 = turnMap.keySet().stream().findFirst().get();
+        Boolean b = turnMap.get(unit1);
+        nextCharacter = new nextCharacter(unit1,b);
+        GameManager.getInstance().giveTurn(nextCharacter.unit(), nextCharacter.isAlly());
         invalidate();
         validate();
         repaint();
@@ -57,21 +57,21 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
             turnMap = FightManager.getInstance().getNextTurnCharacters();
         }
         nextCharacter = new nextCharacter(turnMap.keySet().stream().findFirst().get(),turnMap.get(turnMap.keySet().stream().findFirst().get()));
-        GameManager.getInstance().giveTurn(nextCharacter.character(), nextCharacter.isAlly());
+        GameManager.getInstance().giveTurn(nextCharacter.unit(), nextCharacter.isAlly());
 
     }
 
     public void setEnemiesBackground(Skill.TargetType type){
 
     }
-    public boolean isAlly(Character character){
-        return turnMap.get(character);
+    public boolean isAlly(Unit unit){
+        return turnMap.get(unit);
     }
     public static void startTurn(){
         FightManager.getInstance().getNextTurnCharacters();
     }
 
-    private void addAlly(List<MainCharacter> character) {
+    private void addAlly(List<MainUnit> character) {
         for (int i = 0; i < character.size(); i++) {
             jPanelContainerPersonalCharacters.add(new CharacterPanel(character.get(i),true));
             FightManager.getInstance().addAlly(character.get(i));
@@ -198,9 +198,9 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
 
 
     @Override
-    public void getNextTurns(Character character, Boolean isally) {
-        if (character instanceof Fightable){
-            if(character instanceof MainCharacter mainCharacter) {
+    public void getNextTurns(Unit unit, Boolean isally) {
+        if (unit instanceof Fightable){
+            if(unit instanceof MainUnit mainCharacter) {
                 for (Skill skill : mainCharacter.getSkills()) {
                     jPanelCharacterOption.add(new InteractionPanel(skill));
                 }
@@ -232,8 +232,8 @@ public class BattleFrame extends javax.swing.JFrame implements FightEventListner
     }
 
     @Override
-    public void startTurn(Character character, Boolean isally) {
-        this.nextCharacter = new nextCharacter(character,isally);
+    public void startTurn(Unit unit, Boolean isally) {
+        this.nextCharacter = new nextCharacter(unit,isally);
         goNextRound();
     }
 

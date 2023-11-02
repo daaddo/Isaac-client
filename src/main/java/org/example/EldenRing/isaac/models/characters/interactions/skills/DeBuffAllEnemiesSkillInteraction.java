@@ -1,6 +1,6 @@
 package org.example.EldenRing.isaac.models.characters.interactions.skills;
 
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.models.characters.interactions.impl.ContinuousHealingHeal;
 import org.example.EldenRing.isaac.models.characters.interactions.impl.WeakenDebuff;
@@ -13,7 +13,7 @@ public class DeBuffAllEnemiesSkillInteraction extends Skill {
     }
 
     @Override
-    public void skillUsage(Character character) {
+    public void skillUsage(Unit unit) {
 
     }
 }

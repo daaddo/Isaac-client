@@ -3,11 +3,11 @@ package org.example.EldenRing.isaac.manager;
 import org.example.EldenRing.isaac.events.FightEventListner;
 import org.example.EldenRing.isaac.gui.BattleFrame;
 import org.example.EldenRing.isaac.models.characters.*;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.interactions.Skill;
 import org.example.EldenRing.isaac.models.characters.type.Enemy;
 import org.example.EldenRing.isaac.models.characters.type.Fightable;
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 
 import java.util.*;
 
@@ -16,11 +16,11 @@ public class FightManager {
 
     private FightManager() {
     }
-    private Character currentCharacter;
-    private Map<MainCharacter,Integer> allyAgilityMap = new HashMap();
+    private Unit currentUnit;
+    private Map<MainUnit,Integer> allyAgilityMap = new HashMap();
     private Map<Enemy,Integer> enemyAgilityMap = new HashMap<>();
     private List<Enemy> enemies = new ArrayList<>();
-    private List<MainCharacter> allies = new ArrayList<>();
+    private List<MainUnit> allies = new ArrayList<>();
     private List<FightEventListner> fightEventListners = new ArrayList<>();
     public static FightManager getInstance() {
         if (instance == null) {
@@ -29,7 +29,7 @@ public class FightManager {
         return instance;
     }
     public void reset(){
-        for (MainCharacter mainCharacter : allyAgilityMap.keySet()) {
+        for (MainUnit mainCharacter : allyAgilityMap.keySet()) {
             for (FightEventListner fightEventListner : fightEventListners) {
                 fightEventListner.resetTarget(new Target(mainCharacter));
             }
@@ -61,7 +61,7 @@ public class FightManager {
         this.enemies.add(enemy);
     }
 
-    public void addAlly(MainCharacter ally) {
+    public void addAlly(MainUnit ally) {
         this.allyAgilityMap.put(ally, ally.getAgility());
         this.allies.add(ally);
     }
@@ -70,7 +70,7 @@ public class FightManager {
         return enemies;
     }
 
-    public List<MainCharacter> getAllies() {
+    public List<MainUnit> getAllies() {
         return allies;
     }
 
@@ -78,7 +78,7 @@ public class FightManager {
         switch (type){
             case SELF -> {
                 for (FightEventListner fightEventListner : fightEventListners) {
-                    fightEventListner.setTarget(new Target(this.currentCharacter));
+                    fightEventListner.setTarget(new Target(this.currentUnit));
                 }
             }
             case ENEMY -> {
@@ -91,7 +91,7 @@ public class FightManager {
             case DEAD -> {
             }
             case ALLYTEAM -> {
-                for (MainCharacter mainCharacter : allyAgilityMap.keySet()) {
+                for (MainUnit mainCharacter : allyAgilityMap.keySet()) {
                     for (FightEventListner fightEventListner : fightEventListners) {
                         fightEventListner.setTarget(new Target(mainCharacter));
                     }
@@ -105,7 +105,7 @@ public class FightManager {
                 }
             }
             case ALL -> {
-                for (MainCharacter mainCharacter : allyAgilityMap.keySet()) {
+                for (MainUnit mainCharacter : allyAgilityMap.keySet()) {
                     for (FightEventListner fightEventListner : fightEventListners) {
                         fightEventListner.setTarget(new Target(mainCharacter));
                     }
@@ -127,8 +127,8 @@ public class FightManager {
         }
         return true;
     }
-    public void init(List<? extends MainCharacter> ally,List<? extends Enemy> enemy){
-        for (MainCharacter fightable : ally) {
+    public void init(List<? extends MainUnit> ally, List<? extends Enemy> enemy){
+        for (MainUnit fightable : ally) {
             addAlly(fightable);
         }
         for (Enemy fightable : enemy) {
@@ -142,23 +142,23 @@ public class FightManager {
         }
     }
 
-    public void setCurrentCharacter(Character currentCharacter) {
-        this.currentCharacter = currentCharacter;
+    public void setCurrentCharacter(Unit currentUnit) {
+        this.currentUnit = currentUnit;
     }
 
-    public Character getCurrentCharacter() {
-        return currentCharacter;
+    public Unit getCurrentCharacter() {
+        return currentUnit;
     }
 
-    public void giveTurn(Character character,Boolean isAlly){
+    public void giveTurn(Unit unit, Boolean isAlly){
         for (FightEventListner fightEventListner : fightEventListners) {
-            fightEventListner.getNextTurns(character,isAlly);
+            fightEventListner.getNextTurns(unit,isAlly);
         }
     }
 
-    public HashMap<Character,Boolean> getNextTurnCharacters(){
+    public HashMap<Unit,Boolean> getNextTurnCharacters(){
         initializedMaps();
-        HashMap< Character, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
+        HashMap<Unit, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
             while (agilityOver100AndIsAllyMap.isEmpty()) {
                 allyAgilityMap.forEach((key, value) -> {
                     if (value >= 100) {
@@ -177,15 +177,15 @@ public class FightManager {
                     }
                 });
             }
-            HashMap<Character, Boolean> sortedMapByAgility = sortMap(agilityOver100AndIsAllyMap);
+            HashMap<Unit, Boolean> sortedMapByAgility = sortMap(agilityOver100AndIsAllyMap);
             sortedMapByAgility.forEach((key, value) -> System.out.println(key.getName() + "  " + value));
             return sortedMapByAgility;
     }
-    public  HashMap<Character,Boolean> sortMap(HashMap<Character,Boolean> toSort){
-        HashMap<Character,Boolean> agilityOver100AndIsAllyMapAfterSort = new HashMap<>();
-        for (Character fightable : toSort.keySet()) {
+    public  HashMap<Unit,Boolean> sortMap(HashMap<Unit,Boolean> toSort){
+        HashMap<Unit,Boolean> agilityOver100AndIsAllyMapAfterSort = new HashMap<>();
+        for (Unit fightable : toSort.keySet()) {
             int max = 0;
-            for (Character fightable1 : toSort.keySet()) {
+            for (Unit fightable1 : toSort.keySet()) {
                 if(fightable1.getAgility()>max){
                     agilityOver100AndIsAllyMapAfterSort.put(fightable1,toSort.get(fightable1));
                 }

@@ -1,8 +1,7 @@
 package org.example.EldenRing.isaac.models.characters.interactions;
 
 import org.example.EldenRing.isaac.models.characters.interactions.type.AttackInteraction;
-import org.example.EldenRing.isaac.models.characters.type.Character;
-import org.example.EldenRing.isaac.models.characters.interactions.type.BuffInteraction;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 import org.example.EldenRing.isaac.models.characters.interactions.type.Interaction;
 
 import java.util.Arrays;
@@ -42,9 +41,9 @@ public abstract class Skill {
         this.interactions = Arrays.stream(interactions).toList();
         this.targetType = targetType;
     }
-    public abstract void skillUsage(Character character);
-    public final void activate(Character character){
+    public abstract void skillUsage(Unit unit);
+    public final void activate(Unit unit){
 
-        skillUsage(character);
+        skillUsage(unit);
     }
 }

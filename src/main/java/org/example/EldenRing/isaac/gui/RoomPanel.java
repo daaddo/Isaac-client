@@ -13,7 +13,7 @@ import org.example.EldenRing.isaac.TODO;
 import org.example.EldenRing.isaac.events.GameEventListner;
 import org.example.EldenRing.isaac.manager.GameManager;
 import org.example.EldenRing.isaac.models.characters.type.Enemy;
-import org.example.EldenRing.isaac.models.characters.type.MainCharacter;
+import org.example.EldenRing.isaac.models.characters.type.MainUnit;
 import org.example.EldenRing.isaac.piano.Piano;
 import org.example.EldenRing.isaac.rooms.fight.NormalFightingBehaviour;
 import org.example.EldenRing.isaac.rooms.models.Room;
@@ -28,7 +28,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     private RoomCoordinates roomCoordinates;
     private Room roomtype;
     private Boolean visited = false;
-    private List<MainCharacter> character;
+    private List<MainUnit> character;
     private List<Enemy> enemies;
 
     /**
@@ -38,7 +38,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
         initComponents();
     }
 
-    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,List<MainCharacter> character) {
+    public RoomPanel(RoomCoordinates roomCoordinates, boolean starterRoom, Room roomtype,List<MainUnit> character) {
         initComponents();
         GameManager.getInstance().setFighting(false);
         this.roomCoordinates = roomCoordinates;
@@ -196,7 +196,7 @@ public class RoomPanel extends javax.swing.JPanel implements GameEventListner {
     }
 
     @Override
-    public void selectCharacter(List<MainCharacter> character) {
+    public void selectCharacter(List<MainUnit> character) {
 
     }
 

@@ -1,14 +1,14 @@
 package org.example.EldenRing.isaac.models.characters.interactions.impl;
 
 import org.example.EldenRing.isaac.models.characters.interactions.type.BuffInteraction;
-import org.example.EldenRing.isaac.models.characters.type.Character;
+import org.example.EldenRing.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 //TODO aggiungere costruttore
-public class ShieldBuff<T extends Character> implements BuffInteraction<T> {
+public class ShieldBuff<T extends Unit> implements BuffInteraction<T> {
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon1";
@@ -28,7 +28,7 @@ public class ShieldBuff<T extends Character> implements BuffInteraction<T> {
     @Override
     public boolean buff() {
         if (turnsLeft == 0) return false;
-        for (Character ally : allies) {
+        for (Unit ally : allies) {
             ally.setCurrentHealth(ally.getCurrentHealth()+amount);
         }
         if (turnsLeft == 0) return false;
