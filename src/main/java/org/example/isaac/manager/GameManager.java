@@ -20,7 +20,7 @@ public class GameManager <T extends Unit> {
     private boolean isFighting = false;
     private List<GameEventListner> gameEventListners = new ArrayList<>();
     private List<GameEventListner> roomGameListners = new ArrayList<>();
-    private List<FightEventListner> fightEventListners = new ArrayList<>();
+    private List<FightEventListner<? extends Unit>> fightEventListners = new ArrayList<>();
 
     private GameManager() {
     }

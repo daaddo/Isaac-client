@@ -183,3 +183,5 @@ h
 8src/main/java/org/example/isaac/manager/GameManager.java,4\4\44ecab1afa42f1e57948c80ab33087c9b5c50d67
 d
 4src/main/java/org/example/isaac/gui/BattleFrame.java,b\d\bdaf22d5c91780e539c874eadc8dccd1fe86850b
+r
+Bsrc/main/java/org/example/isaac/events/CharactersEventListner.java,4\9\493e2202baaa3918ed7c1cf41e91a42661c68ee7
