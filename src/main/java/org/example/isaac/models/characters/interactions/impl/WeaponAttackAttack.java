@@ -1,24 +1,25 @@
 package org.example.isaac.models.characters.interactions.impl;
 
+import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.interactions.type.AttackInteraction;
 import org.example.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> {
 
     private int damage;
-
+    private Skill.TargetType targetType;
 
 
     private List<T> enemies = new ArrayList<>();
-    public WeaponAttackAttack(int damage, T ... enemies) {
+    public WeaponAttackAttack(int damage, Skill.TargetType targetType, T ... enemies) {
         this.damage = damage;
-        for (T enemy : enemies) {
-            this.enemies.add(enemy);
-        }
+        this.targetType = targetType;
+        Collections.addAll(this.enemies, enemies);
     }
 
     public void setEnemies(List<T> enemies) {
@@ -47,6 +48,11 @@ public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> 
     @Override
     public void setTargets(List<T> targets) {
         setEnemies(targets);
+    }
+
+    @Override
+    public Skill.TargetType getTargetType() {
+        return targetType;
     }
 
 

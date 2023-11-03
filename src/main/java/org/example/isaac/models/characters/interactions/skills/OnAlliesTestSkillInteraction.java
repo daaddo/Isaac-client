@@ -6,10 +6,10 @@ import org.example.isaac.models.characters.interactions.impl.ContinuousHealingHe
 import org.example.isaac.models.characters.interactions.impl.WeakenDebuff;
 
 public class OnAlliesTestSkillInteraction extends Skill {
-    public OnAlliesTestSkillInteraction(int contininuousHealingBuffDuration, int contininuousHealingBuffAmount, int weakenDebuffDuration, int weakenDebuffAmount) {
-        super("TESTSKILL TYPE ALLY",TargetType.ALLYTEAM,
-                new WeakenDebuff(weakenDebuffDuration , weakenDebuffAmount),
-                new ContinuousHealingHeal(contininuousHealingBuffDuration, contininuousHealingBuffAmount));
+    public OnAlliesTestSkillInteraction(int weakenDebuffDuration, int weakenDebuffAmount, int contininuousHealingBuffDuration, int contininuousHealingBuffAmount) {
+        super("TESTSKILL TYPE ALLY",
+                new WeakenDebuff(weakenDebuffDuration , weakenDebuffAmount, TargetType.ENEMY),
+                new ContinuousHealingHeal(contininuousHealingBuffDuration, contininuousHealingBuffAmount, TargetType.ALLYTEAM));
     }
 
 

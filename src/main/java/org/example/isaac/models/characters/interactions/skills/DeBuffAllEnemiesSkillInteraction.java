@@ -6,10 +6,9 @@ import org.example.isaac.models.characters.interactions.impl.ContinuousHealingHe
 import org.example.isaac.models.characters.interactions.impl.WeakenDebuff;
 
 public class DeBuffAllEnemiesSkillInteraction extends Skill {
-    public DeBuffAllEnemiesSkillInteraction(int contininuousHealingBuffDuration, int contininuousHealingBuffAmount, int weakenDebuffDuration, int weakenDebuffAmount) {
-        super("DebuffAllEnemies",TargetType.ENEMYTEAM,
-                new ContinuousHealingHeal(contininuousHealingBuffAmount,contininuousHealingBuffDuration),
-                new WeakenDebuff(weakenDebuffAmount,weakenDebuffDuration));
+    public DeBuffAllEnemiesSkillInteraction(int weakenDebuffDuration, int weakenDebuffAmount) {
+        super("DeBuffAllEnemies",
+                new WeakenDebuff(weakenDebuffAmount,weakenDebuffDuration,TargetType.ENEMY));
     }
 
     @Override

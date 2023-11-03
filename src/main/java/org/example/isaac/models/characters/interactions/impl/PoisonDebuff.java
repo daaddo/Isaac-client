@@ -1,5 +1,6 @@
 package org.example.isaac.models.characters.interactions.impl;
 
+import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.interactions.type.DebuffInteraction;
 import org.example.isaac.models.characters.type.Unit;
 
@@ -12,11 +13,13 @@ public class PoisonDebuff<T extends Unit> implements DebuffInteraction<T> {
     private int turnsLeft;
     private int amount;
     private String imgPath = "/images/icon2NoBg.png";
+    private Skill.TargetType targetType;
     private List<T> enemies = new ArrayList<>();
 
-    public PoisonDebuff(int turnsLeft, int amount, T ... enemies) {
+    public PoisonDebuff(int turnsLeft, int amount, Skill.TargetType targetType, T ... enemies) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
+        this.targetType = targetType;
         this.enemies.addAll(Arrays.asList(enemies));
 
     }
@@ -38,6 +41,11 @@ public class PoisonDebuff<T extends Unit> implements DebuffInteraction<T> {
     @Override
     public void setTargets(List<T> targets) {
         setEnemies(targets);
+    }
+
+    @Override
+    public Skill.TargetType getTargetType() {
+        return targetType;
     }
 
 

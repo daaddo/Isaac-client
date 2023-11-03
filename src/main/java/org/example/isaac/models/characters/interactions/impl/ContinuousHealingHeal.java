@@ -1,5 +1,6 @@
 package org.example.isaac.models.characters.interactions.impl;
 
+import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.interactions.type.HealInteraction;
 import org.example.isaac.models.characters.type.Unit;
 
@@ -10,14 +11,16 @@ import java.util.Optional;
 public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T> {
 
     private int turnsLeft;
+    private Skill.TargetType targetType;
     private int amount;
     private String imgPath = "/images/icon1NoBg.png";
     List<T> allies = new ArrayList<>();
 
-    public ContinuousHealingHeal(int turnsLeft, int amount, T ... allies) {
+    public ContinuousHealingHeal(int turnsLeft, int amount, Skill.TargetType targetType, T ... allies) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
         this.allies.addAll(List.of(allies));
+        this.targetType = targetType;
     }
 
     public void setAllies(List<T> allies) {
@@ -49,6 +52,11 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
     @Override
     public void setTargets(List<T> targets) {
         setAllies(targets);
+    }
+
+    @Override
+    public Skill.TargetType getTargetType() {
+        return targetType;
     }
 
 

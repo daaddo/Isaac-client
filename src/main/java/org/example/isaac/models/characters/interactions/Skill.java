@@ -11,7 +11,7 @@ import java.util.Optional;
 public abstract class Skill<T extends Unit> {
     private String name;
     private List<Interaction<T>> interactions;
-    private TargetType targetType;
+
     public enum TargetType{
         SELF,
         ENEMY,
@@ -36,10 +36,10 @@ public abstract class Skill<T extends Unit> {
         return this.targetType;
     }
 
-    public Skill(String name, TargetType targetType, Interaction<T> ... interactions) {
+    public Skill(String name, Interaction<T> ... interactions) {
         this.name = name;
         this.interactions = Arrays.stream(interactions).toList();
-        this.targetType = targetType;
+
     }
     public abstract void skillUsage(Unit unit);
     public final void activate(Unit unit){
