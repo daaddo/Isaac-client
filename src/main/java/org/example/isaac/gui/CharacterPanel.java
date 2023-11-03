@@ -200,10 +200,10 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     }// </editor-fold>//GEN-END:initComponents
 
     @TODO(todo = "aggiungere la logica dietro gli attacchi")
-    private boolean useSkill(Skill skill) {
+    private boolean useSkill(Skill<T> skill) {
         List<Interaction<T>> interactions = skill.getInteractions();
         boolean clicked = false;
-        if (skill.getTarget() == Skill.TargetType.ENEMY) {
+        if (interactions.get(0).getTargetType() == Skill.TargetType.ENEMY) {
             if (this.unit instanceof Enemy enemy) {
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()) {
@@ -219,7 +219,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
                 return false;
             }
-        } else if (skill.getTarget() == Skill.TargetType.ENEMYTEAM) {
+        } else if (interactions.get(0).getTargetType() == Skill.TargetType.ENEMYTEAM) {
             if (this.unit instanceof Enemy enemy) {
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()) {
@@ -232,7 +232,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
                 return false;
             }
-        } else if (skill.getTarget() == Skill.TargetType.ALLYTEAM) {
+        } else if (interactions.get(0).getTargetType() == Skill.TargetType.ALLYTEAM) {
             if (this.unit instanceof MainUnit ally) {
                 System.out.println("[DEBUG] ally clicked");
                 if (!interactions.isEmpty()) {
@@ -248,7 +248,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
                 return false;
             }
-        } else if (skill.getTarget() == Skill.TargetType.SELF &&
+        } else if (interactions.get(0).getTargetType() == Skill.TargetType.SELF &&
                 !interactions.isEmpty() &&
                 this.unit == FightManager.getInstance().getCurrentCharacter()) {
             if (this.unit instanceof MainUnit ally) {
@@ -264,7 +264,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
                 return false;
             }
-        } else if (skill.getTarget() == Skill.TargetType.ALL) {
+        } else if (interactions.get(0).getTargetType() == Skill.TargetType.ALL) {
             if ((this.unit instanceof MainUnit ally)) {
                 System.out.println("[DEBUG] ally clicked");
                 if (!interactions.isEmpty()) {

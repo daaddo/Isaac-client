@@ -31,10 +31,7 @@ public abstract class Skill<T extends Unit> {
     public String getName() {
         return name;
     }
-
-    public TargetType getTarget() {
-        return this.targetType;
-    }
+    
 
     public Skill(String name, Interaction<T> ... interactions) {
         this.name = name;

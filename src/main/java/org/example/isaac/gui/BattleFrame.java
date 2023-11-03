@@ -43,6 +43,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
         Unit unit1 = turnMap.keySet().stream().findFirst().get();
         Boolean b = turnMap.get(unit1);
         nextCharacter = new nextCharacter(unit1,b);
+        FightManager.getInstance().setCurrentCharacter(nextCharacter.unit());
         GameManager.getInstance().giveTurn(nextCharacter.unit(), nextCharacter.isAlly());
         invalidate();
         validate();

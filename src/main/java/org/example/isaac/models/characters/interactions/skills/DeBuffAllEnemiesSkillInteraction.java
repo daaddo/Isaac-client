@@ -8,7 +8,7 @@ import org.example.isaac.models.characters.interactions.impl.WeakenDebuff;
 public class DeBuffAllEnemiesSkillInteraction extends Skill {
     public DeBuffAllEnemiesSkillInteraction(int weakenDebuffDuration, int weakenDebuffAmount) {
         super("DeBuffAllEnemies",
-                new WeakenDebuff(weakenDebuffAmount,weakenDebuffDuration,TargetType.ENEMY));
+                new WeakenDebuff(weakenDebuffAmount,weakenDebuffDuration,TargetType.ENEMYTEAM));
     }
 
     @Override

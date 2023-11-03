@@ -155,16 +155,34 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         String actionCommand = (String) jComboBoxCharactersBox.getSelectedItem();
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
-            GameManager.getInstance().addCharacter(new SuperAgilityMainUnitTest("deborah", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3))));
+            GameManager.getInstance().addCharacter(
+                    new SuperAgilityMainUnitTest("deborah",
+                            List.of(new StroncaturaSkillInteraction(2,3,2,3),
+                                    new DeBuffAllEnemiesSkillInteraction(2,3),
+                                    new OnAlliesTestSkillInteraction(2,3,2,3))));
         }
         else if (actionCommand.equals("Test2")) {
-            GameManager.getInstance().addCharacter(new MainUnit("Pio", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),5,"C:\\images\\dennys.png"));
+            /*GameManager.getInstance().addCharacter(new MainUnit("Pio", List.of(
+                    new StroncaturaSkillInteraction(2,3,2,3),
+                    new DeBuffAllEnemiesSkillInteraction(2,3,2,3),
+                    new OnAlliesTestSkillInteraction(2,3,2,3)),
+                    5,"C:\\images\\dennys.png"));*/
         }
         else if (actionCommand.equals("Test3")) {
-            GameManager.getInstance().addCharacter(new MainUnit("amedeo", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),4,"C:\\images\\dennys.png"));
+           /* GameManager.getInstance().addCharacter(
+                    new MainUnit("amedeo",
+                            List.of(new StroncaturaSkillInteraction(2,3,2,3),
+                                    new DeBuffAllEnemiesSkillInteraction(2,3,2,3),
+                                    new OnAlliesTestSkillInteraction(2,3,2,3)),
+                            4,"C:\\images\\dennys.png"));*/
         }
         else if (actionCommand.equals("Test4")) {
-            GameManager.getInstance().addCharacter(new MainUnit("Felipe", List.of(new StroncaturaSkillInteraction(2,3,2,3), new DeBuffAllEnemiesSkillInteraction(2,3,2,3), new OnAlliesTestSkillInteraction(2,3,2,3)),6,"C:\\images\\dennys.png"));
+           /* GameManager.getInstance().addCharacter(
+                    new MainUnit("Felipe", List.of(
+                            new StroncaturaSkillInteraction(2,3,2,3),
+                            new DeBuffAllEnemiesSkillInteraction(2,3,2,3),
+                            new OnAlliesTestSkillInteraction(2,3,2,3)),
+                            6,"C:\\images\\dennys.png"));*/
         } else {
             JOptionPane.showMessageDialog(null,"codice non valido","ERRORE",JOptionPane.ERROR_MESSAGE);
         }

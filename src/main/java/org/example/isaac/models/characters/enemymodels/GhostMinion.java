@@ -15,6 +15,8 @@ public class GhostMinion extends NormalEnemy {
             public void fight(int piano) {
                 System.out.println("[DEBUG]: Ghost ha attaccato");
             }
-        },"/images/image-removebg-preview.png",special,2,4, List.of(new DeBuffAllEnemiesSkillInteraction(2,3,2,3),new StroncaturaSkillInteraction(2,3,2,3)));
+        },"/images/image-removebg-preview.png",special,2,4, List.of(
+                new DeBuffAllEnemiesSkillInteraction(2,3),
+                new StroncaturaSkillInteraction(2,3,2,3)));
     }
 }

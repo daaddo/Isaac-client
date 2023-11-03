@@ -6,34 +6,38 @@ package org.example.isaac.gui;
 
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.manager.FightManager;
+import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.Target;
 import org.example.isaac.models.characters.interactions.Skill;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Optional;
 
 /**
  *
  * @author trapa
  */
-public class InteractionPanel extends javax.swing.JPanel implements FightEventListner{
+public class InteractionPanel<T extends Unit> extends javax.swing.JPanel implements FightEventListner{
 
     private boolean isActive = false;
-    private Skill skill;
+    private Skill<T> skill;
     /**
      * Creates new form InteractionPanel
      */
     public InteractionPanel() {
         initComponents();
     }
-    public InteractionPanel(Skill skill) {
+    public InteractionPanel(Skill<T> skill) {
         initComponents();
+        List<Interaction<T>> skillInteractions= skill.getInteractions();
+
         FightManager.getInstance().subscribeFightListner(this);
         this.skill = skill;
         this.jButton1.setToolTipText("<html><b> ciccio</b> <br> <font color = red> frasetta rossa</font>");
         this.jButton1.setText("<html> <b> <font color = yellow>"+skill.getName()+"</font></b> <br> <font color = red>");
-        switch (skill.getTarget()) {
+        switch (skillInteractions.get(0).getTargetType()) {
             case SELF -> {
                 this.jButton1.setBackground(java.awt.Color.GREEN);
             }
@@ -102,7 +106,7 @@ public class InteractionPanel extends javax.swing.JPanel implements FightEventLi
             FightManager.getInstance().reset();
         }
         if(isActive) {
-            FightManager.getInstance().highLightTarget(skill.getTarget());
+            FightManager.getInstance().highLightTarget(skill.getInteractions().get(0).getTargetType());
         }
         else {
             FightManager.getInstance().reset();
