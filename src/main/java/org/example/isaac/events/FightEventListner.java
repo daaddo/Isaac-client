@@ -13,7 +13,7 @@ public interface FightEventListner <T extends Unit>{
     void resetTarget(Target target);
 
     Boolean isInteractionActive();
-    Optional<Skill> getActiveInteraction();
+    Optional<Skill<T>> getActiveInteraction();
 
     void startTurn(T character, Boolean isally);
 }

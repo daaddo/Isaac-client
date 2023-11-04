@@ -8,11 +8,8 @@ import org.example.isaac.events.FightEventListner;
 import org.example.isaac.factory.RandomEnemiesForARoomFactory;
 import org.example.isaac.manager.FightManager;
 import org.example.isaac.manager.GameManager;
-import org.example.isaac.models.characters.type.Unit;
+import org.example.isaac.models.characters.type.*;
 import org.example.isaac.models.characters.interactions.Skill;
-import org.example.isaac.models.characters.type.Fightable;
-import org.example.isaac.models.characters.type.MainUnit;
-import org.example.isaac.models.characters.type.NormalEnemy;
 import org.example.isaac.models.nextCharacter;
 import org.example.isaac.models.characters.Target;
 
@@ -29,7 +26,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
     /**
      * Creates new form BattleFrame
      */
-    private HashMap<? extends Unit,Boolean> turnMap = new HashMap<>();
+    private HashMap<T,Boolean> turnMap = new HashMap<>();
     private nextCharacter nextCharacter;
 
     public BattleFrame(List<MainUnit> character) {
@@ -51,7 +48,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
         setVisible(true);
 
     }
-
+//MAYBE HERE
     public void goNextRound(){
         turnMap.remove(turnMap.keySet().stream().findFirst().get());
         if (turnMap.isEmpty()){
@@ -200,13 +197,16 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
 
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
-        if (unit instanceof Fightable){
+         if (unit instanceof Fightable){
             if(unit instanceof MainUnit mainCharacter) {
                 for (Skill skill : mainCharacter.getSkills()) {
                     jPanelCharacterOption.add(new InteractionPanel(skill));
                 }
             }
-
+            if (unit instanceof Enemy) {
+                //call next turn
+                goNextRound();
+            }
         }
     }
 
@@ -228,7 +228,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
     }
 
     @Override
-    public Optional<Skill> getActiveInteraction() {
+    public Optional<Skill<T>> getActiveInteraction() {
         return Optional.empty();
     }
 

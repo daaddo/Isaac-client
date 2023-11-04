@@ -14,7 +14,7 @@ import org.example.isaac.models.characters.Target;
 
 import java.util.*;
 
-public class FightManager {
+public class FightManager<T extends Unit> {
     private static FightManager instance = null;
 
     private FightManager() {
@@ -48,9 +48,9 @@ public class FightManager {
         this.fightEventListners.add(fightEventListner);
     }
 
-    public Optional<Skill> getCurrentInteractionActive(){
-        Optional<Skill> interaction = Optional.empty();
-        for (FightEventListner fightEventListner : fightEventListners) {
+    public Optional<Skill<T>> getCurrentInteractionActive(){
+        Optional<Skill<T>> interaction = Optional.empty();
+        for (FightEventListner<T> fightEventListner : fightEventListners) {
             if(fightEventListner.isInteractionActive()){
                 interaction = fightEventListner.getActiveInteraction();
             }
@@ -213,9 +213,11 @@ public class FightManager {
     }
 
     public void callNextTurn() {
-        for (FightEventListner fightEventListner : fightEventListners) {
+        List<FightEventListner> copy = new ArrayList<>();
+        copy.addAll(fightEventListners);
+        for (FightEventListner<T> fightEventListner : copy) {
             if(fightEventListner instanceof BattleFrame){
-                ((BattleFrame) fightEventListner).goNextRound();
+                ((BattleFrame<T>) fightEventListner).goNextRound();
             }
         }
     }
@@ -231,9 +233,9 @@ public class FightManager {
     public void subscribePanelListner(CharactersEventListner characterPanel) {
         this.charactersEventListners.add(characterPanel);
     }
-    public void setInteraction(Skill.TargetType type, Interaction<? extends Unit> interaction){
+    public void setInteraction( Interaction<? extends Unit> interaction){
         for (CharactersEventListner charactersEventListner : charactersEventListners) {
-            charactersEventListner.setInteractionsToOtherCharacters(type,interaction);
+            charactersEventListner.setInteractionsToOtherCharacters(interaction);
         }
     }
 }

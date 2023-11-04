@@ -22,6 +22,8 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Optional;
 
+import static org.example.isaac.models.characters.interactions.Skill.TargetType.ENEMY;
+
 /**
  * @author trapa
  */
@@ -45,7 +47,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
         if (unit.equals(this.unit)) {
-            if (unit instanceof MainUnit) {
+             if (unit instanceof MainUnit) {
                 this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
             }
             this.jPanelCharacterImg.revalidate();
@@ -78,7 +80,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     }
 
     @Override
-    public Optional<Skill> getActiveInteraction() {
+    public Optional<Skill<T>> getActiveInteraction() {
         return Optional.empty();
     }
 
@@ -114,14 +116,14 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         this.repaint();
     }
     @Override
-    public void setInteractionsToOtherCharacters(Skill.TargetType type, Interaction<T> interaction) {
-        if ((!isAlly && type == Skill.TargetType.ENEMYTEAM)) {
+    public void setInteractionsToOtherCharacters(Interaction<T> interaction) {
+        if ((!isAlly && interaction.getTargetType() == Skill.TargetType.ENEMYTEAM)) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
         }
-        if (isAlly && type == Skill.TargetType.ALLYTEAM) {
+        if (isAlly && interaction.getTargetType() == Skill.TargetType.ALLYTEAM) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
         }
-        if (type == Skill.TargetType.ALL) {
+        if (interaction.getTargetType() == Skill.TargetType.ALL) {
 
         }
     }
@@ -203,15 +205,41 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     private boolean useSkill(Skill<T> skill) {
         List<Interaction<T>> interactions = skill.getInteractions();
         boolean clicked = false;
-        if (interactions.get(0).getTargetType() == Skill.TargetType.ENEMY) {
+        if (interactions.get(0).getTargetType() == ENEMY) {
             if (this.unit instanceof Enemy enemy) {
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {
-                        interaction.setTargets(List.of(enemy));
-                        Optional<String> imgPath = interaction.getImgPath();
-                        jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+                        Skill.TargetType targetType = interaction.getTargetType();
+                        switch (targetType) {
+                            case SELF -> {
+                                interaction.setTargets(List.of(FightManager.getInstance().getCurrentCharacter()));
+                                interaction.use();
+                                jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+                            }
+                            case ENEMY -> {
+                                interaction.setTargets(List.of(enemy));
 
+                                interaction.use();
+                                jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+                            }
+                            case DEAD -> {
+                                System.out.println("[DEBUG] Dead");
+                            }
+                            case ALLYTEAM -> {
+
+                                interaction.use();
+                                FightManager.getInstance().setInteraction(interaction);
+                                jPanelContainerCurrentEffects.add(new StatusPanel<Enemy>(interaction));
+                            }
+                            case ENEMYTEAM -> {
+                                System.out.println("[ERROR] should not be here enemy team");
+                            }
+                            case ALL -> {
+                                System.out.println("[ERROR] should not be here all");
+                            }
+                        }
+                        
                     }
                 }
                 clicked = true;
@@ -224,7 +252,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 System.out.println("[DEBUG] Enemy clicked");
                 if (!interactions.isEmpty()) {
                     for (Interaction interaction : interactions) {
-                        FightManager.getInstance().setInteraction(Skill.TargetType.ENEMYTEAM, interaction);
+                        FightManager.getInstance().setInteraction(interaction);
                     }
                 }
                 clicked = true;
@@ -294,10 +322,10 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     }
 
     private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        Optional<Skill> currentskillTargetActive = FightManager.getInstance().getCurrentInteractionActive();
+        Optional<Skill<T>> currentskillTargetActive = FightManager.getInstance().getCurrentInteractionActive();
 
         if (currentskillTargetActive.isPresent()) {
-            Skill skill = currentskillTargetActive.get();
+            Skill<T> skill = currentskillTargetActive.get();
             boolean b = useSkill(skill);
             if (b) {
                 FightManager.getInstance().reset();

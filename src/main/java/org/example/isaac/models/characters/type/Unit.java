@@ -55,4 +55,12 @@ public abstract class Unit implements Droppable {
     public int getAgility() {
         return agility;
     }
+
+    public List<Interaction<? extends Unit>> getActiveInteractions() {
+        return activeInteractions;
+    }
+
+    public void setActiveInteractions(List<Interaction<? extends Unit>> activeInteractions) {
+        this.activeInteractions = activeInteractions;
+    }
 }

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.isaac;
 
 import org.example.isaac.gui.LandingPage;
 import org.example.isaac.gui.MainFrame;

@@ -4,6 +4,7 @@
  */
 package org.example.isaac.gui;
 
+import org.example.isaac.RedisManager;
 import org.example.isaac.events.GameEventListner;
 import org.example.isaac.manager.GameManager;
 import org.example.isaac.models.characters.type.MainUnit;
@@ -156,7 +157,7 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
         System.out.println(actionCommand);
         if (actionCommand.equals("Test1")) {
             GameManager.getInstance().addCharacter(
-                    new SuperAgilityMainUnitTest("deborah",
+                    new SuperAgilityMainUnitTest(RedisManager.getInstance().get("NOME"),
                             List.of(new StroncaturaSkillInteraction(2,3,2,3),
                                     new DeBuffAllEnemiesSkillInteraction(2,3),
                                     new OnAlliesTestSkillInteraction(2,3,2,3))));

@@ -6,5 +6,5 @@ import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 
 public interface CharactersEventListner<T extends Unit> {
-    void setInteractionsToOtherCharacters(Skill.TargetType type, Interaction<T> interaction);
+    void setInteractionsToOtherCharacters( Interaction<T> interaction);
 }
