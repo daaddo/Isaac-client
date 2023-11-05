@@ -30,7 +30,7 @@ class SkillTest {
 
     @Test
     void getAttackInteractions() {
-        MainUnit mainCharacter = new MainUnit("Test", List.of(new AttackSkillInteraction(),
+        MainUnit mainCharacter = new MainUnit("Test", List.of(new AttackSkillInteraction(3,5,3,2,3),
                 new StroncaturaSkillInteraction(5,4,5,4)), 20, "asdad");
         List<Skill> skills = mainCharacter.getSkills();
         List<Optional<AttackInteraction>> attackInteractions = skills.get(0).getAttackInteractions();

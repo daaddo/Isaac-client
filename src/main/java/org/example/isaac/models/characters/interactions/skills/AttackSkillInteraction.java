@@ -14,8 +14,8 @@ public class AttackSkillInteraction extends Skill {
 
     public AttackSkillInteraction(int damage, int weakenDebuffDuration, int weakenDebuffAmount, int contininuousHealingBuffDuration, int contininuousHealingBuffAmount) {
         super("Attack",
-                new WeaponAttackAttack(damage,TargetType.ENEMYTEAM),
                 new WeakenDebuff(weakenDebuffAmount,weakenDebuffDuration,TargetType.ENEMY),
+                new WeaponAttackAttack(damage,TargetType.ENEMYTEAM),
                 new ContinuousHealingHeal(contininuousHealingBuffAmount,contininuousHealingBuffDuration,TargetType.SELF));
     }
     @Override

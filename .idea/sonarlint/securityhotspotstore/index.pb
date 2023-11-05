@@ -1,8 +1,6 @@
 
 Q
 !src/main/java/org/example/counter,2\c\2cd11e82c0174e6fbb8825d8506a53a0c62c3187
-S
-#src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 n
 >src/test/java/org/example/EldenRing/isaac/piano/PianoTest.java,f\2\f27dc39c5f385d171746e866c24dababd68aa2c2
 7

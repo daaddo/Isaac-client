@@ -15,10 +15,12 @@ import org.example.isaac.models.characters.Target;
 import java.util.*;
 
 public class FightManager<T extends Unit> {
+
     private static FightManager instance = null;
 
     private FightManager() {
     }
+    private Unit clickedUnit;
     private Unit currentUnit;
     private Map<MainUnit,Integer> allyAgilityMap = new HashMap();
     private Map<Enemy,Integer> enemyAgilityMap = new HashMap<>();
@@ -68,6 +70,13 @@ public class FightManager<T extends Unit> {
     public void addAlly(MainUnit ally) {
         this.allyAgilityMap.put(ally, ally.getAgility());
         this.allies.add(ally);
+    }
+    public void setClickedUnit(Unit unit){
+        this.clickedUnit = unit;
+    }
+
+    public Unit getClickedUnit() {
+        return clickedUnit;
     }
 
     public List<Enemy> getEnemies() {
@@ -235,7 +244,7 @@ public class FightManager<T extends Unit> {
     }
     public void setInteraction( Interaction<? extends Unit> interaction){
         for (CharactersEventListner charactersEventListner : charactersEventListners) {
-            charactersEventListner.setInteractionsToOtherCharacters(interaction);
+            charactersEventListner.setInteractionsCharacters(interaction);
         }
     }
 }

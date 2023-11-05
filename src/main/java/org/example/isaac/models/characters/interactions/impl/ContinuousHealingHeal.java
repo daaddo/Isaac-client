@@ -13,7 +13,7 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
     private int turnsLeft;
     private Skill.TargetType targetType;
     private int amount;
-    private String imgPath = "/images/icon1NoBg.png";
+    private String imgPath = "/images/icon3NoBg.png";
     List<T> allies = new ArrayList<>();
 
     public ContinuousHealingHeal(int turnsLeft, int amount, Skill.TargetType targetType, T ... allies) {
