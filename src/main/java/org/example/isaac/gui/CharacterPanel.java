@@ -4,6 +4,7 @@
  */
 package org.example.isaac.gui;
 
+import org.example.isaac.Logger;
 import org.example.isaac.TODO;
 import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
@@ -22,8 +23,6 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Optional;
 
-import static org.example.isaac.models.characters.interactions.Skill.TargetType.ENEMY;
-
 /**
  * @author trapa
  */
@@ -31,17 +30,6 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     private Unit unit;
     private String characterImgPath;
     private Boolean isAlly;
-
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        // URL imageUrl = getClass().getResource(characterImgPath);
-        // jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logger_logo4.png"))); // NOI18N
-        // ImageIcon icon = new ImageIcon(imageUrl);
-        // Image image = icon.getImage();
-
-    }
 
 
     @Override
@@ -86,7 +74,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
 
     @Override
     public void startTurn(Unit unit, Boolean isally) {
-
+        // not used be this class does not need to do anything on start turn
     }
 
 
@@ -106,7 +94,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         FightManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribePanelListner(this);
         this.characterImgPath = unit.getAvatarPath();
-        System.out.println(characterImgPath);
+        Logger.getInstance().log(characterImgPath);
         Image image = new ImageIcon(CharacterPanel.class.getResource(characterImgPath)).getImage();
         this.jLabelCharacterImg.setIcon(new ImageIcon(image));
         jLabelCharacterHealth.setText("" + unit.getCurrentHealth() + " / " + unit.getMaxHealth());
@@ -212,19 +200,14 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    @TODO(todo = "aggiungere la logica dietro gli attacchi")
-    private boolean useSkill(Skill<T> skill) {
-        FightManager.getInstance().setClickedUnit(this.unit);
-        List<Interaction<T>> interactions = skill.getInteractions();
-        boolean clicked = false;
-        Skill.TargetType targetType = interactions.get(0).getTargetType();
+    private boolean ifTrueUseSkill(Skill.TargetType targetType, List<Interaction<T>> interactions){
         switch (targetType) {
             case SELF -> {
                 if (this.unit == FightManager.getInstance().getClickedUnit()) {
                     for (Interaction<T> interaction : interactions) {
                         FightManager.getInstance().setInteraction(interaction);
                     }
-                    clicked = true;
+                    return true;
                 }
             }
             case ENEMY, ENEMYTEAM -> {
@@ -233,7 +216,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                     for (Interaction<T> interaction : interactions) {
                         FightManager.getInstance().setInteraction(interaction);
                     }
-                    clicked = true;
+                    return true;
                 } else {
                     System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
                     return false;
@@ -252,7 +235,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                     for (Interaction<T> interaction : interactions) {
                         FightManager.getInstance().setInteraction(interaction);
                     }
-                    clicked = true;
+                    return true;
                 } else {
                     System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
                     return false;
@@ -262,12 +245,21 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 for (Interaction<T> interaction : interactions) {
                     FightManager.getInstance().setInteraction(interaction);
                 }
-                clicked = true;
+                return true;
             }
         }
+        return false;
+    }
+    @TODO(todo = "aggiungere la logica dietro gli attacchi")
+    private boolean useSkill(Skill<T> skill) {
+        FightManager.getInstance().setClickedUnit(this.unit);
+        List<Interaction<T>> interactions = skill.getInteractions();
+        boolean clicked;
+        Skill.TargetType targetType = interactions.get(0).getTargetType();
+        clicked = ifTrueUseSkill(targetType, interactions);
         if (clicked) {
             FightManager.getInstance().resetInteractions();
-            return clicked;
+            return true;
         }
         return false;
     }
