@@ -47,7 +47,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
         if (unit.equals(this.unit)) {
-             if (unit instanceof MainUnit) {
+            if (unit instanceof MainUnit) {
                 this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
             }
             this.jPanelCharacterImg.revalidate();
@@ -115,6 +115,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         this.validate();
         this.repaint();
     }
+
     @Override
     public void setInteractionsCharacters(Interaction<T> interaction) {
         if ((!isAlly && interaction.getTargetType() == Skill.TargetType.ENEMYTEAM)) {
@@ -132,7 +133,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         if (interaction.getTargetType() == Skill.TargetType.ENEMY && !isAlly && FightManager.getInstance().getClickedUnit() == this.unit) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
         }
-        if (interaction.getTargetType() == Skill.TargetType.DEAD && this.unit.getCurrentHealth()<0) {
+        if (interaction.getTargetType() == Skill.TargetType.DEAD && this.unit.getCurrentHealth() < 0) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
         }
 
@@ -216,63 +217,53 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         FightManager.getInstance().setClickedUnit(this.unit);
         List<Interaction<T>> interactions = skill.getInteractions();
         boolean clicked = false;
-        if (interactions.get(0).getTargetType() == ENEMY) {
-            if (this.unit instanceof Enemy ) {
-                System.out.println("[DEBUG] Enemy clicked");
-                if (!interactions.isEmpty()) {
+        Skill.TargetType targetType = interactions.get(0).getTargetType();
+        switch (targetType) {
+            case SELF -> {
+                if (this.unit == FightManager.getInstance().getClickedUnit()) {
+                    for (Interaction<T> interaction : interactions) {
+                        FightManager.getInstance().setInteraction(interaction);
+                    }
+                    clicked = true;
+                }
+            }
+            case ENEMY, ENEMYTEAM -> {
+                if (this.unit instanceof Enemy) {
+                    System.out.println("[DEBUG] Enemy clicked");
+                    for (Interaction<T> interaction : interactions) {
+                        FightManager.getInstance().setInteraction(interaction);
+                    }
+                    clicked = true;
+                } else {
+                    System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
+                    return false;
+                }
+            }
+            case DEAD -> {
+                if (this.unit.getCurrentHealth() < 0 && FightManager.getInstance().getClickedUnit() == this.unit) {
                     for (Interaction<T> interaction : interactions) {
                         FightManager.getInstance().setInteraction(interaction);
                     }
                 }
-                clicked = true;
-            } else {
-                System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
-                return false;
             }
-        } else if (interactions.get(0).getTargetType() == Skill.TargetType.ENEMYTEAM) {
-            if (this.unit instanceof Enemy ) {
-                System.out.println("[DEBUG] Enemy clicked");
-                if (!interactions.isEmpty()) {
-                    for (Interaction interaction : interactions) {
+            case ALLYTEAM -> {
+                if (this.unit instanceof MainUnit) {
+                    System.out.println("[DEBUG] ally clicked");
+                    for (Interaction<T> interaction : interactions) {
                         FightManager.getInstance().setInteraction(interaction);
                     }
+                    clicked = true;
+                } else {
+                    System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
+                    return false;
                 }
-                clicked = true;
-            } else {
-                System.out.println("[DEBUG] Clicked SomeOne that Isnt an enemy");
-                return false;
             }
-        } else if (interactions.get(0).getTargetType() == Skill.TargetType.ALLYTEAM) {
-            if (this.unit instanceof MainUnit ally) {
-                System.out.println("[DEBUG] ally clicked");
-                if (!interactions.isEmpty()) {
-                    for (Interaction interaction : interactions) {
-                        FightManager.getInstance().setInteraction(interaction);
-                    }
-                }
-                clicked = true;
-            } else {
-                System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
-                return false;
-            }
-        } else if (interactions.get(0).getTargetType() == Skill.TargetType.SELF &&
-                !interactions.isEmpty() &&
-                this.unit == FightManager.getInstance().getCurrentCharacter()) {
-            if (this.unit instanceof MainUnit ally) {
-                System.out.println("[DEBUG] ally clicked");
-                clicked = true;
-                for (Interaction interaction : interactions) {
+            case ALL -> {
+                for (Interaction<T> interaction : interactions) {
                     FightManager.getInstance().setInteraction(interaction);
                 }
-            } else {
-                System.out.println("[DEBUG] Clicked SomeOne that Isnt an ally");
-                return false;
+                clicked = true;
             }
-        } else if (interactions.get(0).getTargetType() == Skill.TargetType.ALL) {
-            for (Interaction interaction : interactions) {
-                FightManager.getInstance().setInteraction(interaction);
-            }
-            clicked = true;
         }
         if (clicked) {
             FightManager.getInstance().resetInteractions();
@@ -304,8 +295,6 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     private javax.swing.JLabel jLabelCharacterName;
     private javax.swing.JPanel jPanelCharacterImg;
     private javax.swing.JPanel jPanelContainerCurrentEffects;
-
-
 
 
     // End of variables declaration//GEN-END:variables

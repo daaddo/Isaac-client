@@ -31,7 +31,7 @@ public class StatusPanel<T extends Unit> extends javax.swing.JPanel {
             this.characterImgPath = interaction.getImgPath().orElse(null);
             if (characterImgPath == null) return;
             Image img = new ImageIcon(StatusPanel.class.getResource(characterImgPath)).getImage();
-
+            System.out.println(img.getSource());
             jLabel1.setIcon(new ImageIcon(img));
         }
     }
