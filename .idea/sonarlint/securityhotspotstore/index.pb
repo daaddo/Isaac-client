@@ -183,3 +183,7 @@ d
 4src/main/java/org/example/isaac/gui/BattleFrame.java,b\d\bdaf22d5c91780e539c874eadc8dccd1fe86850b
 r
 Bsrc/main/java/org/example/isaac/events/CharactersEventListner.java,4\9\493e2202baaa3918ed7c1cf41e91a42661c68ee7
+Y
+)src/main/java/org/example/isaac/Main.java,f\1\f13a61bf740373b0c1140294746cf4c69a996e24
+[
++src/main/java/org/example/isaac/Logger.java,9\e\9e955f8cd5d4c21d14420959f1eea9078623c5c7

@@ -11,5 +11,6 @@ public interface Interaction<T extends Unit>{
     Optional<String> getImgPath();
     boolean use();
     void setTargets( List<T> targets);
+    List<T> getTargets();
     Skill.TargetType getTargetType();
 }

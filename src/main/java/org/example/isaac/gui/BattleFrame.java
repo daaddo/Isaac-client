@@ -26,7 +26,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
     /**
      * Creates new form BattleFrame
      */
-    private HashMap<T,Boolean> turnMap = new HashMap<>();
+    private HashMap<Unit,Boolean> turnMap = new HashMap<>();
     private nextCharacter nextCharacter;
 
     public BattleFrame(List<MainUnit> character) {

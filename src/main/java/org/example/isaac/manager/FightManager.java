@@ -3,7 +3,7 @@ package org.example.isaac.manager;
 import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.gui.BattleFrame;
-import org.example.isaac.gui.CharacterPanel;
+import org.example.isaac.models.characters.interactions.type.AttackInteraction;
 import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.interactions.Skill;
@@ -14,7 +14,7 @@ import org.example.isaac.models.characters.Target;
 
 import java.util.*;
 
-public class FightManager<T extends Unit> {
+public class FightManager {
 
     private static FightManager instance = null;
 
@@ -50,7 +50,7 @@ public class FightManager<T extends Unit> {
         this.fightEventListners.add(fightEventListner);
     }
 
-    public Optional<Skill<T>> getCurrentInteractionActive(){
+    public <T extends Unit> Optional<Skill<T>> getCurrentInteractionActive(){
         Optional<Skill<T>> interaction = Optional.empty();
         for (FightEventListner<T> fightEventListner : fightEventListners) {
             if(fightEventListner.isInteractionActive()){
@@ -221,7 +221,7 @@ public class FightManager<T extends Unit> {
         return isAnyActive;
     }
 
-    public void callNextTurn() {
+    public <T extends Unit> void callNextTurn() {
         List<FightEventListner> copy = new ArrayList<>();
         copy.addAll(fightEventListners);
         for (FightEventListner<T> fightEventListner : copy) {
@@ -242,9 +242,25 @@ public class FightManager<T extends Unit> {
     public void subscribePanelListner(CharactersEventListner characterPanel) {
         this.charactersEventListners.add(characterPanel);
     }
+
     public void setInteraction( Interaction<? extends Unit> interaction){
         for (CharactersEventListner charactersEventListner : charactersEventListners) {
             charactersEventListner.setInteractionsCharacters(interaction);
+        }
+    }
+
+    public <T extends Unit> void setInteractionToCharacter( Unit unit,Interaction<T> interaction) {
+        if (!(interaction instanceof AttackInteraction<T>)) {
+            if (unit instanceof MainUnit) {
+                for (MainUnit mainUnit : allyAgilityMap.keySet()) {
+                    mainUnit.getActiveInteractions().add(interaction);
+                    interaction.use();
+                }
+            } else if (unit instanceof Enemy) {
+                for (Enemy enemy : enemyAgilityMap.keySet()) {
+                    enemy.getActiveInteractions().add(interaction);
+                }
+            }
         }
     }
 }

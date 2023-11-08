@@ -56,6 +56,11 @@ public class ShieldBuff<T extends Unit> implements BuffInteraction<T> {
     }
 
     @Override
+    public List<T> getTargets() {
+        return allies;
+    }
+
+    @Override
     public Skill.TargetType getTargetType() {
         return targetType;
     }

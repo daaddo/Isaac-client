@@ -1,5 +1,6 @@
 package org.example.isaac.models.characters.interactions.impl;
 
+import org.example.isaac.TODO;
 import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.interactions.type.HealInteraction;
 import org.example.isaac.models.characters.type.Unit;
@@ -14,6 +15,7 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
     private Skill.TargetType targetType;
     private int amount;
     private String imgPath = "/images/icon3NoBg.png";
+    @TODO(todo = "refactor in modo che target sia singolo e non una lista")
     List<T> allies = new ArrayList<>();
 
     public ContinuousHealingHeal(int turnsLeft, int amount, Skill.TargetType targetType, T ... allies) {
@@ -52,6 +54,11 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
     @Override
     public void setTargets(List<T> targets) {
         setAllies(targets);
+    }
+
+    @Override
+    public List<T> getTargets() {
+        return allies;
     }
 
     @Override

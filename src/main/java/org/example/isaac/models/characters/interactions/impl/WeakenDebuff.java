@@ -56,6 +56,11 @@ public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
     }
 
     @Override
+    public List<T> getTargets() {
+        return enemies;
+    }
+
+    @Override
     public Skill.TargetType getTargetType() {
         return targetType;
     }

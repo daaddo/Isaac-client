@@ -10,6 +10,7 @@ import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.manager.FightManager;
 import org.example.isaac.manager.GameManager;
+import org.example.isaac.models.characters.interactions.type.AttackInteraction;
 import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.type.Enemy;
@@ -27,7 +28,7 @@ import java.util.Optional;
  * @author trapa
  */
 public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implements FightEventListner<T>, CharactersEventListner<T> {
-    private Unit unit;
+    private T unit;
     private String characterImgPath;
     private Boolean isAlly;
 
@@ -86,7 +87,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         initComponents();
     }
 
-    public CharacterPanel(Unit unit, Boolean isAlly) {
+    public CharacterPanel(T unit, Boolean isAlly) {
         this.isAlly = isAlly;
         initComponents();
         this.unit = unit;
@@ -108,21 +109,28 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     public void setInteractionsCharacters(Interaction<T> interaction) {
         if ((!isAlly && interaction.getTargetType() == Skill.TargetType.ENEMYTEAM)) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+
+            FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
         }
         if (isAlly && interaction.getTargetType() == Skill.TargetType.ALLYTEAM) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.SELF && unit == FightManager.getInstance().getCurrentCharacter()) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.ALL) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.ENEMY && !isAlly && FightManager.getInstance().getClickedUnit() == this.unit) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.DEAD && this.unit.getCurrentHealth() < 0) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
+            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
         }
 
     }
@@ -205,6 +213,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
             case SELF -> {
                 if (this.unit == FightManager.getInstance().getClickedUnit()) {
                     for (Interaction<T> interaction : interactions) {
+                        interaction.getTargets().add(this.unit);
                         FightManager.getInstance().setInteraction(interaction);
                     }
                     return true;

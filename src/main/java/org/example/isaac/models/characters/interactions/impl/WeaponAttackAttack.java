@@ -51,6 +51,11 @@ public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> 
     }
 
     @Override
+    public List<T> getTargets() {
+        return enemies;
+    }
+
+    @Override
     public Skill.TargetType getTargetType() {
         return targetType;
     }
