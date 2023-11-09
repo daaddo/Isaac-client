@@ -65,9 +65,6 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
     public boolean isAlly(Unit unit){
         return turnMap.get(unit);
     }
-    public static void startTurn(){
-        FightManager.getInstance().getNextTurnCharacters();
-    }
 
     private void addAlly(List<MainUnit> character) {
         for (int i = 0; i < character.size(); i++) {

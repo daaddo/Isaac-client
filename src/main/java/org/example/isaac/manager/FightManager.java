@@ -20,21 +20,24 @@ public class FightManager {
 
     private FightManager() {
     }
+
     private Unit clickedUnit;
     private Unit currentUnit;
-    private Map<MainUnit,Integer> allyAgilityMap = new HashMap();
-    private Map<Enemy,Integer> enemyAgilityMap = new HashMap<>();
+    private Map<MainUnit, Integer> allyAgilityMap = new HashMap();
+    private Map<Enemy, Integer> enemyAgilityMap = new HashMap<>();
     private List<Enemy> enemies = new ArrayList<>();
     private List<MainUnit> allies = new ArrayList<>();
     private List<FightEventListner> fightEventListners = new ArrayList<>();
     private List<CharactersEventListner> charactersEventListners = new ArrayList<>();
+
     public static FightManager getInstance() {
         if (instance == null) {
             instance = new FightManager();
         }
         return instance;
     }
-    public void reset(){
+
+    public void reset() {
         for (MainUnit mainCharacter : allyAgilityMap.keySet()) {
             for (FightEventListner fightEventListner : fightEventListners) {
                 fightEventListner.resetTarget(new Target(mainCharacter));
@@ -46,24 +49,27 @@ public class FightManager {
             }
         }
     }
-    public void subscribeFightListner(FightEventListner fightEventListner){
+
+    public void subscribeFightListner(FightEventListner fightEventListner) {
         this.fightEventListners.add(fightEventListner);
     }
 
-    public <T extends Unit> Optional<Skill<T>> getCurrentInteractionActive(){
+    public <T extends Unit> Optional<Skill<T>> getCurrentInteractionActive() {
         Optional<Skill<T>> interaction = Optional.empty();
         for (FightEventListner<T> fightEventListner : fightEventListners) {
-            if(fightEventListner.isInteractionActive()){
+            if (fightEventListner.isInteractionActive()) {
                 interaction = fightEventListner.getActiveInteraction();
             }
         }
         return interaction;
     }
-    public void unsubscribeFightListner(FightEventListner fightEventListner){
+
+    public void unsubscribeFightListner(FightEventListner fightEventListner) {
         this.fightEventListners.remove(fightEventListner);
     }
-    public void addEnemy(Enemy enemy){
-        this.enemyAgilityMap.put(enemy,enemy.getAgility());
+
+    public void addEnemy(Enemy enemy) {
+        this.enemyAgilityMap.put(enemy, enemy.getAgility());
         this.enemies.add(enemy);
     }
 
@@ -71,7 +77,8 @@ public class FightManager {
         this.allyAgilityMap.put(ally, ally.getAgility());
         this.allies.add(ally);
     }
-    public void setClickedUnit(Unit unit){
+
+    public void setClickedUnit(Unit unit) {
         this.clickedUnit = unit;
     }
 
@@ -87,8 +94,8 @@ public class FightManager {
         return allies;
     }
 
-    public void highLightTarget(Skill.TargetType type){
-        switch (type){
+    public void highLightTarget(Skill.TargetType type) {
+        switch (type) {
             case SELF -> {
                 for (FightEventListner fightEventListner : fightEventListners) {
                     fightEventListner.setTarget(new Target(this.currentUnit));
@@ -132,15 +139,17 @@ public class FightManager {
         }
 
     }
-    public boolean isAllDead (Map<? extends Fightable,Integer> map){
+
+    public boolean isAllDead(Map<? extends Fightable, Integer> map) {
         for (Fightable fightable : map.keySet()) {
-            if(fightable.getCurrentHealth()>0){
+            if (fightable.getCurrentHealth() > 0) {
                 return false;
             }
         }
         return true;
     }
-    public void init(List<? extends MainUnit> ally, List<? extends Enemy> enemy){
+
+    public void init(List<? extends MainUnit> ally, List<? extends Enemy> enemy) {
         for (MainUnit fightable : ally) {
             addAlly(fightable);
         }
@@ -149,8 +158,8 @@ public class FightManager {
         }
     }
 
-    public void initializedMaps (){
-        if(allyAgilityMap.isEmpty() || enemyAgilityMap.isEmpty()){
+    public void initializedMaps() {
+        if (allyAgilityMap.isEmpty() || enemyAgilityMap.isEmpty()) {
             throw new NullPointerException("Maps are not initialized");
         }
     }
@@ -163,59 +172,58 @@ public class FightManager {
         return currentUnit;
     }
 
-    public void giveTurn(Unit unit, Boolean isAlly){
+    public void giveTurn(Unit unit, Boolean isAlly) {
         for (FightEventListner fightEventListner : fightEventListners) {
-            fightEventListner.getNextTurns(unit,isAlly);
+            fightEventListner.getNextTurns(unit, isAlly);
         }
     }
 
-    public HashMap<Unit,Boolean> getNextTurnCharacters(){
+    public HashMap<Unit, Boolean> getNextTurnCharacters() {
         initializedMaps();
         HashMap<Unit, Boolean> agilityOver100AndIsAllyMap = new HashMap<>();
-            while (agilityOver100AndIsAllyMap.isEmpty()) {
-                allyAgilityMap.forEach((key, value) -> {
-                    if (value >= 100) {
-                        agilityOver100AndIsAllyMap.put(key, true);
-                        allyAgilityMap.replace(key, value - 100);
-                    } else {
-                        allyAgilityMap.replace(key, value + key.getAgility());
-                    }
-                });
-                enemyAgilityMap.forEach((key, value) -> {
-                    if (value >= 100) {
-                        agilityOver100AndIsAllyMap.put(key, false);
-                        enemyAgilityMap.replace(key, value - 100);
-                    } else {
-                        enemyAgilityMap.replace(key, value + key.getAgility());
-                    }
-                });
-            }
-            HashMap<Unit, Boolean> sortedMapByAgility = sortMap(agilityOver100AndIsAllyMap);
-            sortedMapByAgility.forEach((key, value) -> System.out.println(key.getName() + "  " + value));
-            return sortedMapByAgility;
+        while (agilityOver100AndIsAllyMap.isEmpty()) {
+            allyAgilityMap.forEach((key, value) -> {
+                if (value >= 100) {
+                    agilityOver100AndIsAllyMap.put(key, true);
+                    allyAgilityMap.replace(key, value - 100);
+                } else {
+                    allyAgilityMap.replace(key, value + key.getAgility());
+                }
+            });
+            enemyAgilityMap.forEach((key, value) -> {
+                if (value >= 100) {
+                    agilityOver100AndIsAllyMap.put(key, false);
+                    enemyAgilityMap.replace(key, value - 100);
+                } else {
+                    enemyAgilityMap.replace(key, value + key.getAgility());
+                }
+            });
+        }
+        HashMap<Unit, Boolean> sortedMapByAgility = sortMap(agilityOver100AndIsAllyMap);
+        sortedMapByAgility.forEach((key, value) -> System.out.println(key.getName() + "  " + value));
+        return sortedMapByAgility;
     }
-    public  HashMap<Unit,Boolean> sortMap(HashMap<Unit,Boolean> toSort){
-        HashMap<Unit,Boolean> agilityOver100AndIsAllyMapAfterSort = new HashMap<>();
+
+    public HashMap<Unit, Boolean> sortMap(HashMap<Unit, Boolean> toSort) {
+        HashMap<Unit, Boolean> agilityOver100AndIsAllyMapAfterSort = new HashMap<>();
         for (Unit fightable : toSort.keySet()) {
             int max = 0;
             for (Unit fightable1 : toSort.keySet()) {
-                if(fightable1.getAgility()>max){
-                    agilityOver100AndIsAllyMapAfterSort.put(fightable1,toSort.get(fightable1));
+                if (fightable1.getAgility() > max) {
+                    agilityOver100AndIsAllyMapAfterSort.put(fightable1, toSort.get(fightable1));
                 }
             }
         }
-        toSort =  agilityOver100AndIsAllyMapAfterSort;
+        toSort = agilityOver100AndIsAllyMapAfterSort;
         return toSort;
     }
-
-
 
 
     public Boolean isAnyActive() {
         Boolean isAnyActive = false;
         for (FightEventListner fightEventListner : fightEventListners) {
             if (fightEventListner.isInteractionActive()) {
-                isAnyActive =  true;
+                isAnyActive = true;
             }
         }
         return isAnyActive;
@@ -225,7 +233,7 @@ public class FightManager {
         List<FightEventListner> copy = new ArrayList<>();
         copy.addAll(fightEventListners);
         for (FightEventListner<T> fightEventListner : copy) {
-            if(fightEventListner instanceof BattleFrame){
+            if (fightEventListner instanceof BattleFrame) {
                 ((BattleFrame<T>) fightEventListner).goNextRound();
             }
         }
@@ -233,7 +241,7 @@ public class FightManager {
 
     public void resetInteractions() {
         for (FightEventListner fightEventListner : fightEventListners) {
-            if(fightEventListner instanceof BattleFrame battleFrame){
+            if (fightEventListner instanceof BattleFrame battleFrame) {
                 battleFrame.resetInteraction();
             }
         }
@@ -243,22 +251,36 @@ public class FightManager {
         this.charactersEventListners.add(characterPanel);
     }
 
-    public void setInteraction( Interaction<? extends Unit> interaction){
+    public void setInteraction(Interaction<? extends Unit> interaction) {
         for (CharactersEventListner charactersEventListner : charactersEventListners) {
             charactersEventListner.setInteractionsCharacters(interaction);
         }
     }
 
-    public <T extends Unit> void setInteractionToCharacter( Unit unit,Interaction<T> interaction) {
+    public <T extends Unit> void setInteractionToCharacter(Unit unit, Interaction<T> interaction) {
         if (!(interaction instanceof AttackInteraction<T>)) {
             if (unit instanceof MainUnit) {
                 for (MainUnit mainUnit : allyAgilityMap.keySet()) {
-                    mainUnit.getActiveInteractions().add(interaction);
-                    interaction.use();
+                    if (mainUnit.equals(unit)) {
+                        interaction.setTargets(List.of((T) mainUnit));
+                        mainUnit.getActiveInteractions().add(interaction);
+                        boolean use = interaction.use();
+                        if (!use) {
+                            mainUnit.getActiveInteractions().remove(interaction);
+
+                        }
+                    }
                 }
             } else if (unit instanceof Enemy) {
                 for (Enemy enemy : enemyAgilityMap.keySet()) {
-                    enemy.getActiveInteractions().add(interaction);
+                    if (enemy.equals(unit)) {
+                        interaction.setTargets(List.of((T) enemy));
+                        enemy.getActiveInteractions().add(interaction);
+                        boolean use = interaction.use();
+                        if (!use) {
+                            enemy.getActiveInteractions().remove(interaction);
+                        }
+                    }
                 }
             }
         }

@@ -132,7 +132,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
             FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
         }
-
+        this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + " / " + unit.getMaxHealth());
     }
 
     /**

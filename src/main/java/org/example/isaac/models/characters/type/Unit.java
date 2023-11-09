@@ -4,6 +4,7 @@ import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.rooms.fight.FightingBehaviour;
 import org.example.isaac.rooms.prizeBehaviour.Droppable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Unit implements Droppable {
@@ -13,7 +14,7 @@ public abstract class Unit implements Droppable {
     protected FightingBehaviour fightingBehaviour;
     protected String avatarPath;
     protected int agility;
-    protected List<Interaction<? extends Unit>> activeInteractions;
+    protected List<Interaction<? extends Unit>> activeInteractions = new ArrayList<>();
 
 
     public String getName() {
