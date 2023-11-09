@@ -19,21 +19,24 @@ public class StatusPanel<T extends Unit> extends javax.swing.JPanel {
     /**
      * Creates new form StatusPanel
      */
+    private Interaction<T> interaction;
     private String characterImgPath;
     public StatusPanel() {
         initComponents();
     }
     public StatusPanel(Interaction<T> interaction) {
-
         initComponents();
-
         if (interaction.getImgPath().isPresent()) {
+            this.interaction = interaction;
             this.characterImgPath = interaction.getImgPath().orElse(null);
             if (characterImgPath == null) return;
             Image img = new ImageIcon(StatusPanel.class.getResource(characterImgPath)).getImage();
             System.out.println(img.getSource());
             jLabel1.setIcon(new ImageIcon(img));
         }
+    }
+    public boolean checkInteraction(Interaction<? extends Unit> interaction){
+        return this.interaction.equals(interaction);
     }
 
     /**

@@ -33,17 +33,51 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     private Boolean isAlly;
 
 
+    private void deleteInteractionPanel(Interaction<? extends Unit> interaction) {
+        for (Object o : this.jPanelContainerCurrentEffects.getComponents()) {
+            if (o instanceof StatusPanel) {
+                StatusPanel<? extends Unit> statusPanel = (StatusPanel<?>) o;
+                if (statusPanel.checkInteraction(interaction)) {
+                    this.jPanelContainerCurrentEffects.remove(statusPanel);
+                    this.jPanelContainerCurrentEffects.revalidate();
+                    this.jPanelContainerCurrentEffects.repaint();
+                }
+            }
+        }
+    }
+
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
         if (unit.equals(this.unit)) {
-            if (unit instanceof MainUnit) {
-                this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
+            boolean use;
+            this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
+            if (!isally) {
+                for (Enemy enemy : FightManager.getInstance().getEnemies()) {
+                    if (enemy.equals(this.unit)) {
+                        for (Interaction<? extends Unit> activeInteraction : enemy.getActiveInteractions()) {
+                            use = activeInteraction.use();
+                            if (!use) {
+                                deleteInteractionPanel(activeInteraction);
+                            }
+                        }
+                    }
+                }
+            }
+            if (isally) {
+                for (MainUnit mainUnit : FightManager.getInstance().getAllies()) {
+                    if (mainUnit.equals(this.unit)) {
+                        for (Interaction<? extends Unit> activeInteraction : mainUnit.getActiveInteractions()) {
+                            use = activeInteraction.use();
+                            if (!use) {
+                               deleteInteractionPanel(activeInteraction);
+                            }
+                        }
+                    }
+                }
             }
             this.jPanelCharacterImg.revalidate();
             this.jPanelCharacterImg.repaint();
-
         }
-
     }
 
 
@@ -114,23 +148,23 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         }
         if (isAlly && interaction.getTargetType() == Skill.TargetType.ALLYTEAM) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
-            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
+            FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.SELF && unit == FightManager.getInstance().getCurrentCharacter()) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
-            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
+            FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.ALL) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
-            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
+            FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.ENEMY && !isAlly && FightManager.getInstance().getClickedUnit() == this.unit) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
-            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
+            FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
         }
         if (interaction.getTargetType() == Skill.TargetType.DEAD && this.unit.getCurrentHealth() < 0) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
-            FightManager.getInstance().setInteractionToCharacter( this.unit,interaction);
+            FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
         }
         this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + " / " + unit.getMaxHealth());
     }
@@ -208,7 +242,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private boolean ifTrueUseSkill(Skill.TargetType targetType, List<Interaction<T>> interactions){
+    private boolean ifTrueUseSkill(Skill.TargetType targetType, List<Interaction<T>> interactions) {
         switch (targetType) {
             case SELF -> {
                 if (this.unit == FightManager.getInstance().getClickedUnit()) {
@@ -259,6 +293,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         }
         return false;
     }
+
     @TODO(todo = "aggiungere la logica dietro gli attacchi")
     private boolean useSkill(Skill<T> skill) {
         FightManager.getInstance().setClickedUnit(this.unit);

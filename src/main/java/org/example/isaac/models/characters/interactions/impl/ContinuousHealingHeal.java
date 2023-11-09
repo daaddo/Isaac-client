@@ -35,9 +35,8 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
         for (Unit ally : allies) {
             ally.setCurrentHealth(ally.getCurrentHealth()+amount);
         }
-        if (turnsLeft == 0) return false;
         turnsLeft--;
-        return true;
+        return turnsLeft != 0;
     }
 
 
