@@ -259,28 +259,46 @@ public class FightManager {
 
     public <T extends Unit> void setInteractionToCharacter(Unit unit, Interaction<T> interaction) {
         if (!(interaction instanceof AttackInteraction<T>)) {
+            List<? extends Unit> units = null;
+
             if (unit instanceof MainUnit) {
-                for (MainUnit mainUnit : allyAgilityMap.keySet()) {
-                    if (mainUnit.equals(unit)) {
-                        interaction.setTargets(List.of((T) mainUnit));
-                        mainUnit.getActiveInteractions().add(interaction);
+                units = allies;
+            } else if (unit instanceof Enemy) {
+                units = enemies;
+            }
+
+            if (units != null) {
+                for (Iterator<? extends Unit> iterator = units.iterator(); iterator.hasNext();) {
+                    Unit currentUnit = iterator.next();
+                    if (currentUnit.equals(unit)) {
+                        interaction.setTargets(List.of((T) currentUnit));
+                        currentUnit.getActiveInteractions().add(interaction);
                         boolean use = interaction.use();
                         if (!use) {
-                            mainUnit.getActiveInteractions().remove(interaction);
-
+                            iterator.remove();
                         }
+                        break; // Assuming you only want to process one matching unit
                     }
                 }
-            } else if (unit instanceof Enemy) {
-                for (Enemy enemy : enemyAgilityMap.keySet()) {
-                    if (enemy.equals(unit)) {
-                        interaction.setTargets(List.of((T) enemy));
-                        enemy.getActiveInteractions().add(interaction);
-                        boolean use = interaction.use();
-                        if (!use) {
-                            enemy.getActiveInteractions().remove(interaction);
-                        }
-                    }
+            }
+        }
+    }
+
+    public <T extends Unit> void removeInteractionFromCharacter(T unit, Interaction<? extends Unit> activeInteraction) {
+        List<? extends Unit> units = null;
+
+        if (unit instanceof MainUnit) {
+            units = allies;
+        } else if (unit instanceof Enemy) {
+            units = enemies;
+        }
+
+        if (units != null) {
+            for (Iterator<? extends Unit> iterator = units.iterator(); iterator.hasNext();) {
+                Unit currentUnit = iterator.next();
+                if (currentUnit.equals(unit)) {
+                    currentUnit.getActiveInteractions().remove(activeInteraction);
+                    break; // Assuming you only want to process one matching unit
                 }
             }
         }

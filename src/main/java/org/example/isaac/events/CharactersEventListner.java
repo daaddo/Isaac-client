@@ -7,4 +7,6 @@ import org.example.isaac.models.characters.type.Unit;
 
 public interface CharactersEventListner<T extends Unit> {
     void setInteractionsCharacters( Interaction<T> interaction);
+    //add
+    //remove
 }

@@ -25,6 +25,7 @@ public class StatusPanel<T extends Unit> extends javax.swing.JPanel {
         initComponents();
     }
     public StatusPanel(Interaction<T> interaction) {
+        assert interaction != null;
         initComponents();
         if (interaction.getImgPath().isPresent()) {
             this.interaction = interaction;
@@ -36,6 +37,9 @@ public class StatusPanel<T extends Unit> extends javax.swing.JPanel {
         }
     }
     public boolean checkInteraction(Interaction<? extends Unit> interaction){
+        if (this.interaction == null) {
+            return false;
+        }
         return this.interaction.equals(interaction);
     }
 

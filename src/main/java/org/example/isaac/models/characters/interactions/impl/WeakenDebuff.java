@@ -34,9 +34,8 @@ public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
         for (Unit enemy : enemies) {
             enemy.setCurrentHealth(enemy.getCurrentHealth()-amount);
         }
-        if (turnsLeft == 0) return false;
         turnsLeft--;
-        return true;
+        return turnsLeft != 0;
     }
 
 
