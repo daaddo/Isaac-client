@@ -34,45 +34,57 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
 
 
     private void deleteInteractionPanel(Interaction<? extends Unit> interaction) {
-        Iterator<Component> iterator = Arrays.stream(this.jPanelContainerCurrentEffects.getComponents()).iterator();
+        int a = 0;
+        boolean b = false;
+        for (int i = 0; i < this.jPanelContainerCurrentEffects.getComponentCount(); i++) {
+            if (jPanelContainerCurrentEffects.getComponent(i) instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
+                a = i;
+                b = true;
+            }
+        }
+        if (b){
+            this.jPanelContainerCurrentEffects.remove(a);
+        }
+        /*Iterator<Component> iterator = Arrays.stream(this.jPanelContainerCurrentEffects.getComponents()).iterator();
         while (iterator.hasNext()) {
             Component o = iterator.next();
             if (o instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
                 iterator.remove();
                 this.jPanelContainerCurrentEffects.remove(statusPanel);
             }
-        }
+        }*/
     }
 
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
         if (unit.equals(this.unit)) {
-            boolean use;
+            boolean use= false;
             this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
+            Interaction interaction = null;
             if (!isally) {
                 for (Enemy enemy : FightManager.getInstance().getEnemies()) {
                     if (enemy.equals(this.unit)) {
                         for (Interaction<? extends Unit> activeInteraction : enemy.getActiveInteractions()) {
                             use = activeInteraction.use();
-                            if (!use) {
-                                FightManager.getInstance().removeInteractionFromCharacter(this.unit, activeInteraction);
-                                deleteInteractionPanel(activeInteraction);
-                            }
+                            interaction = activeInteraction;
+
                         }
                     }
                 }
+
             } else {
                 for (MainUnit mainUnit : FightManager.getInstance().getAllies()) {
                     if (mainUnit.equals(this.unit)) {
                         for (Interaction<? extends Unit> activeInteraction : mainUnit.getActiveInteractions()) {
                             use = activeInteraction.use();
-                            if (!use) {
-                                FightManager.getInstance().removeInteractionFromCharacter(this.unit, activeInteraction);
-                                deleteInteractionPanel(activeInteraction);
-                            }
+                            interaction = activeInteraction;
                         }
                     }
                 }
+            }
+            if (!use) {
+                FightManager.getInstance().removeInteractionFromCharacter(this.unit, interaction);
+                deleteInteractionPanel(interaction);
             }
             this.jPanelCharacterImg.revalidate();
             this.jPanelCharacterImg.repaint();
