@@ -7,6 +7,7 @@ package org.example.isaac.gui;
 import org.example.isaac.RedisManager;
 import org.example.isaac.events.GameEventListner;
 import org.example.isaac.manager.GameManager;
+import org.example.isaac.models.characters.allymodels.AgilityMainUnitTest;
 import org.example.isaac.models.characters.interactions.skills.AttackSkillInteraction;
 import org.example.isaac.models.characters.type.MainUnit;
 import org.example.isaac.models.characters.allymodels.SuperAgilityMainUnitTest;
@@ -162,8 +163,9 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
                             List.of(new StroncaturaSkillInteraction(2,3,2,3),
                                     new AttackSkillInteraction(3,5,2,3,2),
                                     new DeBuffAllEnemiesSkillInteraction(2,3),
-                                    new OnAlliesTestSkillInteraction(2,3,2,3))));GameManager.getInstance().addCharacter(
-                    new SuperAgilityMainUnitTest(RedisManager.getInstance().get("NOME"),
+                                    new OnAlliesTestSkillInteraction(2,3,2,3))));
+                       GameManager.getInstance().addCharacter(
+                    new AgilityMainUnitTest("MARIANO",
                             List.of(new StroncaturaSkillInteraction(2,3,2,3),
                                     new AttackSkillInteraction(3,4,2,3,2),
                                     new DeBuffAllEnemiesSkillInteraction(2,3),

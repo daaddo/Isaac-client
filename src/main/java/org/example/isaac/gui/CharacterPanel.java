@@ -10,7 +10,6 @@ import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.manager.FightManager;
 import org.example.isaac.manager.GameManager;
-import org.example.isaac.models.characters.interactions.type.AttackInteraction;
 import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.type.Enemy;
@@ -34,58 +33,63 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
 
 
     private void deleteInteractionPanel(Interaction<? extends Unit> interaction) {
-        int a = 0;
-        boolean b = false;
+        List<Integer> toRemove = new ArrayList<>();
+
         for (int i = 0; i < this.jPanelContainerCurrentEffects.getComponentCount(); i++) {
             if (jPanelContainerCurrentEffects.getComponent(i) instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
-                a = i;
-                b = true;
+                toRemove.add(i);
+                continue;
+            }
+            toRemove.add(null);
+        }
+        for (Integer i : toRemove) {
+            if (i != null) {
+                this.jPanelContainerCurrentEffects.remove(i);
             }
         }
-        if (b){
-            this.jPanelContainerCurrentEffects.remove(a);
-        }
-        /*Iterator<Component> iterator = Arrays.stream(this.jPanelContainerCurrentEffects.getComponents()).iterator();
-        while (iterator.hasNext()) {
-            Component o = iterator.next();
-            if (o instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
-                iterator.remove();
-                this.jPanelContainerCurrentEffects.remove(statusPanel);
-            }
-        }*/
     }
 
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
         if (unit.equals(this.unit)) {
-            boolean use= false;
-            this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
-            Interaction interaction = null;
+            boolean use = true;
             if (!isally) {
                 for (Enemy enemy : FightManager.getInstance().getEnemies()) {
                     if (enemy.equals(this.unit)) {
+                        List<Interaction> toRemove = new ArrayList<>();
                         for (Interaction<? extends Unit> activeInteraction : enemy.getActiveInteractions()) {
                             use = activeInteraction.use();
-                            interaction = activeInteraction;
 
+                            if (!use){
+                                toRemove.add(activeInteraction);
+                            }
+                        }
+                        for (Interaction<? extends Unit> interactionToRemove : toRemove) {
+                            deleteInteractionPanel(interactionToRemove);
+                            FightManager.getInstance().removeInteractionFromCharacter(this.unit, interactionToRemove);
                         }
                     }
                 }
-
+                FightManager.getInstance().callNextTurn();
             } else {
                 for (MainUnit mainUnit : FightManager.getInstance().getAllies()) {
                     if (mainUnit.equals(this.unit)) {
+                        List<Interaction> toRemove = new ArrayList<>();
                         for (Interaction<? extends Unit> activeInteraction : mainUnit.getActiveInteractions()) {
                             use = activeInteraction.use();
-                            interaction = activeInteraction;
+                            if (!use){
+                                toRemove.add(activeInteraction);
+                            }
+                        }
+                        for (Interaction<? extends Unit> interactionToRemove : toRemove) {
+                            deleteInteractionPanel(interactionToRemove);
+                            FightManager.getInstance().removeInteractionFromCharacter(this.unit, interactionToRemove);
                         }
                     }
                 }
             }
-            if (!use) {
-                FightManager.getInstance().removeInteractionFromCharacter(this.unit, interaction);
-                deleteInteractionPanel(interaction);
-            }
+            this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
+            this.jPanelCharacterImg.invalidate();
             this.jPanelCharacterImg.revalidate();
             this.jPanelCharacterImg.repaint();
         }
@@ -318,7 +322,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     }
 
     private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        Optional<Skill<T>> currentskillTargetActive = FightManager.getInstance().getCurrentInteractionActive();
+        Optional<Skill<T>> currentskillTargetActive = FightManager.getInstance().getCurrentSkillActive();
 
         if (currentskillTargetActive.isPresent()) {
             Skill<T> skill = currentskillTargetActive.get();

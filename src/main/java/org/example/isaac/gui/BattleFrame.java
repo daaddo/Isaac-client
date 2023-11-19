@@ -200,10 +200,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
                     jPanelCharacterOption.add(new InteractionPanel(skill));
                 }
             }
-            if (unit instanceof Enemy) {
-                //call next turn
-                goNextRound();
-            }
+
         }
     }
 

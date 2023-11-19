@@ -1,6 +1,10 @@
 package org.example.isaac.models.characters.type;
 
+import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.rooms.fight.FightingBehaviour;
+
+import java.util.Collections;
+import java.util.List;
 
 public class Enemy extends Unit implements Fightable {
     private int difficultyPoint;
@@ -20,6 +24,7 @@ public class Enemy extends Unit implements Fightable {
     public int getAgility(){
         return this.agility;
     }
+
 
 
 }

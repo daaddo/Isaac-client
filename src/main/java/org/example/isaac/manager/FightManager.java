@@ -54,7 +54,7 @@ public class FightManager {
         this.fightEventListners.add(fightEventListner);
     }
 
-    public <T extends Unit> Optional<Skill<T>> getCurrentInteractionActive() {
+    public <T extends Unit> Optional<Skill<T>> getCurrentSkillActive() {
         Optional<Skill<T>> interaction = Optional.empty();
         for (FightEventListner<T> fightEventListner : fightEventListners) {
             if (fightEventListner.isInteractionActive()) {
@@ -89,7 +89,6 @@ public class FightManager {
     public List<Enemy> getEnemies() {
         return enemies;
     }
-
     public List<MainUnit> getAllies() {
         return allies;
     }
@@ -138,24 +137,6 @@ public class FightManager {
             }
         }
 
-    }
-
-    public boolean isAllDead(Map<? extends Fightable, Integer> map) {
-        for (Fightable fightable : map.keySet()) {
-            if (fightable.getCurrentHealth() > 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void init(List<? extends MainUnit> ally, List<? extends Enemy> enemy) {
-        for (MainUnit fightable : ally) {
-            addAlly(fightable);
-        }
-        for (Enemy fightable : enemy) {
-            addEnemy(fightable);
-        }
     }
 
     public void initializedMaps() {
@@ -269,10 +250,12 @@ public class FightManager {
 
             if (units != null) {
                 for (Iterator<? extends Unit> iterator = units.iterator(); iterator.hasNext();) {
-                    Unit currentUnit = iterator.next();
-                    if (currentUnit.equals(unit)) {
-                        interaction.setTargets(List.of((T) currentUnit));
-                        currentUnit.getActiveInteractions().add(interaction);
+                    Unit unitCurrent = iterator.next();
+                    if (unitCurrent.equals(unit)) {
+                        List<T> targets = new ArrayList<>();
+                        targets.add((T) unitCurrent);
+                        interaction.setTargets(targets);
+                        unitCurrent.getActiveInteractions().add(interaction);
                         boolean use = interaction.use();
                         if (!use) {
                             iterator.remove();

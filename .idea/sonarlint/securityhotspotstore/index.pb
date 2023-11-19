@@ -187,3 +187,5 @@ Y
 )src/main/java/org/example/isaac/Main.java,f\1\f13a61bf740373b0c1140294746cf4c69a996e24
 [
 +src/main/java/org/example/isaac/Logger.java,9\e\9e955f8cd5d4c21d14420959f1eea9078623c5c7
+…
+Usrc/main/java/org/example/isaac/models/characters/allymodels/AgilityMainUnitTest.java,b\4\b4e4d339581d7668edd8b7858d7a8bc1ffb99cbc
