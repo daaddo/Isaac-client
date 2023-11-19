@@ -3,18 +3,16 @@ package org.example.isaac.manager;
 import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.gui.BattleFrame;
-import org.example.isaac.models.characters.interactions.type.AttackInteraction;
 import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.type.Enemy;
-import org.example.isaac.models.characters.type.Fightable;
 import org.example.isaac.models.characters.type.MainUnit;
 import org.example.isaac.models.characters.Target;
 
 import java.util.*;
 
-public class FightManager {
+public class FightManager{
 
     private static FightManager instance = null;
 
@@ -25,10 +23,12 @@ public class FightManager {
     private Unit currentUnit;
     private Map<MainUnit, Integer> allyAgilityMap = new HashMap();
     private Map<Enemy, Integer> enemyAgilityMap = new HashMap<>();
-    private List<Enemy> enemies = new ArrayList<>();
-    private List<MainUnit> allies = new ArrayList<>();
+    //make a map of enemies and allies with value boolean to know if they are ally
+    private Map<Unit, Boolean> units = new HashMap<>();
     private List<FightEventListner> fightEventListners = new ArrayList<>();
+    private List<FightEventListner> roomFightListners = new ArrayList<>();
     private List<CharactersEventListner> charactersEventListners = new ArrayList<>();
+    private HashMap<Unit, List<Interaction<? extends Unit>>> unitToInteractions = new HashMap<>();
 
     public static FightManager getInstance() {
         if (instance == null) {
@@ -52,6 +52,7 @@ public class FightManager {
 
     public void subscribeFightListner(FightEventListner fightEventListner) {
         this.fightEventListners.add(fightEventListner);
+        this.roomFightListners.add(fightEventListner);
     }
 
     public <T extends Unit> Optional<Skill<T>> getCurrentSkillActive() {
@@ -70,12 +71,14 @@ public class FightManager {
 
     public void addEnemy(Enemy enemy) {
         this.enemyAgilityMap.put(enemy, enemy.getAgility());
-        this.enemies.add(enemy);
+        this.units.put(enemy, false);
+        this.unitToInteractions.put(enemy, new ArrayList<>());
     }
 
     public void addAlly(MainUnit ally) {
         this.allyAgilityMap.put(ally, ally.getAgility());
-        this.allies.add(ally);
+        this.units.put(ally, true);
+        this.unitToInteractions.put(ally, new ArrayList<>());
     }
 
     public void setClickedUnit(Unit unit) {
@@ -87,9 +90,21 @@ public class FightManager {
     }
 
     public List<Enemy> getEnemies() {
+        List<Enemy> enemies = new ArrayList<>();
+        for (Unit unit : units.keySet()) {
+            if (!units.get(unit)) {
+                enemies.add((Enemy) unit);
+            }
+        }
         return enemies;
     }
     public List<MainUnit> getAllies() {
+        List<MainUnit> allies = new ArrayList<>();
+        for (Unit unit : units.keySet()) {
+            if (units.get(unit)) {
+                allies.add((MainUnit) unit);
+            }
+        }
         return allies;
     }
 
@@ -153,11 +168,7 @@ public class FightManager {
         return currentUnit;
     }
 
-    public void giveTurn(Unit unit, Boolean isAlly) {
-        for (FightEventListner fightEventListner : fightEventListners) {
-            fightEventListner.getNextTurns(unit, isAlly);
-        }
-    }
+
 
     public HashMap<Unit, Boolean> getNextTurnCharacters() {
         initializedMaps();
@@ -215,7 +226,7 @@ public class FightManager {
         copy.addAll(fightEventListners);
         for (FightEventListner<T> fightEventListner : copy) {
             if (fightEventListner instanceof BattleFrame) {
-                ((BattleFrame<T>) fightEventListner).goNextRound();
+                ((BattleFrame<T>) fightEventListner).startNextRound();
             }
         }
     }
@@ -238,14 +249,37 @@ public class FightManager {
         }
     }
 
-    public <T extends Unit> void setInteractionToCharacter(Unit unit, Interaction<T> interaction) {
-        if (!(interaction instanceof AttackInteraction<T>)) {
+    public void setInteractionToCharacter(Unit unit, Interaction<? extends Unit> interaction) {
+        boolean use = true;
+        for (Map.Entry<Unit, List<Interaction<? extends Unit>>> unitListEntry : unitToInteractions.entrySet()) {
+            if (unitListEntry.getKey().equals(unit)) {
+                interaction.setTargets(List.of(unit));
+                unitListEntry.getValue().add(interaction);
+                //get last interactio added
+                 use = unitListEntry.getValue().get(unitListEntry.getValue().size() - 1).use();
+
+            }
+        }
+        if (!use) {
+            unitToInteractions.get(unit).remove(interaction);
+        }
+    }
+
+
+    public void removeInteractionFromCharacter(Unit unit, Interaction<? extends Unit> activeInteraction) {
+        for (Map.Entry<Unit, List<Interaction<? extends Unit>>> unitListEntry : unitToInteractions.entrySet()) {
+            if (unitListEntry.getKey().equals(unit)) {
+                unitListEntry.getValue().remove(activeInteraction);
+            }
+        }
+    }
+    /* if (!(interaction instanceof AttackInteraction<T>)) {
             List<? extends Unit> units = null;
 
             if (unit instanceof MainUnit) {
-                units = allies;
+                units = getAllies();
             } else if (unit instanceof Enemy) {
-                units = enemies;
+                units = getEnemies();
             }
 
             if (units != null) {
@@ -263,27 +297,5 @@ public class FightManager {
                         break; // Assuming you only want to process one matching unit
                     }
                 }
-            }
-        }
-    }
-
-    public <T extends Unit> void removeInteractionFromCharacter(T unit, Interaction<? extends Unit> activeInteraction) {
-        List<? extends Unit> units = null;
-
-        if (unit instanceof MainUnit) {
-            units = allies;
-        } else if (unit instanceof Enemy) {
-            units = enemies;
-        }
-
-        if (units != null) {
-            for (Iterator<? extends Unit> iterator = units.iterator(); iterator.hasNext();) {
-                Unit currentUnit = iterator.next();
-                if (currentUnit.equals(unit)) {
-                    currentUnit.getActiveInteractions().remove(activeInteraction);
-                    break; // Assuming you only want to process one matching unit
-                }
-            }
-        }
-    }
+            }*/
 }

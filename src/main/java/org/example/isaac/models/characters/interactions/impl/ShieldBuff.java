@@ -14,7 +14,7 @@ public class ShieldBuff<T extends Unit> implements BuffInteraction<T> {
     private int amount;
     private String imgPath = "/images/icon1NoBg.png";
     private Skill.TargetType targetType;
-    private List<T> allies = new ArrayList<>();
+    private List<Unit> allies = new ArrayList<>();
 
 
     public ShieldBuff(int turnsLeft, Skill.TargetType targetType, int amount, T ... allies) {
@@ -24,7 +24,7 @@ public class ShieldBuff<T extends Unit> implements BuffInteraction<T> {
         this.allies.addAll(Arrays.asList(allies));
     }
 
-    public void setAllies(List<T> allies) {
+    public void setAllies(List<Unit> allies) {
         this.allies = allies;
     }
 
@@ -51,12 +51,12 @@ public class ShieldBuff<T extends Unit> implements BuffInteraction<T> {
     }
 
     @Override
-    public void setTargets(List<T> targets) {
+    public void setTargets(List<Unit> targets) {
         setAllies(targets);
     }
 
     @Override
-    public List<T> getTargets() {
+    public List<Unit> getTargets() {
         return allies;
     }
 

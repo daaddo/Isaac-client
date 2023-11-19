@@ -16,16 +16,16 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
     private int amount;
     private String imgPath = "/images/icon3NoBg.png";
     @TODO(todo = "refactor in modo che target sia singolo e non una lista")
-    List<T> allies = new ArrayList<>();
+    List< Unit> allies = new ArrayList<>();
 
-    public ContinuousHealingHeal(int turnsLeft, int amount, Skill.TargetType targetType, T ... allies) {
+    public ContinuousHealingHeal(int turnsLeft, int amount, Skill.TargetType targetType, Unit ... allies) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
         this.allies.addAll(List.of(allies));
         this.targetType = targetType;
     }
 
-    public void setAllies(List<T> allies) {
+    public void setAllies(List<Unit> allies) {
         this.allies = allies;
     }
 
@@ -51,12 +51,12 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
     }
 
     @Override
-    public void setTargets(List<T> targets) {
+    public void setTargets(List< Unit> targets) {
         setAllies(targets);
     }
 
     @Override
-    public List<T> getTargets() {
+    public List<Unit> getTargets() {
         return allies;
     }
 

@@ -30,6 +30,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
     private nextCharacter nextCharacter;
 
     public BattleFrame(List<MainUnit> character) {
+
         initComponents();
         GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
@@ -48,15 +49,15 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
         setVisible(true);
 
     }
-//MAYBE HERE
-    public void goNextRound(){
+
+
+    public void startNextRound(){
         turnMap.remove(turnMap.keySet().stream().findFirst().get());
         if (turnMap.isEmpty()){
             turnMap = FightManager.getInstance().getNextTurnCharacters();
         }
         nextCharacter = new nextCharacter(turnMap.keySet().stream().findFirst().get(),turnMap.get(turnMap.keySet().stream().findFirst().get()));
         GameManager.getInstance().giveTurn(nextCharacter.unit(), nextCharacter.isAlly());
-
     }
 
     public void setEnemiesBackground(Skill.TargetType type){
@@ -200,7 +201,9 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
                     jPanelCharacterOption.add(new InteractionPanel(skill));
                 }
             }
-
+            if(unit instanceof NormalEnemy normalEnemy) {
+                FightManager.getInstance().callNextTurn();
+            }
         }
     }
 
@@ -229,7 +232,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
     @Override
     public void startTurn(Unit unit, Boolean isally) {
         this.nextCharacter = new nextCharacter(unit,isally);
-        goNextRound();
+        startNextRound();
     }
 
 

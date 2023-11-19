@@ -14,7 +14,7 @@ public class PoisonDebuff<T extends Unit> implements DebuffInteraction<T> {
     private int amount;
     private String imgPath = "/images/icon2NoBg.png";
     private Skill.TargetType targetType;
-    private List<T> enemies = new ArrayList<>();
+    private List<Unit> enemies = new ArrayList<>();
 
     public PoisonDebuff(int turnsLeft, int amount, Skill.TargetType targetType, T ... enemies) {
         this.turnsLeft = turnsLeft;
@@ -24,7 +24,7 @@ public class PoisonDebuff<T extends Unit> implements DebuffInteraction<T> {
 
     }
 
-    public void setEnemies(List<T> enemies) {
+    public void setEnemies(List<Unit> enemies) {
         this.enemies = enemies;
     }
 
@@ -39,12 +39,12 @@ public class PoisonDebuff<T extends Unit> implements DebuffInteraction<T> {
     }
 
     @Override
-    public void setTargets(List<T> targets) {
+    public void setTargets(List<Unit> targets) {
         setEnemies(targets);
     }
 
     @Override
-    public List<T> getTargets() {
+    public List<Unit> getTargets() {
         return enemies;
     }
 

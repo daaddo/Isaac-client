@@ -52,14 +52,13 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
         if (unit.equals(this.unit)) {
-            boolean use = true;
+            boolean use;
             if (!isally) {
                 for (Enemy enemy : FightManager.getInstance().getEnemies()) {
                     if (enemy.equals(this.unit)) {
                         List<Interaction> toRemove = new ArrayList<>();
                         for (Interaction<? extends Unit> activeInteraction : enemy.getActiveInteractions()) {
                             use = activeInteraction.use();
-
                             if (!use){
                                 toRemove.add(activeInteraction);
                             }
@@ -70,8 +69,8 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                         }
                     }
                 }
-                FightManager.getInstance().callNextTurn();
-            } else {
+            }
+            if (isally) {
                 for (MainUnit mainUnit : FightManager.getInstance().getAllies()) {
                     if (mainUnit.equals(this.unit)) {
                         List<Interaction> toRemove = new ArrayList<>();
@@ -139,7 +138,6 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         this.isAlly = isAlly;
         initComponents();
         this.unit = unit;
-        GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribePanelListner(this);
         this.characterImgPath = unit.getAvatarPath();

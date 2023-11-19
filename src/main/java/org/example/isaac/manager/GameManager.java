@@ -15,7 +15,6 @@ public class GameManager <T extends Unit> {
     private List<MainUnit> characters = new LinkedList<>();
     private RoomCoordinates pointerRoom;
     private Game gioco;
-    private T character;
     private static GameManager instance = null;
     private boolean isFighting = false;
     private List<GameEventListner> gameEventListners = new ArrayList<>();

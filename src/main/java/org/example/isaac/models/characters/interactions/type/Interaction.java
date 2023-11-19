@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface Interaction<T extends Unit>{
     Optional<String> getImgPath();
     boolean use();
-    void setTargets( List<T> targets);
-    List<T> getTargets();
+    void setTargets( List<Unit> targets);
+    List<Unit> getTargets();
     Skill.TargetType getTargetType();
 }

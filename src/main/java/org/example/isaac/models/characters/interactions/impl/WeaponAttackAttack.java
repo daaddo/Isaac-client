@@ -15,14 +15,14 @@ public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> 
     private Skill.TargetType targetType;
 
 
-    private List<T> enemies = new ArrayList<>();
+    private List<Unit> enemies = new ArrayList<>();
     public WeaponAttackAttack(int damage, Skill.TargetType targetType, T ... enemies) {
         this.damage = damage;
         this.targetType = targetType;
         Collections.addAll(this.enemies, enemies);
     }
 
-    public void setEnemies(List<T> enemies) {
+    public void setEnemies(List<Unit> enemies) {
         this.enemies = enemies;
     }
 
@@ -46,12 +46,12 @@ public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> 
     }
 
     @Override
-    public void setTargets(List<T> targets) {
+    public void setTargets(List<Unit> targets) {
         setEnemies(targets);
     }
 
     @Override
-    public List<T> getTargets() {
+    public List<Unit> getTargets() {
         return enemies;
     }
  

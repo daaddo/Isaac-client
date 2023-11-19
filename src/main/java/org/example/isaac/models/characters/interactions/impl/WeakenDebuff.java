@@ -14,7 +14,7 @@ public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
     private int amount;
     private String imgPath = "/images/icon1NoBg.png";
     private Skill.TargetType targetType;
-    List<T> enemies = new ArrayList<>();
+    List<Unit> enemies = new ArrayList<>();
 
     public WeakenDebuff(int turnsLeft, int amount, Skill.TargetType targetType, T ... characters) {
         this.turnsLeft = turnsLeft;
@@ -24,7 +24,7 @@ public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
 
     }
 
-    public void setEnemies(List<T> enemies) {
+    public void setEnemies(List<Unit> enemies) {
         this.enemies = enemies;
     }
     //TODO Refactorare Character in modo che accetti setAttack
@@ -50,12 +50,12 @@ public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
     }
 
     @Override
-    public void setTargets(List<T> targets) {
+    public void setTargets(List<Unit> targets) {
         setEnemies(targets);
     }
 
     @Override
-    public List<T> getTargets() {
+    public List<Unit> getTargets() {
         return enemies;
     }
 
