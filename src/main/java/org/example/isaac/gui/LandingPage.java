@@ -164,12 +164,6 @@ public class LandingPage extends javax.swing.JFrame implements GameEventListner 
                                     new AttackSkillInteraction(3,5,2,3,2),
                                     new DeBuffAllEnemiesSkillInteraction(2,3),
                                     new OnAlliesTestSkillInteraction(2,3,2,3))));
-                       GameManager.getInstance().addCharacter(
-                    new AgilityMainUnitTest("MARIANO",
-                            List.of(new StroncaturaSkillInteraction(2,3,2,3),
-                                    new AttackSkillInteraction(3,4,2,3,2),
-                                    new DeBuffAllEnemiesSkillInteraction(2,3),
-                                    new OnAlliesTestSkillInteraction(2,3,2,3))));
         }
         else if (actionCommand.equals("Test2")) {
             /*GameManager.getInstance().addCharacter(new MainUnit("Pio", List.of(

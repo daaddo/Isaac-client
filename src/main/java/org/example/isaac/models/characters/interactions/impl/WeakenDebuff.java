@@ -16,7 +16,7 @@ public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
     private Skill.TargetType targetType;
     List<Unit> enemies = new ArrayList<>();
 
-    public WeakenDebuff(int turnsLeft, int amount, Skill.TargetType targetType, T ... characters) {
+    public WeakenDebuff(int amount , int turnsLeft, Skill.TargetType targetType, T ... characters) {
         this.turnsLeft = turnsLeft;
         this.amount = amount;
         this.targetType = targetType;

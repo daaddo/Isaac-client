@@ -258,7 +258,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
             case SELF -> {
                 if (this.unit == FightManager.getInstance().getClickedUnit()) {
                     for (Interaction<T> interaction : interactions) {
-                        interaction.getTargets().add(this.unit);
+                         interaction.getTargets().add(this.unit);
                         FightManager.getInstance().setInteraction(interaction);
                     }
                     return true;

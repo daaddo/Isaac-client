@@ -253,8 +253,9 @@ public class FightManager{
         boolean use = true;
         for (Map.Entry<Unit, List<Interaction<? extends Unit>>> unitListEntry : unitToInteractions.entrySet()) {
             if (unitListEntry.getKey().equals(unit)) {
-                interaction.setTargets(List.of(unit));
-                unitListEntry.getValue().add(interaction);
+                Interaction interaction1 = interaction;
+                interaction1.setTargets(Arrays.asList(unit));
+                unitListEntry.getValue().add(interaction1);
                 //get last interactio added
                  use = unitListEntry.getValue().get(unitListEntry.getValue().size() - 1).use();
 
