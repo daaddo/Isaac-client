@@ -202,7 +202,7 @@ public class BattleFrame<T extends Unit> extends javax.swing.JFrame implements F
                 }
             }
             if(unit instanceof NormalEnemy normalEnemy) {
-                FightManager.getInstance().callNextTurn();
+                startNextRound();
             }
         }
     }

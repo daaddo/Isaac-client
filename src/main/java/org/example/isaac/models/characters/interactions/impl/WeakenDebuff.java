@@ -1,6 +1,7 @@
 package org.example.isaac.models.characters.interactions.impl;
 
 import org.example.isaac.models.characters.interactions.Skill;
+import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.interactions.type.DebuffInteraction;
 
@@ -62,6 +63,16 @@ public class WeakenDebuff<T extends Unit> implements DebuffInteraction<T> {
     @Override
     public Skill.TargetType getTargetType() {
         return targetType;
+    }
+
+    @Override
+    public Interaction clone() throws CloneNotSupportedException {
+        WeakenDebuff clonedObj =  (WeakenDebuff) super.clone();
+        clonedObj.turnsLeft = (this.turnsLeft);
+        clonedObj.targetType =(this.targetType);
+        clonedObj.amount = (this.amount);
+        clonedObj.imgPath = (this.imgPath);
+        return clonedObj;
     }
 
 

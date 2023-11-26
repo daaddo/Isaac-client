@@ -2,6 +2,7 @@ package org.example.isaac.models.characters.interactions.impl;
 
 import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.interactions.type.AttackInteraction;
+import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> 
         for (Unit unit : enemies) {
             unit.setCurrentHealth(unit.getCurrentHealth()-damage);
         }
-        return true;
+        return false;
     }
 
 
@@ -58,6 +59,14 @@ public class WeaponAttackAttack<T extends Unit> implements AttackInteraction<T> 
     @Override
     public Skill.TargetType getTargetType() {
         return targetType;
+    }
+
+    @Override
+    public Interaction clone() throws CloneNotSupportedException {
+        WeaponAttackAttack clonedObj =  (WeaponAttackAttack) super.clone();
+        clonedObj.targetType =(this.targetType);
+        clonedObj.damage = (this.damage);
+        return clonedObj;
     }
 
 

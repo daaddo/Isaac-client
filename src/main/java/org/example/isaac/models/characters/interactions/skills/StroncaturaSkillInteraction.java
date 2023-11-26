@@ -8,7 +8,7 @@ import org.example.isaac.models.characters.interactions.impl.WeakenDebuff;
 public class StroncaturaSkillInteraction extends Skill {
     public StroncaturaSkillInteraction(int contininuousHealingBuffDuration, int contininuousHealingBuffAmount, int weakenDebuffDuration, int weakenDebuffAmount) {
         super("Stroncatura",
-                new ContinuousHealingHeal(contininuousHealingBuffAmount,contininuousHealingBuffDuration,TargetType.SELF),
+                new ContinuousHealingHeal(contininuousHealingBuffDuration,contininuousHealingBuffAmount,TargetType.SELF),
                 new WeakenDebuff(weakenDebuffAmount,weakenDebuffDuration,TargetType.ENEMYTEAM));
     }
 

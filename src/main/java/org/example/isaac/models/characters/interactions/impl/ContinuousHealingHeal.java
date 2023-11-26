@@ -3,6 +3,7 @@ package org.example.isaac.models.characters.interactions.impl;
 import org.example.isaac.TODO;
 import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.interactions.type.HealInteraction;
+import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
@@ -54,7 +55,15 @@ public class ContinuousHealingHeal<T extends Unit>  implements HealInteraction<T
     public void setTargets(List< Unit> targets) {
         setAllies(targets);
     }
-
+    @Override
+    public Interaction clone() throws CloneNotSupportedException {
+        ContinuousHealingHeal clonedObj =  (ContinuousHealingHeal) super.clone();
+        clonedObj.turnsLeft = (this.turnsLeft);
+        clonedObj.targetType =(this.targetType);
+        clonedObj.amount = (this.amount);
+        clonedObj.imgPath = (this.imgPath);
+        return clonedObj;
+    }
     @Override
     public List<Unit> getTargets() {
         return allies;

@@ -253,12 +253,17 @@ public class FightManager{
         boolean use = true;
         for (Map.Entry<Unit, List<Interaction<? extends Unit>>> unitListEntry : unitToInteractions.entrySet()) {
             if (unitListEntry.getKey().equals(unit)) {
-                Interaction interaction1 = interaction;
+                Interaction interaction1 = null;
+                try {
+                    interaction1 = interaction.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
                 interaction1.setTargets(Arrays.asList(unit));
                 unitListEntry.getValue().add(interaction1);
                 //get last interactio added
                  use = unitListEntry.getValue().get(unitListEntry.getValue().size() - 1).use();
-
+                break;
             }
         }
         if (!use) {
@@ -273,6 +278,10 @@ public class FightManager{
                 unitListEntry.getValue().remove(activeInteraction);
             }
         }
+    }
+
+    public List<Interaction<? extends Unit>> getActiveInteractionsOnUnit(Unit enemy) {
+        return unitToInteractions.get(enemy);
     }
     /* if (!(interaction instanceof AttackInteraction<T>)) {
             List<? extends Unit> units = null;

@@ -2,6 +2,7 @@ package org.example.isaac.models.characters.interactions.impl;
 
 import org.example.isaac.models.characters.interactions.Skill;
 import org.example.isaac.models.characters.interactions.type.BuffInteraction;
+import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 
 import java.util.ArrayList;
@@ -63,6 +64,16 @@ public class ShieldBuff<T extends Unit> implements BuffInteraction<T> {
     @Override
     public Skill.TargetType getTargetType() {
         return targetType;
+    }
+
+    @Override
+    public Interaction clone() throws CloneNotSupportedException {
+        ShieldBuff clonedObj =  (ShieldBuff) super.clone();
+        clonedObj.turnsLeft = (this.turnsLeft);
+        clonedObj.targetType =(this.targetType);
+        clonedObj.amount = (this.amount);
+        clonedObj.imgPath = (this.imgPath);
+        return clonedObj;
     }
 
 

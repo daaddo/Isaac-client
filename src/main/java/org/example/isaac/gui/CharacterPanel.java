@@ -10,6 +10,7 @@ import org.example.isaac.events.CharactersEventListner;
 import org.example.isaac.events.FightEventListner;
 import org.example.isaac.manager.FightManager;
 import org.example.isaac.manager.GameManager;
+import org.example.isaac.models.characters.interactions.impl.WeaponAttackAttack;
 import org.example.isaac.models.characters.interactions.type.Interaction;
 import org.example.isaac.models.characters.type.Unit;
 import org.example.isaac.models.characters.type.Enemy;
@@ -33,18 +34,10 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
 
 
     private void deleteInteractionPanel(Interaction<? extends Unit> interaction) {
-        List<Integer> toRemove = new ArrayList<>();
-
-        for (int i = 0; i < this.jPanelContainerCurrentEffects.getComponentCount(); i++) {
-            if (jPanelContainerCurrentEffects.getComponent(i) instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
-                toRemove.add(i);
-                continue;
-            }
-            toRemove.add(null);
-        }
-        for (Integer i : toRemove) {
-            if (i != null) {
-                this.jPanelContainerCurrentEffects.remove(i);
+        for (int i = this.jPanelContainerCurrentEffects.getComponentCount() - 1; i >= 0; i--) {
+            Component component = this.jPanelContainerCurrentEffects.getComponent(i);
+            if (component instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
+                this.jPanelContainerCurrentEffects.remove(component);
             }
         }
     }
@@ -57,9 +50,9 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 for (Enemy enemy : FightManager.getInstance().getEnemies()) {
                     if (enemy.equals(this.unit)) {
                         List<Interaction> toRemove = new ArrayList<>();
-                        for (Interaction<? extends Unit> activeInteraction : enemy.getActiveInteractions()) {
+                        for (Interaction<? extends Unit> activeInteraction : FightManager.getInstance().getActiveInteractionsOnUnit(enemy)) {
                             use = activeInteraction.use();
-                            if (!use){
+                            if (!use||activeInteraction instanceof WeaponAttackAttack<? extends Unit>){
                                 toRemove.add(activeInteraction);
                             }
                         }
@@ -74,9 +67,9 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
                 for (MainUnit mainUnit : FightManager.getInstance().getAllies()) {
                     if (mainUnit.equals(this.unit)) {
                         List<Interaction> toRemove = new ArrayList<>();
-                        for (Interaction<? extends Unit> activeInteraction : mainUnit.getActiveInteractions()) {
+                        for (Interaction<? extends Unit> activeInteraction :FightManager.getInstance().getActiveInteractionsOnUnit(mainUnit)) {
                             use = activeInteraction.use();
-                            if (!use){
+                            if (!use ||activeInteraction instanceof WeaponAttackAttack<? extends Unit>){
                                 toRemove.add(activeInteraction);
                             }
                         }
@@ -138,6 +131,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         this.isAlly = isAlly;
         initComponents();
         this.unit = unit;
+        GameManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribeFightListner(this);
         FightManager.getInstance().subscribePanelListner(this);
         this.characterImgPath = unit.getAvatarPath();
@@ -177,7 +171,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
             FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
         }
-        this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + " / " + unit.getMaxHealth());
+        this.jLabelCharacterHealth.setText(unit.getCurrentHealth() + "/" + unit.getMaxHealth());
     }
 
     /**
