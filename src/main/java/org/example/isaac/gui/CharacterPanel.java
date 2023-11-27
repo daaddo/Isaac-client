@@ -33,14 +33,7 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     private Boolean isAlly;
 
 
-    private void deleteInteractionPanel(Interaction<? extends Unit> interaction) {
-        for (int i = this.jPanelContainerCurrentEffects.getComponentCount() - 1; i >= 0; i--) {
-            Component component = this.jPanelContainerCurrentEffects.getComponent(i);
-            if (component instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
-                this.jPanelContainerCurrentEffects.remove(component);
-            }
-        }
-    }
+
 
     @Override
     public void getNextTurns(Unit unit, Boolean isally) {
@@ -146,7 +139,13 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
     }
 
     @Override
-    public void setInteractionsCharacters(Interaction<T> interaction) {
+    public void setInteractionsCharacters(Interaction<T> interaction1) {
+        Interaction<T> interaction;
+        try {
+            interaction = interaction1.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
         if ((!isAlly && interaction.getTargetType() == Skill.TargetType.ENEMYTEAM)) {
             jPanelContainerCurrentEffects.add(new StatusPanel<>(interaction));
             FightManager.getInstance().setInteractionToCharacter(this.unit, interaction);
@@ -306,12 +305,29 @@ public class CharacterPanel<T extends Unit> extends javax.swing.JPanel implement
         boolean clicked;
         Skill.TargetType targetType = interactions.get(0).getTargetType();
         clicked = ifTrueUseSkill(targetType, interactions);
+        /*removeInteractionsWith0turns();*/
         if (clicked) {
             FightManager.getInstance().resetInteractions();
             return true;
         }
         return false;
     }
+    private void deleteInteractionPanel(Interaction<? extends Unit> interaction) {
+        for (int i = this.jPanelContainerCurrentEffects.getComponentCount() - 1; i >= 0; i--) {
+            Component component = this.jPanelContainerCurrentEffects.getComponent(i);
+            if (component instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
+                this.jPanelContainerCurrentEffects.remove(component);
+            }
+        }
+    }
+   /* private void removeInteractionsWith0turns() {
+        for (int i = this.jPanelContainerCurrentEffects.getComponentCount() - 1; i >= 0; i--) {
+            Component component = this.jPanelContainerCurrentEffects.getComponent(i);
+            if (component instanceof StatusPanel statusPanel && statusPanel.checkInteraction(interaction)) {
+                this.jPanelContainerCurrentEffects.remove(component);
+            }
+        }
+    }*/
 
     private void formMouseClicked(MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         Optional<Skill<T>> currentskillTargetActive = FightManager.getInstance().getCurrentSkillActive();
